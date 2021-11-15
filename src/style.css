@@ -1,6 +1,7 @@
 /* login */
 .login .header {
   padding-top: 5em;
+  padding-bottom: 2em;
 }
 .login .wthree-pro h2 {
   font-size: 1.5em;
@@ -152,4 +153,33 @@ select {
 }
 .span {
   color: red;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+/* color header*/
+.dark {
+  background-color: #86baeb;
+}
+
+/*Notification*/
+.size-icon {
+  font-size: 25px;
 }
