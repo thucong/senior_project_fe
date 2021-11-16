@@ -10,7 +10,7 @@ class Header extends Component {
           className="navbar-brand d-flex align-items-center col-3 mb-md-0 text-dark text-decoration-none"
           to="/"
         >
-          <img src={logo_img} alt="" height="50px" width="100px"/>
+          <img src={logo_img} alt="" height="40px" width="50px" className="logo"/>
         </Link>
         <button
           className="ml-auto navbar-toggler"

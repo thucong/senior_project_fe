@@ -105,55 +105,72 @@ class Register extends Component {
   };
   onSubmit = (e) => {
     e.preventDefault();
-        this.setState({ loading: true });
-        const { name, email, gender, dob, password, repassword, role} = this.state;
-        if(password === repassword && name && email && password && this.validateEmail() && role){
-            RegisterService.fetchRegisterAPI(name, email, gender, new Date(dob), password, role).then(res => {
-                this.setState({ loading: false });
-                if (res.status === 200) {
-                    this.props.history.push("/register/email-activate");
-                }
-    
-            }).catch(err => {
-                this.setState({ loading: false });
-                if (err.response.status === 400) {
-                    this.setState({ notifmess: "(*) User with this email already exists!" });
-                } 
-            })
-        }else if(!name && !email && !password){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.password = true;
-            notif.email = true;
-            notif.name = true;
-            this.setState({ notif });
-        }else if(password !== repassword){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.repassword = true;
-            this.setState({ notif });
-        }else if(!name){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.name = true;
-            this.setState({ notif });
-        }else if(!email){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.email = true;
-            this.setState({ notif });
-        }else if(!password){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.password = true;
-            this.setState({ notif });
-        }else if(!this.validateEmail()){
-            this.setState({ loading: false });
-            const notif = this.state.notif;
-            notif.validate = true;
-            this.setState({ notif });
-        }
-  }
+    this.setState({ loading: true });
+    const { name, email, gender, dob, password, repassword, role } = this.state;
+    if (
+      password === repassword &&
+      name &&
+      email &&
+      password &&
+      this.validateEmail() &&
+      role
+    ) {
+      RegisterService.fetchRegisterAPI(
+        name,
+        email,
+        gender,
+        new Date(dob),
+        password,
+        role
+      )
+        .then((res) => {
+          this.setState({ loading: false });
+          if (res.status === 200) {
+            this.props.history.push("/register/email-activate");
+          }
+        })
+        .catch((err) => {
+          this.setState({ loading: false });
+          if (err.response.status === 400) {
+            this.setState({
+              notifmess: "(*) User with this email already exists!",
+            });
+          }
+        });
+    } else if (!name && !email && !password) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.password = true;
+      notif.email = true;
+      notif.name = true;
+      this.setState({ notif });
+    } else if (password !== repassword) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.repassword = true;
+      this.setState({ notif });
+    } else if (!name) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.name = true;
+      this.setState({ notif });
+    } else if (!email) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.email = true;
+      this.setState({ notif });
+    } else if (!password) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.password = true;
+      this.setState({ notif });
+    } else if (!this.validateEmail()) {
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.validate = true;
+      this.setState({ notif });
+    }
+  };
   render() {
     document.body.style.backgroundColor = "#eceff1";
     return (
@@ -174,9 +191,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.name === true ? (
-            <p className="text-danger mt-1">
-              (*) Fullname can not be blank !
-            </p>
+            <p className="text-danger mt-1">(*) Fullname can not be blank!</p>
           ) : (
             ""
           )}
@@ -194,8 +209,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.email === true ? (
-            <p className="text-danger mt-1">(*) 
-            Email can not be blank!</p>
+            <p className="text-danger mt-1">(*) Email can not be blank!</p>
           ) : (
             ""
           )}
@@ -271,9 +285,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.password === true ? (
-            <p className="text-danger mt-1">
-              (*) Password can not be blank!
-            </p>
+            <p className="text-danger mt-1">(*) Password can not be blank!</p>
           ) : (
             ""
           )}
@@ -291,7 +303,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.repassword === true ? (
-            <p className="text-danger mt-1">(*) Password does not match !</p>
+            <p className="text-danger mt-1">(*) Password does not match!</p>
           ) : (
             ""
           )}

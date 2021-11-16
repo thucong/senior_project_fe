@@ -179,6 +179,12 @@ select {
   background-color: #86baeb;
 }
 
+/* header */
+
+.logo {
+  object-fit: cover;
+}
+
 /*Notification*/
 .size-icon {
   font-size: 25px;

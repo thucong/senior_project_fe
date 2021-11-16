@@ -69,7 +69,7 @@ class ResetPassword extends Component {
               });
             } else if (err.response.status === 401) {
               this.setState({
-                notifmess: "(*) User with this token does not exist !",
+                notifmess: "(*) User with this token does not exist!",
               });
             }
           }
@@ -88,7 +88,7 @@ class ResetPassword extends Component {
     document.body.style.backgroundColor = "#eceff1 ";
     return (
       <div className="col-lg-4 col-md-6 content jumbotron center mt-5">
-        <h2 className="h2">Create a new password !</h2>
+        <h2 className="h2">Create a new password</h2>
         <form>
           <div className="form-group mt-3 mr-3 w-100 ">
             <input
@@ -118,7 +118,7 @@ class ResetPassword extends Component {
             />
           </div>
           {this.state.notif.repassword === true ? (
-            <p className="text-danger mt-1">(*) Password does not match !</p>
+            <p className="text-danger mt-1">(*) Password does not match!</p>
           ) : (
             ""
           )}
@@ -127,7 +127,7 @@ class ResetPassword extends Component {
           ) : (
             ""
           )}
-           {this.state.loading ? (
+          {this.state.loading ? (
             <div className="submit">
               <img
                 className="center"

@@ -31,7 +31,7 @@ class ForgotPassword extends Component {
       .catch((err) => {
         this.setState({ loading: false });
         if (err.response.status === 401) {
-          this.setState({ notifmess: "(*) User with this email does not exists !" });
+          this.setState({ notifmess: "(*) User with this email does not exists!" });
         } 
       });
   };
@@ -39,7 +39,7 @@ class ForgotPassword extends Component {
     document.body.style.backgroundColor = "#eceff1 ";
     return (
       <div className="col-lg-4 col-md-6 content jumbotron center mt-5">
-        <h2 className="h2">Please enter your email address !</h2>
+        <h2 className="h2">Please enter your email address!</h2>
         <form>
           <div className="form-group mt-3 mr-3 w-100 ">
             <input
@@ -58,12 +58,6 @@ class ForgotPassword extends Component {
           )}
           {this.state.loading ? (
             <div className="submit">
-              <img
-                className="center"
-                src={loading_gif}
-                alt=""
-                width="50px"
-              ></img>
               <button
                 type="submit"
                 disabled
@@ -71,6 +65,12 @@ class ForgotPassword extends Component {
               >
                 Next
               </button>
+              <img
+                className="center"
+                src={loading_gif}
+                alt=""
+                width="50px"
+              ></img>
             </div>
           ) : (
             <div className="submit">

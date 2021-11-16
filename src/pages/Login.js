@@ -86,10 +86,10 @@ class Login extends Component {
         <div className="header center col col-5 container">
           <Link to="/">
             <img
-              className="center"
+              className="center logo"
               src={logo}
-              height="250px"
-              width="400px"
+              height="200px"
+              width="500px"
               alt=""
             />
           </Link>
@@ -179,7 +179,7 @@ class Login extends Component {
                     <div className="register center-text">
                       <h5 className="text-muted">
                         Do not have an account?{" "}
-                        <a className="text-muted">Register</a>
+                        <a className="text-muted" href="/register">Register</a>
                       </h5>
                     </div>
                   </div>
