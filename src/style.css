@@ -1,0 +1,191 @@
+/* login */
+.login .header {
+  padding-top: 5em;
+  padding-bottom: 2em;
+}
+.login .wthree-pro h2 {
+  font-size: 1.5em;
+  color: rgb(0, 0, 0);
+  letter-spacing: 4px;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.login .form input[type="text"],
+.form input[type="password"] {
+  outline: none;
+  font-size: 0.9em;
+  padding: 1em 3em 1em 1em;
+  border: none;
+  margin-bottom: 0.3em;
+  background: rgba(255, 255, 255, 0.85);
+  width: 95%;
+  color: #000;
+  border-radius: 30px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+}
+.login .form {
+  width: 50%;
+  margin: auto;
+  padding-top: 1em;
+}
+.center-text {
+  text-align: center;
+}
+.left-text {
+  text-align: left;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.center-vertical {
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.center-vertical-screen {
+  top: 40vh;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.forget h6 a {
+  font-size: 0.9em;
+  color: black;
+  letter-spacing: 1px;
+  text-align: right;
+  display: inherit;
+  font-family: "Open Sans", sans-serif;
+}
+.forget {
+  margin-top: 1em;
+}
+.submit {
+  margin-top: 1.5em;
+}
+
+.info {
+  position: relative;
+}
+input.pass {
+  margin-top: 0.7em;
+}
+span.icon1,
+span.icon2 {
+  font-size: 1.1em;
+  position: absolute;
+  right: 10%;
+}
+span.icon1 {
+  top: 23%;
+}
+span.icon2 {
+  top: 34%;
+}
+.form input[type="submit"] {
+  color: black;
+  border: none;
+  padding: 0.7em 0;
+  outline: none;
+  width: 44%;
+  font-size: 1em;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  border-radius: 30px;
+}
+.form input[type="submit"]:hover {
+  background: #fff;
+  color: black;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.login-form {
+  width: 600px;
+}
+
+.register {
+  margin-top: 1.8em;
+}
+.form-check {
+  text-align: left;
+}
+a:hover {
+  cursor: pointer;
+}
+/*Register*/
+.content {
+  line-height: 37px;
+  background-color: white;
+  text-align: left;
+}
+.h1 {
+  font-size: 30px;
+  text-align: center;
+}
+.address {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-bottom: 1em;
+  grid-gap: 5px;
+}
+select {
+  padding-right: 10px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.span {
+  color: red;
+}
+
+/* scroll bar */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+/* color header*/
+.dark {
+  background-color: #86baeb;
+}
+
+/* header */
+
+.logo {
+  object-fit: cover;
+}
+
+/*Notification*/
+.size-icon {
+  font-size: 25px;
+}
