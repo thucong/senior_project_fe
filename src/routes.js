@@ -1,13 +1,12 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import Cookies from "universal-cookie";
-import IndexDoctor from "./pages/doctor/IndexDoctor";
+import DetailNews from "./pages/DetailNews";
 import EmailActivate from "./pages/EmailActivate";
 import ErrorValidate from "./pages/ErrorValidate";
 import ForgotPassword from "./pages/ForgotPassword";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
-import IndexPatient from "./pages/patient/IndexPatient";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import ValidateAccount from "./pages/ValidateAccount";
@@ -20,12 +19,19 @@ const routes = [
     main: () => {
       const role = cookies.get("role");
       if (role === "doctor") {
-        return <IndexDoctor />;
+        return <Index />;
       } else if (role === "patient") {
-        return <IndexPatient />;
+        return <Index />;
       } else {
         return <Index />;
       }
+    },
+  },
+  {
+    path: "/news/:id",
+    exact: true,
+    main: (props) => {
+      return <DetailNews {...props}/>
     },
   },
   {

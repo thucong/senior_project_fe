@@ -189,3 +189,61 @@ select {
 .size-icon {
   font-size: 25px;
 }
+
+/* News item */
+.news-item .logo {
+  height: 120px;
+  width: 120px;
+}
+.news-item .logo img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
+  left: 50%;
+}
+.big-hover:hover {
+  transform: scale(1.04) !important;
+}
+.news-item .row .detail p {
+  font-size: 13px;
+}
+.news-item .row .date p {
+  font-size: 12px;
+  color: #6e6e70;
+}
+
+.news-item .row h4 {
+  font-size: 22px;
+  color: #333333;
+}
+.news-item .row h5 {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6e6e70;
+}
+
+/* table covid */
+.covid {
+  font-size:20px;
+}
+.covid th, td{
+  text-align: center;
+  background-color: #fff;
+}
+
+/*index*/
+.floating-btn {
+  width: 65px;
+  height: 65px;
+}
+
+/*detail news*/
+.subject{
+  font-size: 30px;
+}
+
+
