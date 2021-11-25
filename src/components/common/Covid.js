@@ -1,37 +1,45 @@
+import axios from "axios";
 import React, { Component } from "react";
+import { API_URL } from "../../constants/ApiUrl";
 
 class Covid extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      infoCity: [],
+    };
+  }
+  componentDidMount() {
+    axios.get(API_URL + "infoCity").then((res) => {
+      if (res.status === 200) {
+        this.setState({ infoCity: res.data });
+      }
+    });
+  }
   render() {
+    const infoCity = this.state.infoCity;
     return (
-      <div className="col col-md-8 center mt-5 covid">
-        <table className="table table-bordered">
+      <div className="p-2  covid bar-chart overflow-auto">
+        <table className="table">
           <thead>
             <tr>
-              <th colSpan="5">News about covid</th>
-            </tr>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Number of infections</th>
-              <th scope="col">Being treated</th>
-              <th scope="col">Cured</th>
+              <th scope="col">Province/City</th>
+              <th scope="col">Total</th>
+              <th scope="col">Today</th>
               <th scope="col">Dead</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">VietNam</th>
-              <td>888.887</td>
-              <td>61.292</td>
-              <td>805.978</td>
-              <td>21.673</td>
-            </tr>
-            <tr>
-              <th scope="row">World</th>
-              <td>244.463.302</td>
-              <td></td>
-              <td>221.491.950</td>
-              <td>4.964.472</td>
-            </tr>
+            {infoCity.length > 0
+              ? infoCity.map((info, index) => (
+                  <tr key={index}>
+                    <th scope="row">{info.name}</th>
+                    <td>{info.total}</td>
+                    <td className="covid-today">+ {info.today}</td>
+                    <td>{info.dead}</td>
+                  </tr>
+                ))
+              : ""}
           </tbody>
         </table>
       </div>

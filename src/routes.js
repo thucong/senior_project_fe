@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import Topic from "./pages/Topic";
 import ValidateAccount from "./pages/ValidateAccount";
 
 const cookies = new Cookies();
@@ -32,6 +33,13 @@ const routes = [
     exact: true,
     main: (props) => {
       return <DetailNews {...props}/>
+    },
+  },
+  {
+    path: "/q&a",
+    exact: true,
+    main: (props) => {
+      return <Topic  {...props}/>;
     },
   },
   {
