@@ -3,7 +3,8 @@ import { Bar, } from 'react-chartjs-2'
 import axios from "axios";
 import { API_URL } from "../../constants/ApiUrl";
 import Moment from "moment";
-
+import { connect } from "react-redux";
+import * as actions from "../../actions/index";
 class DeadChart extends Component{
     constructor(props){
         super(props);
@@ -11,40 +12,76 @@ class DeadChart extends Component{
             "chartData" : {
                 "labels": "",
                 "datasets": []
-            }
+            },
+            text: "Covid data chart of Viet Nam",
         }
     }
     chart = () => {
         let date = [];
-        let dead = []
-        axios.get(API_URL + "last7-covid").then(res => {
-            console.log(res);
-            for ( const dataObj of res.data){
-                date.push(Moment(dataObj.createdAt).format("DD-MM"));
-                dead.push(parseInt(dataObj.dead));
-            }
-            this.setState({chartData: {
-                labels : date,
-                datasets: [
-                    {
-                        label: "Number of dead",
-                        data: dead,
-                        backgroundColor: [
-                            'gray'
-                        ],
-                        borderWidth: 1,
-                    }
-                ]
-            }
-                
+        let dead = [];
+        let place = [];
+        if (this.props.choice_place === null) {
+            axios.get(API_URL + "last7-covid").then(res => {
+                console.log(res);
+                for ( const dataObj of res.data){
+                    date.push(Moment(dataObj.createdAt).format("DD-MM"));
+                    dead.push(parseInt(dataObj.dead));
+                }
+                this.setState({chartData: {
+                    labels : date,
+                    datasets: [
+                        {
+                            label: "Number of dead",
+                            data: dead,
+                            backgroundColor: [
+                                '#4b4eb3'
+                            ],
+                            borderWidth: 1,
+                        }
+                    ]
+                }
+                    
+                })
+            }).catch(err => {
+                console.log(err)
             })
-        }).catch(err => {
-            console.log(err)
-        })
+          } else {
+            axios
+              .get(API_URL + "covidOfCity/" + this.props.choice_place._id)
+              .then((res) => {
+                console.log(res.data);
+                for (const dataObj of res.data) {
+                  date.push(Moment(dataObj.createdAt).format("DD-MM"));
+                  dead.push(parseInt(dataObj.number_dead));
+                  place.push(dataObj.id_place.name);
+                }
+                this.setState({
+                  chartData: {
+                    labels: date,
+                    datasets: [
+                      {
+                        label: "Number of cured",
+                        data: dead,
+                        backgroundColor: ["#4b4eb3"],
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                });
+                this.setState({ text: `Covid data chart of ${place}` });
+              });
+          }
+        
     }
     componentDidMount(){
         this.chart();
     }
+    componentDidUpdate() {
+        if (this.props.choice_place !== null) {
+          this.chart();
+          this.props.choicePlace(null);
+        }
+      }
     render(){
         console.log(this.state.chartData)
         return(
@@ -61,36 +98,14 @@ class DeadChart extends Component{
                         legend: {
                           position: "bottom"
                         },
-                    },
-                    showXLabels: 7,
-                    maintainAspectRatio: false,
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 5,
-                            beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: `${this.state.text}`,
+                            position: 'bottom',
                           },
-                          gridLines: {
-                            display: false
-                          }
-                        },
-                      ],
-                      xAxes: [
-                        {
-                            ticks: {
-                                autoSkip: true,
-                                maxTicksLimit: 7,
-                                beginAtZero: true,
-                              },
-                              
-                          gridLines: {
-                            display: true
-                          }
-                        }
-                      ]
                     },
+                    maintainAspectRatio: false,
+                    
                     legend: {
                       labels: {
                         fontSize: 15,
@@ -107,4 +122,16 @@ class DeadChart extends Component{
         )
     }
 }
-export default DeadChart
+const mapStateToProps = (state) => {
+    return {
+      choice_place: state.choice_place,
+    };
+  };
+  const mapDispatchToProps = (dispatch, props) => {
+    return {
+      choicePlace: (place) => {
+        return dispatch(actions.choicePlace(place));
+      },
+    };
+  };
+  export default connect(mapStateToProps, mapDispatchToProps)(DeadChart)

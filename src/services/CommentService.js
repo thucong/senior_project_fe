@@ -2,14 +2,14 @@ import { API_URL } from "./../constants/ApiUrl";
 import axios from "axios";
 
 let CommentService = {
-    fetchCommentAPI: (content, userId, topicId) => {
+    fetchCommentAPI: (content, topicId, userId) => {
         return axios({
             method: 'POST',
             url: API_URL+'comment',
             data: {
                 "topicId": topicId, 
-                "userId": userId,
-                "content": content
+                "content": content,
+                "userId": userId
             }
         });
     },

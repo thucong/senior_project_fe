@@ -21,7 +21,8 @@ class TopicItem extends Component {
     this.setState({ reply: !this.state.reply });
   };
   componentDidMount() {
-    axios({ method: "GET", url: API_URL + "comment" }).then((res) => {
+
+    axios({ method: "GET", url: API_URL + "comment/"+ this.props.topic._id  }).then((res) => {
       if (res) {
         this.setState({ comments: res.data });
       }
@@ -38,10 +39,10 @@ class TopicItem extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     let content = this.state.content;
-    let userId = cookies.get('id_user');
     let topicId = this.props.topic._id;
+    let userId = cookies.get('id_user');
     if(content){
-      CommentService.fetchCommentAPI(content, userId, topicId).then((res) => {
+      CommentService.fetchCommentAPI(content,topicId,userId).then((res) => {
         if(res.status === 200){
           window.location.reload();
         }
@@ -83,10 +84,9 @@ class TopicItem extends Component {
             {comments.length} reply
           </a>
           {this.state.reply ? (
-            <div className="mt-3 border-top p-3">
-              {topic.createdBy._id === cookies.get("id_user") ||
-              cookies.get("role") === "doctor" ? (
-                <div className="row">
+            <div className="mt-3 border-top ">
+              { cookies.get("role")  ? (
+                <div className="row  pl-2 ">
                   <div className="mt-3">
                     <img
                       className="rounded-circle"
@@ -113,7 +113,7 @@ class TopicItem extends Component {
               )}
 
               {comments.length > 0 ? (comments.map((comment, index) => (
-                <div className="row pt-2 pl-4">
+                <div className="row pt-2 pl-2 mb-2" key={index}>
                   <div className="">
                     <img
                       className="rounded-circle"
@@ -128,11 +128,10 @@ class TopicItem extends Component {
                       <h3 className="mb-1 name">{comment.userId.fullname}</h3>
                       <h6 className="">{comment.content}</h6>
                     </div>
-                    <div className="mt-1">
-                      {/* <a>Reply</a> <span> - </span> */}
-                      <h6 className="date">
+                    <div className="mt-1 ">
+                      <span className="date">
                         {Moment(comment.createdAt).format("DD-MM-yyyy")}
-                      </h6>
+                      </span>
                     </div>
                   </div>
                 </div>

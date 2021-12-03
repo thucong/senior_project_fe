@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { API_URL } from "../../constants/ApiUrl";
+import { connect } from "react-redux";
+import * as actions from "../../actions/index";
 
 class Covid extends Component {
   constructor(props) {
@@ -15,6 +17,11 @@ class Covid extends Component {
         this.setState({ infoCity: res.data });
       }
     });
+  }
+  onChoosePlace = (info) => {
+    this.props.choicePlace(info);
+    
+   console.log(this.props.choicePlace(info))
   }
   render() {
     const infoCity = this.state.infoCity;
@@ -32,8 +39,8 @@ class Covid extends Component {
           <tbody>
             {infoCity.length > 0
               ? infoCity.map((info, index) => (
-                  <tr key={index}>
-                    <th scope="row">{info.name}</th>
+                  <tr key={index} onClick={() => this.onChoosePlace(info)} className="choice_place">
+                    <th scope="row" >{info.name}</th>
                     <td>{info.total}</td>
                     <td className="covid-today">+ {info.today}</td>
                     <td>{info.dead}</td>
@@ -46,4 +53,12 @@ class Covid extends Component {
     );
   }
 }
-export default Covid;
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    choicePlace: (place) => {
+      return dispatch(actions.choicePlace(place));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Covid);

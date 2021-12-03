@@ -16,3 +16,9 @@ export const setRole = (role) => {
         role
     };
 }
+export const choicePlace = (place) => {
+    return {
+        type: types.CHOICE_PLACE,
+        place
+    }
+}

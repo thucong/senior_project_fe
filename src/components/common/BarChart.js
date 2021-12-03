@@ -3,6 +3,7 @@ import CuredChart from "./CuredChart";
 import DeadChart from "./DeadChart";
 import InfectedChart from "./InfectedChart";
 import styled  from "styled-components";
+import { connect } from "react-redux";
 
 const Button = styled.button`
 height: 40px;
@@ -13,7 +14,7 @@ cursor: pointer
 const types = ['Number of infected', 'Number of cured','Number of dead']
 const ButtonToggle = styled(Button)`
     
-    ${({active}) => active && `background-color: #4b4eb3`}
+    ${({active}) => active && `background-color: #4b4eb3; color: white`}
 `
 class BarChart extends Component{
     constructor(props){
@@ -22,7 +23,8 @@ class BarChart extends Component{
             infected: true,
             cured: false,
             dead: false,
-            active: types[0]
+            active: types[0],
+            data: null
         }
     }
     onInfected = () => {
@@ -61,4 +63,10 @@ class BarChart extends Component{
         )
     }
 }
-export default BarChart
+const mapStateToProps = (state) => {
+    return {
+      choice_place: state.choice_place,
+    };
+  };
+  
+  export default connect(mapStateToProps, null)(BarChart) 

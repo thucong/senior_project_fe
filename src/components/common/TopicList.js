@@ -4,9 +4,7 @@ import TopicItem from "./TopicItem";
 import { API_URL } from "../../constants/ApiUrl";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
 
 class TopicList extends Component {
   constructor(props) {

@@ -8,7 +8,8 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state={
-        showTopButton: false
+        showTopButton: false,
+    
     };
 }
 onScrollDown = () => {
@@ -24,8 +25,9 @@ componentDidMount() {
 componentWillUnmount() {
     window.removeEventListener('scroll', this.onScrollDown);
 }
+
   render() {
-  
+    document.body.style.backgroundColor = "white";
     return (
       <div>
           <div className="col col-md-10 center mt-5" >
@@ -51,4 +53,6 @@ componentWillUnmount() {
     );
   }
 }
-export default Index;
+
+
+export default Index ;

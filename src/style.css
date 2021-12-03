@@ -240,7 +240,9 @@ select {
   font-size: 16px;
   height: 450px;
 }
-
+.choice_place{
+  cursor: pointer;
+}
 /* .covid th,
 td {
   text-align: center;
