@@ -19,7 +19,6 @@ class DeadChart extends Component{
     chart = () => {
         let date = [];
         let dead = [];
-        let place = [];
         if (this.props.choice_place === null) {
             axios.get(API_URL + "last7-covid").then(res => {
                 console.log(res);
@@ -49,11 +48,10 @@ class DeadChart extends Component{
             axios
               .get(API_URL + "covidOfCity/" + this.props.choice_place._id)
               .then((res) => {
-                console.log(res.data);
-                for (const dataObj of res.data) {
+                const data = res.data.slice(Math.max(res.data.length - 7, 1));
+                for (const dataObj of data) {
                   date.push(Moment(dataObj.createdAt).format("DD-MM"));
                   dead.push(parseInt(dataObj.number_dead));
-                  place.push(dataObj.id_place.name);
                 }
                 this.setState({
                   chartData: {
@@ -68,7 +66,7 @@ class DeadChart extends Component{
                     ],
                   },
                 });
-                this.setState({ text: `Covid data chart of ${place}` });
+                this.setState({ text: `Covid data chart of ${res.data[0].id_place.name}` });
               });
           }
         

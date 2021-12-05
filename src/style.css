@@ -234,7 +234,9 @@ select {
   height: 150px;
   object-fit: cover;
 }
-
+.news-item{
+  cursor: pointer;
+}
 /* table covid */
 .covid {
   font-size: 16px;
@@ -263,7 +265,6 @@ td {
 .subject{
   font-size: 20px;
   color: #4b4eb3;
-  border-left: 5px solid #4b4eb3;
   font-weight: bold;
 }
 
@@ -277,6 +278,9 @@ td {
 .detail-news{
   border: 1px solid #eceff1 ;
   border-radius: 4px ;
+}
+.lh-24{
+  line-height: 24px;
 }
 /*topic*/
 .date {
@@ -345,6 +349,10 @@ td {
 .list-hospital td{
   height: 50px;
 }
+.bold {
+  font-style: italic;
+  font-weight: bold;
+}
 /*info covid of city*/
 .covid-today{
   color: red;
@@ -353,3 +361,14 @@ td {
 /* .active-button{
   background-color: #4b4eb3;
 } */
+
+/* related news*/
+.related{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  height: 100%;
+}
+.list-news{
+  line-height: 22px;
+  cursor: pointer;
+}
