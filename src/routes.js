@@ -7,10 +7,12 @@ import ErrorValidate from "./pages/ErrorValidate";
 import ForgotPassword from "./pages/ForgotPassword";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Consultation from "./pages/patient/Consultation";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Topic from "./pages/Topic";
 import ValidateAccount from "./pages/ValidateAccount";
+import DetailDoctor from "./pages/patient/DetailDoctor";
 
 const cookies = new Cookies();
 const routes = [
@@ -41,6 +43,20 @@ const routes = [
     main: (props) => {
       return <Topic  {...props}/>;
     },
+  },
+  {
+    path: "/consultation",
+    exact: true,
+    main: (props) => {
+      return <Consultation {...props}/>
+    }
+  },
+  {
+    path: "/doctor/:id",
+    exact: true,
+    main: (props) => {
+      return <DetailDoctor {...props}/>
+    }
   },
   {
     path: "/login",

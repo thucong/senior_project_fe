@@ -28,7 +28,7 @@ onSubmit = (e) => {
   const content = this.state.content;
   const createdBy = cookies.get('id_user');
   const status = this.state.status;
-  if(content){
+  if(content ){
     TopicService.createTopic(content, status, createdBy).then((res) => {
       this.onClose();
       window.location.reload();

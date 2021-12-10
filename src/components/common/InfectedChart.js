@@ -20,6 +20,7 @@ class InfectedChart extends Component {
   chart = () => {
     let date = [];
     let infected = [];
+    let place = []
     if (this.props.choice_place === null) {
       axios
         .get(API_URL + "last7-covid")
@@ -28,6 +29,7 @@ class InfectedChart extends Component {
           for (const dataObj of res.data) {
             date.push(Moment(dataObj.createdAt).format("DD-MM"));
             infected.push(parseInt(dataObj.infected));
+           
           }
           this.setState({
             chartData: {
@@ -59,6 +61,7 @@ class InfectedChart extends Component {
           for (const dataObj of data) {
             date.push(Moment(dataObj.createdAt).format("DD-MM"));
             infected.push(parseInt(dataObj.number_infected));
+            place.push(dataObj.id_place.name);
           }
           this.setState({
             chartData: {
@@ -73,7 +76,7 @@ class InfectedChart extends Component {
               ],
             },
           });
-          this.setState({ text: `Covid data chart of ${res.data[0].id_place.name}` });
+          this.setState({ text: `Covid data chart of ${place[place.length -1]}` });
         });
     }
   };
