@@ -386,13 +386,21 @@ td {
 .info-item{
   font-weight: bold;
 }
-.info-status{
-  color: red;
+.wait {
+  color: #D7DF01;
+  font-weight: bold;
+}
+.confirm{
+  color: #28a745;
+  font-weight: bold;
+}
+.reject{
+  color: #dc3545;
+  font-weight: bold;
 }
 .list-doctor{
   border: 1px solid #eceff1 ;
   border-radius: 4px;
-  text-align: center;
   cursor: pointer;
 }
 .list-doctor:hover .name-doctor{
@@ -451,4 +459,16 @@ td {
 }
 .doctors{
   height: 800px;
+  margin-left: 35px;
+}
+
+/*consultation_doctor*/
+.consultation_doctor{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reply{
+  font-weight: bold;
+  font-size: 14px;
 }

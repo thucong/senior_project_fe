@@ -4,9 +4,12 @@ import { API_URL } from "../../constants/ApiUrl";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
 import ConsultationModal from "../../components/user/ConsultationModal";
 import Moment from "moment";
+import InfoModal from "../../components/user/InfoModal";
+import NoticeModal from "../../components/user/NoticeModal";
+import OffModal from "../../components/user/OffModal";
+
 
 class DetailDoctor extends Component {
   constructor(props) {
@@ -17,6 +20,9 @@ class DetailDoctor extends Component {
       start: "",
       list_schedule: "",
       list_consultation: "",
+      data_consultation:'',
+      data_schedule:'',
+      time_present:''
     };
   }
   componentDidMount() {
@@ -31,59 +37,129 @@ class DetailDoctor extends Component {
       .then((data) => {
         this.setState({ information: data });
       });
+    axios.get(API_URL + "consultation/doctor/" + this.props.match.params.id).then((res) => {
+      this.setState({data_consultation: res.data})
+    })
+    axios.get(API_URL + "schedule/doctor/" + this.props.match.params.id).then((res) => {
+      this.setState({data_schedule: res.data})
+    })
+    let day = new Date().getDate();
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
+    let time = new Date(`${year}-${month + 1}-${day}`).getTime();
+    this.setState({time_present: time})
   }
+  handleSelect = (info) => {
+    this.setState({ date: info.startStr });
+    let time_choose = new Date(info.startStr).getTime();
+    let time_day = new Date(info.startStr).getDay();
+    console.log(time_day)
+    if(time_choose >= this.state.time_present){
+      if(time_day === 0 || time_day === 6){
+        window.$('#off').modal('show');
+      }else{
+        let list_consultation = [];
+      const {data_consultation, data_schedule} = this.state;
+      let consultation= data_consultation.filter((item) => item.date === info.startStr);
+      consultation.map((startTime, index) => {
+        list_consultation.push(startTime.start);
+      })
+      this.setState({ list_consultation: consultation });
+      let schedule = data_schedule.filter((item) =>  item.date === info.startStr);
+      if(schedule[0]){
+        this.setState({ start: schedule[0].schedule });
+      let arr = list_consultation.concat(schedule[0].schedule);
+      const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
+  
+            let result = [];
+            for (let i = 0; i < arr.length; i++) {
+              if (
+                sorted_arr[i] !== sorted_arr[i - 1] &&
+                sorted_arr[i] !== sorted_arr[i + 1]
+              ) {
+                result.push(sorted_arr[i]);
+              }
+            }
+            console.log(result)
+            let result1 = result.filter((item) => (new Date(item).getTime()) > (new Date().getTime()))
+            console.log(result1)
+            this.setState({list_schedule: result1})
+            window.$("#consultation").modal("show");
+      }else{
+        window.$('#information').modal('show')
+      }
+      }
+      
+    }else{
+        window.$('#notice').modal('show');
+    }
+    
+  }
+
   // handleDateClick = (arg) => { // bind with an arrow function
   //     alert(arg.dateStr)
   //   }
-  handleSelect = (info) => {
-    let list_consultation = [];
+  // handleSelect = (info) => {
+  //   console.log(info)
+  //   let list_consultation = [];
 
-    this.setState({ date: info.startStr });
-    // console.log(this.state.date)
-    axios
-      .get(API_URL + "consultation/doctor/" + this.props.match.params.id)
-      .then((res) => {
-         console.log(res.data)
-        let consultation = res.data.filter(
-          (item) => item.date === info.startStr
-        );
-        //     console.log(consultation);
+  //   this.setState({ date: info.startStr });
+  //   let now = new Date().getTime();
+  //   let time = new Date(info.startStr).getTime();
+  //   // if(now){
+  //   //   //window.$('#notice').modal('show')
+  //   // }else{
+  //     axios
+  //     .get(API_URL + "consultation/doctor/" + this.props.match.params.id)
+  //     .then((res) => {
+  //        console.log(res.data)
+  //       let consultation = res.data.filter(
+  //         (item) => item.date === info.startStr
+  //       );
+  //       //     console.log(consultation);
+      
+  //       consultation.map((startTime, index) => {
+  //         list_consultation.push(startTime.start);
+  //       });
+  //       console.log(list_consultation);
+  //       this.setState({ list_consultation: consultation });
+  //     });
+  //   axios
+  //     .get(API_URL + "schedule/doctor/" + this.props.match.params.id)
+  //     .then((res) => {
+  //       //console.log(res.data[0].date)
+  //       //console.log(Moment(res.data[0].date).format("dd-mm-yyyy"))
+  //       let schedule = res.data.filter((item) => item.date === info.startStr);
+  //       //console.log(schedule)
+  //      // if (schedule[0]) {
+         
+  //         console.log(schedule[0].schedule);
+  //         this.setState({ start: schedule[0].schedule });
+  //         let arr = list_consultation.concat(schedule[0].schedule);
+  //       const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
 
-        consultation.map((startTime, index) => {
-          list_consultation.push(startTime.start);
-        });
-        console.log(list_consultation);
-        this.setState({ list_consultation: consultation });
-      });
-    axios
-      .get(API_URL + "schedule/doctor/" + this.props.match.params.id)
-      .then((res) => {
-        //console.log(res.data[0].date)
-        //console.log(Moment(res.data[0].date).format("dd-mm-yyyy"))
-        let schedule = res.data.filter((item) => item.date === info.startStr);
-        //console.log(schedule)
-        if (schedule[0]) {
-          window.$("#consultation").modal("show");
-          console.log(schedule[0].schedule);
-          this.setState({ start: schedule[0].schedule });
-          let arr = list_consultation.concat(schedule[0].schedule);
-        const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
-
-        let result = [];
-        for (let i = 1; i < arr.length; i++) {
-          if (
-            sorted_arr[i] !== sorted_arr[i - 1] &&
-            sorted_arr[i] !== sorted_arr[i + 1]
-          ) {
-            result.push(sorted_arr[i]);
-          }
-        }
-        this.setState({list_schedule: result})
-        } else {
-
-        }  
-      });
-  };
+  //       let result = [];
+  //       for (let i = 0; i < arr.length; i++) {
+  //         if (
+  //           sorted_arr[i] !== sorted_arr[i - 1] &&
+  //           sorted_arr[i] !== sorted_arr[i + 1]
+  //         ) {
+  //           result.push(sorted_arr[i]);
+  //         }
+  //       }
+  //       console.log(result)
+  //       let result1 = result.filter((item) => (new Date(item).getTime()) > (new Date().getTime()))
+  //       console.log(result1)
+  //       this.setState({list_schedule: result1})
+  //       window.$("#consultation").modal("show");
+  //       // } else {
+  //       //     window.$('#information').modal('show')
+  //       // }  
+  //     });
+  // // }
+  //   // console.log(this.state.date)
+   
+  // };
   render() {
     const { information } = this.state;
     return (
@@ -167,7 +243,7 @@ class DetailDoctor extends Component {
                 <div className="info-feedback">
                   <h5>Nguyen Thi A </h5>{" "}
                   <span className="date-feed">
-                    <i class="fas fa-check-circle"></i> Checked on October 29,
+                    <i className="fas fa-check-circle"></i> Checked on October 29,
                     2021
                   </span>
                 </div>
@@ -177,7 +253,7 @@ class DetailDoctor extends Component {
                 <div className="info-feedback">
                   <h5>Nguyen Thi A </h5>{" "}
                   <span className="date-feed">
-                    <i class="fas fa-check-circle"></i> Checked on October 29,
+                    <i className="fas fa-check-circle"></i> Checked on October 29,
                     2021
                   </span>
                 </div>
@@ -187,7 +263,7 @@ class DetailDoctor extends Component {
           </div>
           <div className="col col-md-4">
             <div className="schedule p-3">
-              <p className="title-schedule p-2 mb-3">SCHEDULE EXAMINATION</p>
+              <p className="title-schedule p-2 mb-3">SCHEDULE </p>
               {/* <select className="select-choose">
                             <option>Monday - 06-Dec-2021</option>
                         </select>
@@ -205,18 +281,18 @@ class DetailDoctor extends Component {
                 select={this.handleSelect}
                 //  dateClick={this.handleDateClick}
                 events={[
-                  {
-                    title: "event 1",
-                    start: "2021-12-08 18:00",
-                    end: "2021-12-08 19:00",
-                  },
+                  // {
+                  //   title: "event 1",
+                  //   start: "2021-12-08 18:00",
+                  //   end: "2021-12-08 19:00",
+                  // },
                   //   { title: 'event 2', date: '2021-12-08 07:00' },
                   //   { title: 'event 3', date: '2021-12-08 23:00' }
                 ]}
               />
+              <p className="mt-3 text-danger">Working time from Monday to Friday: 08:00 am - 11:00 am and 02:00 pm - 05:00 pm </p>
               <p className="mt-3 h5">
-                Choose <i class="far fa-hand-point-up"></i> and book a
-                consultation
+                Choose date and book a consultation
               </p>
             </div>
             <ConsultationModal
@@ -224,6 +300,9 @@ class DetailDoctor extends Component {
               list_schedule={this.state.list_schedule}
               doctorId= {this.props.match.params.id}
             />
+            <InfoModal />
+            <NoticeModal />
+            <OffModal />
           </div>
         </div>
       </div>

@@ -21,20 +21,22 @@ class ListDoctor extends Component{
     render(){
         const {list_doctor} = this.state;
         return(
-            <div className="col col-md-3 mt-5 ml-3 overflow-auto doctors">
+            <div className="col col-md-3 mt-5 overflow-auto doctors">
+                <h3 className="h3 border-bottom mb-3 center-text">List of doctors</h3>
                 {list_doctor.length > 0 ? (list_doctor.map((doctor, index) => (
-                     <div className="list-doctor p-3 mb-3" onClick={(e) =>this.chooseDoctor(doctor._id)} key={index}>
-                     <img className="rounded-circle mb-2" src={doctor.avatar} height="100" width="100" />
+                     <div className=" row list-doctor p-3 mb-3" onClick={(e) =>this.chooseDoctor(doctor._id)} key={index}>
+                     {/* <img className="rounded-circle mb-2" src={doctor.avatar} height="100" width="100" />
                      <h4 className="name-doctor">{doctor.qualification} {doctor.fullname}</h4>
-                     <p className="mt-1">{doctor.department}</p>
+                     <p className="mt-1">{doctor.department}</p> */}
+                     <div className="col col-2">
+            <img className="rounded-circle " src={doctor.avatar} height="80" width="80"/>
+          </div>
+          <div className="col col-10 info-consultation pl-5">
+            <h4 className="name-doctor">{doctor.qualification} {doctor.fullname}</h4>
+            <p className="mt-1">Department: {doctor.department}</p>
+          </div>
                  </div>
                 ))) : ""}
-               
-                {/* <div className="list-doctor p-3">
-                    <img className="rounded-circle mb-2" src="https://bacsigiadinh.top/wp-content/uploads/2020/05/doctor_female_noavatar.png" height="100" width="100" />
-                    <h4 className="name-doctor">Master, Doctor Truong Thi Minh Huong</h4>
-                    <p className="mt-1">Dermatology</p>
-                </div> */}
             </div>
         )
     }

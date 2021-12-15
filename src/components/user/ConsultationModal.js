@@ -15,9 +15,9 @@ class ConsultationModal extends Component {
       end: '',
       content: '',
       file: '',
-      status: 'wait',
+      status: 'waiting',
       notif_time: false,
-      notif_content: false
+      notif_content: false,
     }
   }
   onClose = () => {
@@ -82,24 +82,23 @@ onSubmit = (e) => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Book an appointment</h5>
+              <h5 className="modal-title h4">Book a consultation</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            {this.props.list_schedule.length > 0 ? (
             <div className="modal-body ">
-              <div className="form-group">
-                <label>Start time:</label> &ensp;
-                <select onChange={this.onChangeTime} value={this.state.start} name="start">
-                <option value="">Choose time</option>
-                {this.props.list_schedule.length > 0 ? (this.props.list_schedule.map((time, index) => (
-                  
-                  <option value={time}>{Moment(time).format('YYYY-MM-DD hh:mm a')}</option>
-               
-                ))): ""}
-                 </select>
-              </div>
-              {this.state.start ? (
+                 <div className="form-group">
+                 <label>Start time:</label> &ensp;
+                 <select onChange={this.onChangeTime} value={this.state.start} name="start">
+                 <option value="">Choose time</option> 
+                {this.props.list_schedule.map((time, index) => (
+                   <option value={time} key={index}>{Moment(time).format('YYYY-MM-DD hh:mm a')}</option>
+                 ))}
+                  </select>
+               </div>
+               {this.state.start ? (
                  <div className="form-group">
                  <label>End time:</label> &ensp;
                  {/* <select>
@@ -109,27 +108,30 @@ onSubmit = (e) => {
                  <input type="text" value={this.state.end} disabled name="end"/>
                </div>
               ) : ""}
-             
               <div className="form-group">
-                <label>Reason for examination:</label>
-                <textarea
-                  className="form-control mt-2"
-                  rows="5"
-                  cols="63"
-                  name="content"
-                  onChange={this.onChangeContent}
-                ></textarea>
-              </div>
-              <p className="mb-2">There are prior examinations:</p>
-              <div>
-                <label>Upload images:</label>&ensp;
-                <input type="file" name="file" onChange={this.uploadImage}></input> <br />
-                <img src={this.state.file} style={{ width: "200px" }} />
-              </div>
-            </div>
+               <label>Reason for consultation:</label>
+               <textarea
+                 className="form-control mt-2"
+                 rows="5"
+                 cols="63"
+                 name="content"
+                 value={this.state.content}
+                 onChange={this.onChangeContent}
+               ></textarea>
+             </div>
+             <p className="mb-2">There are prior examinations:</p>
+             <div>
+               <label>Upload images:</label>&ensp;
+               <input type="file" name="file" onChange={this.uploadImage}></input> <br />
+               <img src={this.state.file} style={{ width: "200px" }} className="mb-2"/>
+             </div>
+             <p className="text-danger">The above times are available. The duration of a consultation is 60 minutes.</p>
+             </div>
+              ) : <p className="p-4">The calendar has expired to book a consultation. Please choose another date!</p>}
             {this.state.notif_time === true ? <p className="text-danger ">(*) Please choose the time!</p> : ""}
             {this.state.notif_content === true ? <p className="text-danger ">(*) Please write your reason!</p> : ""}
-            <div className="modal-footer">
+            {this.props.list_schedule.length > 0 ? (
+              <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -146,6 +148,19 @@ onSubmit = (e) => {
                 Confirm
               </button>
             </div>
+            ) : (
+              <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={this.onClose}
+              >
+                OK
+              </button>
+             
+            </div>
+            )}
+            
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ class HeaderDoctor extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="" className="nav-link px-3">
+              <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3">
                 Consultation
               </NavLink>
             </li>

@@ -13,7 +13,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Topic from "./pages/Topic";
 import ValidateAccount from "./pages/ValidateAccount";
 import DetailDoctor from "./pages/patient/DetailDoctor";
-
+import ConsultationDoctor from "./pages/doctor/ConsultationDoctor";
 const cookies = new Cookies();
 const routes = [
   {
@@ -48,7 +48,12 @@ const routes = [
     path: "/consultation",
     exact: true,
     main: (props) => {
+      const role = cookies.get("role");
+      if (role === "patient") {
       return <Consultation {...props}/>
+      }else if(role === "doctor"){
+        return <ConsultationDoctor {...props}/>
+      }
     }
   },
   {
@@ -58,6 +63,13 @@ const routes = [
       return <DetailDoctor {...props}/>
     }
   },
+  // {
+  //   path: "/consultation/doctor",
+  //   exact: true,
+  //   main: (props) => {
+  //     return <ConsultationDoctor {...props}/>
+  //   }
+  // },
   {
     path: "/login",
     exact: true,
