@@ -29,7 +29,7 @@ class ListDoctor extends Component{
                      <h4 className="name-doctor">{doctor.qualification} {doctor.fullname}</h4>
                      <p className="mt-1">{doctor.department}</p> */}
                      <div className="col col-2">
-            <img className="rounded-circle " src={doctor.avatar} height="80" width="80"/>
+            <img className="rounded-circle " src={doctor.avatar} height="80" width="80" alt="" />
           </div>
           <div className="col col-10 info-consultation pl-5">
             <h4 className="name-doctor">{doctor.qualification} {doctor.fullname}</h4>

@@ -48,7 +48,7 @@ class DetailNews extends Component {
               </h5>
               <h5 className="text mt-2">
                 Post at:{" "}
-                {Moment(this.state.news.createdAt).format("DD-MM-yyyy")}
+                {Moment(this.state.news.createdAt).format("YYYY-MM-DD")}
               </h5>
               <div className="clearfix mt-3">
                 <img

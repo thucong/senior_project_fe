@@ -305,6 +305,26 @@ td {
   padding: 10px;
   background: white;
 }
+.choose_question{
+  font-size: 20px;
+  font-weight:200px;
+  cursor: pointer;
+}
+.color_question{
+  color: blue;
+
+}
+.grid{
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-gap: 10px;
+ 
+}
+.text{
+  font-size: 14px;
+  color: #6e6e70;
+  cursor: pointer;
+}
 /*chart*/
 .bar-chart {
   border: 1px solid #eceff1 ;

@@ -3,7 +3,7 @@ import Aos from "aos";
 import "aos/dist/aos.css"
 import NewsService from "../../services/NewsService";
 import NewsItem from "./NewsItem";
-import loading_gif from '../../images/loader.gif';
+
 
 class NewsList extends Component{
     constructor(props) {

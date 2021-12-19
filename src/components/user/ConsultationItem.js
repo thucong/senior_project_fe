@@ -103,7 +103,7 @@ class ConsultationItem extends Component {
         {consultation.length > 0 ? (consultation.map((item, index) => (
           <div className="row mb-3 consultation p-3" key={index}>
           <div className="col col-2">
-            <img className="mx-auto " src={item.doctorId.avatar} height="150" width="150"/>
+            <img className="mx-auto " src={item.doctorId.avatar} height="150" width="150" alt="" />
           </div>
           <div className="col col-10 info-consultation pl-4">
             <p>Doctor's name: <span className="info-item">{item.doctorId.fullname}</span></p>
@@ -111,7 +111,7 @@ class ConsultationItem extends Component {
             <p>Time: <span className="info-item">{Moment(item.start).format(' hh:mm a')} - {Moment(item.end).format(' hh:mm a')}</span></p>
             <p>Reason for consultation: <span className="info-item">{item.content}</span></p>
             <p>Status: <span className={item.status === 'waiting' ? 'wait' : '' || item.status === 'reject' ? 'reject' : '' || item.status === 'confirm'||'done' ? 'confirm': ''}>{item.status.toUpperCase()}</span></p>
-            {item.status === "done" ? <Link className="send-comment" to="">Please send comment after consultation</Link> : ""}
+            {item.status === "done" ? <Link className="send-comment" to="/">Please send comment after consultation</Link> : ""}
             {item.status === "waiting" ? (
                  <div className="mt-2">
                  <button className="btn btn-success" onClick={(e) => this.onChoose(item._id)}>Edit</button>&ensp;

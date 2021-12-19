@@ -63,11 +63,11 @@ class Calendar extends Component{
                     }/>
                 </div>
                 <div className="col-md-4 pl-5">
-                    <h3 className="h3 border-bottom mb-3 center-text">List of consultations to confirm</h3>
+                    <h3 className="h3 border-bottom mb-3 center-text">List of consultations to reply</h3>
                      {list_wait.map((wait, index) => (
                     <div className="row mb-3 consultation_doctor p-3" key={index} onClick={(e) => this.onReply(wait._id)}>          
                         <div className="col col-2">
-                            <img className="mx-auto " src={wait.patientId.avatar} height="100" width="100"/>
+                            <img className="mx-auto " src={wait.patientId.avatar} height="100" width="100" alt=""/>
                         </div>
                         <div className="col col-8 info-consultation pl-5">
                             <p>Patient's name: <span className="info-item">{wait.patientId.fullname}</span></p>

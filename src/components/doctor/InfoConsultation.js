@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import Moment from "moment";
-import { Link } from "react-router-dom";
+
 
 class InfoConsultation extends Component {
 
@@ -34,7 +34,7 @@ class InfoConsultation extends Component {
             <div className="form-group">
                 <div className="row mt-2" >          
                     <div className="col col-2">
-                        <img className="rounded-circle " src={this.props.info_patient.avatar} height="100" width="100"/>
+                        <img className="rounded-circle " src={this.props.info_patient.avatar} height="100" width="100" alt="" />
                     </div>
                     <div className="col col-8 info-consultation pl-2">
                         <p>Patient's name: <span className="info-item">{this.props.info_patient.fullname}</span></p>
@@ -60,7 +60,7 @@ class InfoConsultation extends Component {
                   <img
                     src={this.props.info_consultation.file}
                     style={{ width: "300px" }}
-                    className="mb-2"
+                    className="mb-2" alt=""
                   />
                 </div>
               ) : (

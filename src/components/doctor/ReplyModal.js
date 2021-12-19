@@ -100,7 +100,7 @@ class ReplyModal extends Component {
                   <img
                     src={this.state.file}
                     style={{ width: "300px" }}
-                    className="mb-2"
+                    className="mb-2" alt=""
                   />
                 </div>
               ) : (

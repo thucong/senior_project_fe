@@ -1,11 +1,12 @@
 import { Component } from "react";
-import avatar from "../../images/avatar1.jpg";
 import Moment from "moment";
 import Cookies from "universal-cookie";
 import { API_URL } from "../../constants/ApiUrl";
 import axios from "axios";
 import CommentService from "../../services/CommentService";
 import { withRouter } from "react-router-dom";
+import DeleteQuestion from "../user/DeleteQuestion";
+import EditQuestion from "../user/EditQuestion";
 
 const cookies = new Cookies();
 class TopicItem extends Component {
@@ -14,7 +15,8 @@ class TopicItem extends Component {
     this.state = {
       reply: false,
       "comments": [],
-      "content": ""
+      "content": "",
+      avatar:'',
     };
   }
   onReply = (e) => {
@@ -27,6 +29,11 @@ class TopicItem extends Component {
         this.setState({ comments: res.data });
       }
     });
+    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+      if(res.data[0].avatar !== ''){
+        this.setState({avatar: res.data[0].avatar})
+      }
+    })
   }
   onChange = (e) => {
     let target = e.target;
@@ -49,35 +56,81 @@ class TopicItem extends Component {
       })
     }
     }
+    // onDelete = async (id) => {
+    //   console.log(id)
+    //   window.$('#deleteQuestion').modal('show');
+    //   await this.setState({choice_delete:id});
+    //   console.log(this.state.choice_delete)
+    // }
+    // onEdit = async (id) => {
+    //   //console.log(id)
+    //   await axios.get(API_URL + "topic/" + id).then((res) => {
+    //     this.setState({info_topic: res.data[0]})
+    //   })
+    //   console.log(this.state.info_topic)
+    //   window.$('#editQuestion').modal('show')
+    // }
+    showHashtag = (listHashtag) => {
+      let result = null;
+      if(listHashtag.length > 0){
+        result = listHashtag.map((hashtag, index) => {
+          return (
+            <button key={index} type="button" className="btn btn-light btn-sm mr-1 mt-1">{hashtag}</button>
+          )
+        })
+      }
+      return result
+    }
   render() {
     const { topic } = this.props;
     const { comments } = this.state;
-    console.log(comments);
+    //console.log(comments);
+    //console.log(this.state.choice_delete)
+    //console.log(topic)
     return (
-      <div
+      <div>
+         <div
         className="item mx-1 mb-4 rounded topic-item"
         data-aos="fade-right"
       >
+        <div className="grid">
         <div className="row pt-3 pl-4">
           <div>
             <img
               className="rounded-circle"
-              src={avatar}
+              src={topic.createdBy.avatar}
               width="40px"
               height="40px"
               alt=""
             ></img>
           </div>
           <div className="ml-2">
-            <h3 className="mb-1 name">{topic.createdBy.fullname}</h3>
+            <h3 className="mb-1 name">{topic.createdBy.fullname}  </h3>
             <h6 className="date">
-              {" "}
-              {Moment(topic.createdAt).format("DD-MM-yyyy")}
+              {Moment(topic.createdAt).format("YYYY-MM-DD")}
             </h6>
           </div>
         </div>
+        {topic.createdBy._id === cookies.get('id_user') ? (
+           <div className="pt-3 pl-1">
+           <span className="text" onClick ={this.props.update}>Edit</span>&ensp;
+           <span className="text" onClick={this.props.delete}>Delete</span>
+           
+         </div>
+         
+        ) : " "}
+       
+        </div>
+        
         <div className="mt-3 pl-4">
           <h5 className="h5">{topic.content}</h5>
+        
+        </div>
+        <div className="pl-4">
+        {this.showHashtag(topic.hashtag)}
+        </div>
+        <div className="pl-4">
+          <img src={topic.file} alt=""  style={{ width: "200px" }}/>
         </div>
         <div className="mt-3 pl-4 pb-3">
           <a className="" onClick={this.onReply}>
@@ -90,7 +143,7 @@ class TopicItem extends Component {
                   <div className="mt-3">
                     <img
                       className="rounded-circle"
-                      src={avatar}
+                      src={this.state.avatar}
                       width="40px"
                       height="40px"
                       alt=""
@@ -117,7 +170,7 @@ class TopicItem extends Component {
                   <div className="">
                     <img
                       className="rounded-circle"
-                      src={avatar}
+                      src={comment.userId.avatar}
                       width="40px"
                       height="40px"
                       alt=""
@@ -130,61 +183,27 @@ class TopicItem extends Component {
                     </div>
                     <div className="mt-1 ">
                       <span className="date">
-                        {Moment(comment.createdAt).format("DD-MM-yyyy")}
+                        {Moment(comment.createdAt).format("YYYY-MM-DD")}
                       </span>
                     </div>
                   </div>
                 </div>
               ))) : "" } 
-
-              {/* <div className="row pl-5">
-                <div className="mt-3">
-                  <img
-                    className="rounded-circle"
-                    src={avatar}
-                    width="40px"
-                    height="40px"
-                    alt=""
-                  ></img>
-                </div>
-                <div className="ml-2 mt-3 ">
-                  <div className="rounded bg w-auto p-2">
-                    <h3 className="mb-1 name">Luna</h3>
-                    <h6 className="">kkkkkkkkkkkkkkkkkkkkkkk</h6>
-                  </div>
-                  <div className="mt-1">
-                    <a>Reply</a> <span> - </span>
-                    <span>date</span>
-                  </div>
-                </div>
-              </div>
-              <div className="row pl-5">
-                <div className="mt-3">
-                  <img
-                    className="rounded-circle"
-                    src={avatar}
-                    width="40px"
-                    height="40px"
-                    alt=""
-                  ></img>
-                </div>
-                <div className="ml-2 mt-3  ">
-                  <input
-                    type="text"
-                    placeholder="Write your reply"
-                    value=""
-                    className="bg text-reply p-2"
-                  />
-                  <button className="btn btn-success mt-1">Send</button>
-                </div>
-              </div> */}
             </div>
           ) : (
             ""
           )}
         </div>
+       
       </div>
+      {/* <DeleteQuestion choice_delete={this.state.choice_delete} />
+      <EditQuestion info_topic={this.state.info_topic} /> */}
+      </div>
+     
+      
     );
   }
+  
 }
+
 export default withRouter(TopicItem);

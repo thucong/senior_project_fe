@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo_img from "../../images/Logo2.png";
-import avatar from "../../images/avatar1.jpg";
 import Notification from "../common/Notification";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import { API_URL } from "../../constants/ApiUrl";
+
+const cookies = new Cookies();
 class HeaderDoctor extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      avatar: "https://freetuts.net/upload/product_series/images/2021/06/24/1350/avatar-de-thuong-kute-2021-2.jpg"
+    }
+  }
+  componentDidMount(){
+    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+      if(res.data[0].avatar !== ''){
+        this.setState({avatar: res.data[0].avatar})
+      }
+    })
+}
   render() {
     return (
       <header className="navbar navbar-expand-md d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 scrolling-navbar dark navbar-light">
@@ -54,7 +71,7 @@ class HeaderDoctor extends Component {
               >
                 <img
                   className="rounded-circle"
-                  src={avatar}
+                  src={this.state.avatar}
                   width="38px"
                   height="38px"
                   alt=""

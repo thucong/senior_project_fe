@@ -9,8 +9,9 @@ import Moment from "moment";
 import InfoModal from "../../components/user/InfoModal";
 import NoticeModal from "../../components/user/NoticeModal";
 import OffModal from "../../components/user/OffModal";
+import Cookies from "universal-cookie";
 
-
+const cookies = new Cookies();
 class DetailDoctor extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,9 @@ class DetailDoctor extends Component {
       list_consultation: "",
       data_consultation:'',
       data_schedule:'',
-      time_present:''
+      time_present:'',
+      patient:'',
+      list_consultation_user:''
     };
   }
   componentDidMount() {
@@ -48,6 +51,7 @@ class DetailDoctor extends Component {
     let year = new Date().getFullYear();
     let time = new Date(`${year}-${month + 1}-${day}`).getTime();
     this.setState({time_present: time})
+   
   }
   handleSelect = (info) => {
     this.setState({ date: info.startStr });
@@ -96,9 +100,7 @@ class DetailDoctor extends Component {
     
   }
 
-  // handleDateClick = (arg) => { // bind with an arrow function
-  //     alert(arg.dateStr)
-  //   }
+ 
   // handleSelect = (info) => {
   //   console.log(info)
   //   let list_consultation = [];
@@ -160,8 +162,15 @@ class DetailDoctor extends Component {
   //   // console.log(this.state.date)
    
   // };
+ 
   render() {
     const { information } = this.state;
+    const {data_consultation} = this.state;
+    console.log(data_consultation)
+    //let list_user = data_consultation.filter((item) => item.status === 'done');
+    // let user = list_user.filter((item) => item.patientId === cookies.get('id_user'));
+    // this.setState({patient: user[0].patientId})
+    // console.log(this.state.patient)
     return (
       <div className="col col-md-10 center">
         <div className="row mt-5">
@@ -198,11 +207,11 @@ class DetailDoctor extends Component {
           <div className="col col-lg-8">
             <div className="info-doctor p-3">
               <h2>
-                Associate Professor, Doctor, Senior Doctor Nguyen Duy Hung
+                 Doctor Nguyen A
               </h2>
               <ul>
                 <li>
-                  - Associate Professor, Doctor, Senior Doctor of Dermatology
+                  -  Doctor of Dermatology
                 </li>
                 <li>- Graduated from Hanoi Medical University (1977)</li>
                 <li>
@@ -240,21 +249,20 @@ class DetailDoctor extends Component {
               <hr />
               <h2>Patient feedback after consultation</h2>
               <div className="feedback p-2 mt-2">
+                
                 <div className="info-feedback">
-                  <h5>Nguyen Thi A </h5>{" "}
+                  <h5>Nguyen Thi A </h5>
                   <span className="date-feed">
-                    <i className="fas fa-check-circle"></i> Checked on October 29,
-                    2021
+                    <i className="fas fa-check-circle"></i> Checked on 2021-11-29
                   </span>
                 </div>
                 <p>Everything is Good and attentive</p>
               </div>
               <div className="feedback p-2 mt-2">
                 <div className="info-feedback">
-                  <h5>Nguyen Thi A </h5>{" "}
+                  <h5>Nguyen Thi A </h5>
                   <span className="date-feed">
-                    <i className="fas fa-check-circle"></i> Checked on October 29,
-                    2021
+                    <i className="fas fa-check-circle"></i> Checked on 2021-11-29
                   </span>
                 </div>
                 <p>Everything is Good and attentive</p>
@@ -264,31 +272,13 @@ class DetailDoctor extends Component {
           <div className="col col-md-4">
             <div className="schedule p-3">
               <p className="title-schedule p-2 mb-3">SCHEDULE </p>
-              {/* <select className="select-choose">
-                            <option>Monday - 06-Dec-2021</option>
-                        </select>
-                        <div className="mt-3">
-                        <button className="time-schedule m-3">8:00 - 8:30</button>
-                        <button className="time-schedule m-3">8:30 - 9:00</button>
-                        <button className="time-schedule m-3">9:00 - 9:30</button>
-                        <button className="time-schedule m-3">9:30 - 10:00</button>
-                        </div> */}
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 weekends={true}
                 selectable={true}
                 select={this.handleSelect}
-                //  dateClick={this.handleDateClick}
-                events={[
-                  // {
-                  //   title: "event 1",
-                  //   start: "2021-12-08 18:00",
-                  //   end: "2021-12-08 19:00",
-                  // },
-                  //   { title: 'event 2', date: '2021-12-08 07:00' },
-                  //   { title: 'event 3', date: '2021-12-08 23:00' }
-                ]}
+                events={[]}
               />
               <p className="mt-3 text-danger">Working time from Monday to Friday: 08:00 am - 11:00 am and 02:00 pm - 05:00 pm </p>
               <p className="mt-3 h5">

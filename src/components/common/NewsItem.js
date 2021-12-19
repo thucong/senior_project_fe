@@ -16,7 +16,7 @@ class NewsItem extends Component {
         <div className="col col-10 h-100">
           <h4 className="text-truncate news-subject">{this.props.news.subject}</h4>
           <div className="mt-2  ">
-              <h5 className="text-truncate">Post at: {Moment(this.props.news.createdAt).format('DD-MM-yyyy')} </h5>
+              <h5 className="text-truncate">Post at: {Moment(this.props.news.createdAt).format('YYYY-MM-DD')} </h5>
               <p className="content">{this.props.news.content.substring(0, 250)}</p>
           </div>
           <h5 className="text-truncate mt-2 ">Written by {this.props.news.writer}</h5>

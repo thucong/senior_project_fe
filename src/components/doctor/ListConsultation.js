@@ -44,7 +44,7 @@ class ListConsultation extends Component {
                 {this.props.schedule.length > 0 ? (this.props.schedule.map((schedule, index) => (
                     <div className="row consultation_doctor p-3 m-3" key={index} onClick={(e) => this.onRead(schedule._id)}>          
                     <div className="col col-2">
-                        <img className="mx-auto " src={schedule.patientId.avatar} height="100" width="100"/>
+                        <img className="mx-auto " src={schedule.patientId.avatar} height="100" width="100" alt=""/>
                     </div>
                     <div className="col col-8 info-consultation pl-5">
                         <p>Patient's name: <span className="info-item">{schedule.patientId.fullname}</span></p>

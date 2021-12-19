@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 const cookies = new Cookies();
-class AddQuestion extends Component {
+class EditQuestion extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class AddQuestion extends Component {
     this.setState({content: ""});
     this.setState({file:''})
     this.setState({hashtag: []})
-    window.$('#addQuestion').modal('hide');
+    window.$('#editQuestion').modal('hide');
 }
 onHandleChange = (e) => {
   var target = e.target;
@@ -49,39 +49,43 @@ onChangeHashtag = (hashtag) => {
 componentDidMount(){
   if (this.props.list_hashtag.length === 0) {
     this.props.fetchListHashtag();
-}
+  }
 }
 onSubmit = (e) => {
   e.preventDefault();
   const content = this.state.content;
-  const createdBy = cookies.get('id_user');
-  const status = this.state.status;
+  // const createdBy = cookies.get('id_user');
+  // const status = this.state.status;
+  const id = this.props.info_topic._id;
   const {file, hashtag} = this.state
-  console.log(hashtag)
-  if(content){
-    TopicService.createTopic(content, status, createdBy, file, hashtag).then((res) => {
+ // console.log(hashtag)
+
+    TopicService.updateTopic(id,content, file, hashtag).then((res) => {
       this.onClose();
       window.location.reload();
   })
-}else{
-  window.$('#addQuestion').modal('show');
+
 }
+componentWillReceiveProps(nextProps){
+  this.setState({...nextProps.info_topic})
 }
   render() {
      let ref = React.createRef();
+     console.log(this.props.info_topic)
+    console.log(this.state.content)
     return (
       <div
         className="modal fade bd-example-modal-lg"
-        id="addQuestion"
+        id="editQuestion"
         tabIndex="-1"
         role="dialog"
-        aria-labelledby="addQuestion"
+        aria-labelledby="editQuestion"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content" >
             <div className="modal-header">
-              <h5 className="modal-title h4">Add question</h5>
+              <h5 className="modal-title h4">Edit question</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -161,4 +165,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AddQuestion);
+export default connect(mapStateToProps, mapDispatchToProps)(EditQuestion);

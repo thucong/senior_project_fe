@@ -14,6 +14,8 @@ import Topic from "./pages/Topic";
 import ValidateAccount from "./pages/ValidateAccount";
 import DetailDoctor from "./pages/patient/DetailDoctor";
 import ConsultationDoctor from "./pages/doctor/ConsultationDoctor";
+import MyQuestion from "./pages/patient/MyQuestion"
+
 const cookies = new Cookies();
 const routes = [
   {
@@ -62,6 +64,11 @@ const routes = [
     main: (props) => {
       return <DetailDoctor {...props}/>
     }
+  },
+  {
+    path: "/q&a/my",
+    exact: true,
+    main: () => {return <MyQuestion />}
   },
   // {
   //   path: "/consultation/doctor",

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { API_URL } from "../../constants/ApiUrl";
 import Moment from "moment";
 import Cookies from "universal-cookie";
 import ConsultationService from "../../services/ConsultationService";
@@ -123,7 +122,7 @@ onSubmit = (e) => {
              <div>
                <label>Upload images:</label>&ensp;
                <input type="file" name="file" onChange={this.uploadImage}></input> <br />
-               <img src={this.state.file} style={{ width: "200px" }} className="mb-2"/>
+               <img src={this.state.file} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
              </div>
              <p className="text-danger">The above times are available. The duration of a consultation is 60 minutes.</p>
              </div>

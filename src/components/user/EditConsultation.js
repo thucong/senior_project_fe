@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { Component } from "react";
 import Moment from "moment";
 import {withRouter } from "react-router-dom";
-import { API_URL } from "../../constants/ApiUrl";
 import ConsultationService from "../../services/ConsultationService";
 class EditConsultation extends Component {
   constructor(props) {
@@ -141,7 +140,7 @@ onSubmit = (e) => {
               <div>
                 <label>Upload images:</label>&ensp;
                 <input type="file" name="file" onChange={this.uploadImage} ></input> <br />
-                <img src={this.state.file} style={{ width: "200px" }} className="mt-2"/>
+                <img src={this.state.file} style={{ width: "200px" }} className="mt-2" alt="" />
               </div>
             </div> 
            
