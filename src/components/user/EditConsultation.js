@@ -100,7 +100,7 @@ onSubmit = (e) => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Edit a consultation</h5>
+              <h5 className="modal-title h4">Edit Appointment</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -114,19 +114,19 @@ onSubmit = (e) => {
                    <option value={time} key={index}>{Moment(time).format('YYYY-MM-DD hh:mm a')}</option>
                  ))): ""}
                   </select> */}
-                <label>Start time:</label> &ensp;
+                <label className="label-time">Start time:</label> &ensp;
                 <input type="text" value={Moment(this.state.start).format('YYYY-MM-DD hh:mm a')} disabled name="start"/>
               </div>
               {this.state.start ? (
                  <div className="form-group">
-                 <label>End time:</label> &ensp;
+                 <label className="label-time">End time:</label> &ensp;
                
                  <input type="text" value={this.state.end} disabled name="end"/>
                </div>
               ) : ""}
              
               <div className="form-group">
-                <label>Reason for consultation:</label>
+                <label>Reason for appointment:</label>
                 <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -138,7 +138,7 @@ onSubmit = (e) => {
               </div>
               <p className="mb-2">There are prior examinations:</p>
               <div>
-                <label>Upload images:</label>&ensp;
+                <label>Upload image:</label>&ensp;
                 <input type="file" name="file" onChange={this.uploadImage} ></input> <br />
                 <img src={this.state.file} style={{ width: "200px" }} className="mt-2" alt="" />
               </div>
@@ -158,7 +158,7 @@ onSubmit = (e) => {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-                Confirm
+                Submit
               </button>
             </div>
           </div>

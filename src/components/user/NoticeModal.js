@@ -23,7 +23,7 @@ class NoticeModal extends Component {
               </button>
             </div>
             <div className="modal-body ">
-              <p className="mb-2">The calendar has expired to book a consultation. Please choose another date!</p>
+              <p className="mb-2">The calendar has expired to book an appointment. Please choose another date!</p>
             </div>
             <div className="modal-footer">
               <button

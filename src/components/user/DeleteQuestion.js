@@ -12,6 +12,9 @@ class DeleteQuestion extends Component{
         })
        
     }
+    onClose = () => {
+        window.$('#deleteQuestion').modal('hide');
+    }
     render(){
         //console.log(this.props.choice_delete)
         return(
@@ -19,8 +22,8 @@ class DeleteQuestion extends Component{
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title h4">Delete question</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <h5 className="modal-title h4">Delete Question</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"  onClick={this.onClose}>
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -28,7 +31,7 @@ class DeleteQuestion extends Component{
                     <p>Do you want to delete this question?</p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal"  onClick={this.onClose}>No</button>
                     <button type="button" className="btn btn-danger" onClick={this.delete}>Yes</button>
                 </div>
                 </div>

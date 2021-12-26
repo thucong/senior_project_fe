@@ -21,11 +21,14 @@ class DetailDoctor extends Component {
       start: "",
       list_schedule: "",
       list_consultation: "",
-      data_consultation:'',
-      data_schedule:'',
-      time_present:'',
-      patient:'',
-      list_consultation_user:''
+      data_consultation: "",
+      data_schedule: "",
+      time_present: "",
+      patient: "",
+      list_consultation_user: "",
+      avatar: "",
+      content: "",
+      list_feedback: "",
     };
   }
   componentDidMount() {
@@ -40,137 +43,121 @@ class DetailDoctor extends Component {
       .then((data) => {
         this.setState({ information: data });
       });
-    axios.get(API_URL + "consultation/doctor/" + this.props.match.params.id).then((res) => {
-      this.setState({data_consultation: res.data})
-    })
-    axios.get(API_URL + "schedule/doctor/" + this.props.match.params.id).then((res) => {
-      this.setState({data_schedule: res.data})
-    })
+    axios
+      .get(API_URL + "consultation/doctor/" + this.props.match.params.id)
+      .then((res) => {
+        this.setState({ data_consultation: res.data });
+      });
+    axios
+      .get(API_URL + "schedule/doctor/" + this.props.match.params.id)
+      .then((res) => {
+        this.setState({ data_schedule: res.data });
+      });
     let day = new Date().getDate();
     let month = new Date().getMonth();
     let year = new Date().getFullYear();
     let time = new Date(`${year}-${month + 1}-${day}`).getTime();
-    this.setState({time_present: time})
-   
+    this.setState({ time_present: time });
+    axios
+      .get(API_URL + "consultation/patient/" + cookies.get("id_user"))
+      .then((res) => {
+        let consultation_patient = res.data.filter(
+          (item) => item.doctorId._id === this.props.match.params.id
+        );
+        let data = consultation_patient.filter(
+          (item) => item.status === "done"
+        );
+        this.setState({ patient: data });
+        console.log(this.state.patient);
+      });
+    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+      if (res.data[0].avatar !== "") {
+        this.setState({ avatar: res.data[0].avatar });
+      }
+    });
+    axios
+      .get(API_URL + "feedback/doctor/" + this.props.match.params.id)
+      .then((res) => {
+        this.setState({ list_feedback: res.data });
+      });
   }
   handleSelect = (info) => {
     this.setState({ date: info.startStr });
     let time_choose = new Date(info.startStr).getTime();
     let time_day = new Date(info.startStr).getDay();
-    console.log(time_day)
-    if(time_choose >= this.state.time_present){
-      if(time_day === 0 || time_day === 6){
-        window.$('#off').modal('show');
-      }else{
+    console.log(time_day);
+    if (time_choose >= this.state.time_present) {
+      if (time_day === 0 || time_day === 6) {
+        window.$("#off").modal("show");
+      } else {
         let list_consultation = [];
-      const {data_consultation, data_schedule} = this.state;
-      let consultation= data_consultation.filter((item) => item.date === info.startStr);
-      consultation.map((startTime, index) => {
-        list_consultation.push(startTime.start);
-      })
-      this.setState({ list_consultation: consultation });
-      let schedule = data_schedule.filter((item) =>  item.date === info.startStr);
-      if(schedule[0]){
-        this.setState({ start: schedule[0].schedule });
-      let arr = list_consultation.concat(schedule[0].schedule);
-      const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
-  
-            let result = [];
-            for (let i = 0; i < arr.length; i++) {
-              if (
-                sorted_arr[i] !== sorted_arr[i - 1] &&
-                sorted_arr[i] !== sorted_arr[i + 1]
-              ) {
-                result.push(sorted_arr[i]);
-              }
+        const { data_consultation, data_schedule } = this.state;
+        let consultation = data_consultation.filter(
+          (item) => item.date === info.startStr
+        );
+        consultation.map((startTime, index) => {
+          list_consultation.push(startTime.start);
+        });
+        this.setState({ list_consultation: consultation });
+        let schedule = data_schedule.filter(
+          (item) => item.date === info.startStr
+        );
+        if (schedule[0]) {
+          this.setState({ start: schedule[0].schedule });
+          let arr = list_consultation.concat(schedule[0].schedule);
+          const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
+
+          let result = [];
+          for (let i = 0; i < arr.length; i++) {
+            if (
+              sorted_arr[i] !== sorted_arr[i - 1] &&
+              sorted_arr[i] !== sorted_arr[i + 1]
+            ) {
+              result.push(sorted_arr[i]);
             }
-            console.log(result)
-            let result1 = result.filter((item) => (new Date(item).getTime()) > (new Date().getTime()))
-            console.log(result1)
-            this.setState({list_schedule: result1})
-            window.$("#consultation").modal("show");
-      }else{
-        window.$('#information').modal('show')
+          }
+          console.log(result);
+          let result1 = result.filter(
+            (item) => new Date(item).getTime() > new Date().getTime()
+          );
+          console.log(result1);
+          this.setState({ list_schedule: result1 });
+          window.$("#consultation").modal("show");
+        } else {
+          window.$("#information").modal("show");
+        }
       }
-      }
-      
-    }else{
-        window.$('#notice').modal('show');
+    } else {
+      window.$("#notice").modal("show");
     }
-    
-  }
+  };
 
- 
-  // handleSelect = (info) => {
-  //   console.log(info)
-  //   let list_consultation = [];
-
-  //   this.setState({ date: info.startStr });
-  //   let now = new Date().getTime();
-  //   let time = new Date(info.startStr).getTime();
-  //   // if(now){
-  //   //   //window.$('#notice').modal('show')
-  //   // }else{
-  //     axios
-  //     .get(API_URL + "consultation/doctor/" + this.props.match.params.id)
-  //     .then((res) => {
-  //        console.log(res.data)
-  //       let consultation = res.data.filter(
-  //         (item) => item.date === info.startStr
-  //       );
-  //       //     console.log(consultation);
-      
-  //       consultation.map((startTime, index) => {
-  //         list_consultation.push(startTime.start);
-  //       });
-  //       console.log(list_consultation);
-  //       this.setState({ list_consultation: consultation });
-  //     });
-  //   axios
-  //     .get(API_URL + "schedule/doctor/" + this.props.match.params.id)
-  //     .then((res) => {
-  //       //console.log(res.data[0].date)
-  //       //console.log(Moment(res.data[0].date).format("dd-mm-yyyy"))
-  //       let schedule = res.data.filter((item) => item.date === info.startStr);
-  //       //console.log(schedule)
-  //      // if (schedule[0]) {
-         
-  //         console.log(schedule[0].schedule);
-  //         this.setState({ start: schedule[0].schedule });
-  //         let arr = list_consultation.concat(schedule[0].schedule);
-  //       const sorted_arr = arr.sort((a, b) => ("" + a).localeCompare(b));
-
-  //       let result = [];
-  //       for (let i = 0; i < arr.length; i++) {
-  //         if (
-  //           sorted_arr[i] !== sorted_arr[i - 1] &&
-  //           sorted_arr[i] !== sorted_arr[i + 1]
-  //         ) {
-  //           result.push(sorted_arr[i]);
-  //         }
-  //       }
-  //       console.log(result)
-  //       let result1 = result.filter((item) => (new Date(item).getTime()) > (new Date().getTime()))
-  //       console.log(result1)
-  //       this.setState({list_schedule: result1})
-  //       window.$("#consultation").modal("show");
-  //       // } else {
-  //       //     window.$('#information').modal('show')
-  //       // }  
-  //     });
-  // // }
-  //   // console.log(this.state.date)
-   
-  // };
- 
+  onChange = (e) => {
+    let target = e.target;
+    let name = target.name;
+    let value = target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+  onSubmit = (e) => {
+    e.preventDefault();
+    let content = this.state.content;
+    let doctorId = this.props.match.params.id;
+    let patientId = cookies.get("id_user");
+    axios.post(API_URL + "feedback", {
+      content: content,
+      doctorId: doctorId,
+      patientId: patientId,
+    }).then((res) => {
+      window.location.reload();
+    })
+  };
   render() {
     const { information } = this.state;
-    const {data_consultation} = this.state;
-    console.log(data_consultation)
-    //let list_user = data_consultation.filter((item) => item.status === 'done');
-    // let user = list_user.filter((item) => item.patientId === cookies.get('id_user'));
-    // this.setState({patient: user[0].patientId})
-    // console.log(this.state.patient)
+    const { data_consultation } = this.state;
+    console.log(data_consultation);
+
     return (
       <div className="col col-md-10 center">
         <div className="row mt-5">
@@ -206,13 +193,9 @@ class DetailDoctor extends Component {
         <div className="row mt-3">
           <div className="col col-lg-8">
             <div className="info-doctor p-3">
-              <h2>
-                 Doctor Nguyen A
-              </h2>
+              <h2>Doctor Nguyen A</h2>
               <ul>
-                <li>
-                  -  Doctor of Dermatology
-                </li>
+                <li>- Doctor of Dermatology</li>
                 <li>- Graduated from Hanoi Medical University (1977)</li>
                 <li>
                   - Doctor who used to work at the Central Hospital of
@@ -247,26 +230,62 @@ class DetailDoctor extends Component {
                 <li>- Cure atopic dermatitis</li>
               </ul>
               <hr />
-              <h2>Patient feedback after consultation</h2>
-              <div className="feedback p-2 mt-2">
-                
-                <div className="info-feedback">
+              <h2>Patient Feedback</h2>
+              <div className=" p-2 mt-2">
+                {this.state.patient.length > 0 ? (
+                  <div className="feedback">
+                    <div className="row  pl-2 ">
+                      <div className="mt-3">
+                        <img
+                          className="rounded-circle"
+                          src={this.state.avatar}
+                          width="40px"
+                          height="40px"
+                          alt=""
+                        ></img>
+                      </div>
+                      <div className="ml-2 mt-3 send_feed">
+                        <input
+                          type="text"
+                          placeholder="Write your feedback"
+                          value={this.state.content}
+                          className="bg text-reply p-2"
+                          name="content"
+                          onChange={this.onChange}
+                        />
+                        <button
+                          className="btn btn-success mt-1 ml-3"
+                          onClick={this.onSubmit}
+                        >
+                          Send
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {/* <div className="info-feedback mt-2 feedback">
                   <h5>Nguyen Thi A </h5>
                   <span className="date-feed">
                     <i className="fas fa-check-circle"></i> Checked on 2021-11-29
                   </span>
                 </div>
-                <p>Everything is Good and attentive</p>
+                <p>Everything is Good and attentive</p> */}
               </div>
-              <div className="feedback p-2 mt-2">
-                <div className="info-feedback">
-                  <h5>Nguyen Thi A </h5>
-                  <span className="date-feed">
-                    <i className="fas fa-check-circle"></i> Checked on 2021-11-29
-                  </span>
-                </div>
-                <p>Everything is Good and attentive</p>
-              </div>
+              {this.state.list_feedback.length > 0
+                ? this.state.list_feedback.map((feedback, index) => (
+                    <div className="feedback p-2 mt-2" key={index}>
+                      <div className="info-feedback">
+                        <h5>{feedback.patientId.fullname}</h5>&nbsp;
+                        <span className="date-feed">
+                          {Moment(feedback.createdAt).format("YYYY-MM-DD")}
+                        </span>
+                      </div>
+                      <p>{feedback.content}</p>
+                    </div>
+                  ))
+                : ""}
             </div>
           </div>
           <div className="col col-md-4">
@@ -280,15 +299,16 @@ class DetailDoctor extends Component {
                 select={this.handleSelect}
                 events={[]}
               />
-              <p className="mt-3 text-danger">Working time from Monday to Friday: 08:00 am - 11:00 am and 02:00 pm - 05:00 pm </p>
-              <p className="mt-3 h5">
-                Choose date and book a consultation
+              <p className="mt-3 text-danger">
+                Working time from Monday to Friday: 08:00 am - 11:00 am and
+                02:00 pm - 05:00 pm{" "}
               </p>
+              <p className="mt-3 h5">Choose date and book an appointment</p>
             </div>
             <ConsultationModal
               date={this.state.date}
               list_schedule={this.state.list_schedule}
-              doctorId= {this.props.match.params.id}
+              doctorId={this.props.match.params.id}
             />
             <InfoModal />
             <NoticeModal />

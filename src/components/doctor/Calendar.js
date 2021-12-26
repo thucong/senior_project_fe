@@ -58,12 +58,12 @@ class Calendar extends Component{
                     select={this.handleSelect}
                     events={
                         list_consultation.length > 0 ? list_consultation.map((consultation, index) => (
-                            {'title': `consultation with ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
+                            {'title': `Appointment with ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
                         )) : ""
                     }/>
                 </div>
                 <div className="col-md-4 pl-5">
-                    <h3 className="h3 border-bottom mb-3 center-text">List of consultations to reply</h3>
+                    <h3 className="h3 border-bottom mb-3 left-text">Booked Appointments</h3>
                      {list_wait.map((wait, index) => (
                     <div className="row mb-3 consultation_doctor p-3" key={index} onClick={(e) => this.onReply(wait._id)}>          
                         <div className="col col-2">
@@ -90,7 +90,7 @@ class Calendar extends Component{
                 select={this.handleSelect}
                 events={
                     list_consultation.length > 0 ? list_consultation.map((consultation, index) => (
-                        {'title': `consultation with ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
+                        {'title': `Appointment with ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
                     )) : ""
                 }/>
             </div>

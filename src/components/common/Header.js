@@ -32,7 +32,7 @@ class Header extends Component {
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3">
-                Question and answer
+                Q&A
               </NavLink>
             </li>
             <li>

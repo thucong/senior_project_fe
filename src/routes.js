@@ -68,7 +68,7 @@ const routes = [
   {
     path: "/q&a/my",
     exact: true,
-    main: () => {return <MyQuestion />}
+    main: (props) => {return <MyQuestion {...props} />}
   },
   // {
   //   path: "/consultation/doctor",

@@ -17,13 +17,15 @@ class ReplyModal extends Component {
       reply:'',
       _id:'',
       reason:'',
-      link_call:''
+      link_call:'',
+      note:''
     };
   }
   onClose = () => {
     window.$("#reply").modal("hide");
     this.setState({reply: ''});
-    this.setState({reason: ''})
+    this.setState({reason: ''});
+    this.setState({note:''});
   };
 
   componentWillReceiveProps(nextProps) {
@@ -35,14 +37,17 @@ class ReplyModal extends Component {
   onChangeReason = (e) => {
     this.setState({reason: e.target.value})
   }
+  onChangeNote = (e) => {
+    this.setState({note: e.target.value})
+  }
   onChangeCall = (e) => {
       this.setState({link_call: e.target.value})
   }
   onSubmit =(e) => {
     e.preventDefault();
-    let {_id, reply, reason, link_call} = this.state;
+    let {_id, reply, reason, link_call, note} = this.state;
     if(reply !== '' || reason !== '' || link_call !== '') {
-        ConsultationService.updateStatus(_id, reply, reason, link_call).then((res) => {
+        ConsultationService.updateStatus(_id, reply, reason, link_call, note).then((res) => {
             window.$("#reply").modal("hide");
             window.location.reload();
         })
@@ -64,14 +69,14 @@ class ReplyModal extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Reply a consultation</h5>
+              <h5 className="modal-title h4">Confirmation</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body ">
               <div className="form-group">
-                <label>Start time:</label> &ensp;
+                <label className="label-time">Start time:</label> &ensp;
                 <input
                   type="text"
                   value={Moment(this.state.start).format("YYYY-MM-DD hh:mm a")}
@@ -80,11 +85,14 @@ class ReplyModal extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>End time:</label> &ensp;
+                <label className="label-time">End time:</label> &ensp;
                 <input type="text" value={this.state.end} disabled name="end" />
               </div>
+              <p className="text-danger mb-2">
+                Duration is 60 minutes.
+              </p>
               <div className="form-group">
-                <label>Reason for consultation:</label>
+                <label>Reason for appointment:</label>
                 <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -108,16 +116,16 @@ class ReplyModal extends Component {
               )}
 
               <div className="mb-2">
-                <label className="reply">Reply: </label>&ensp;
+                <label className="reply">Confirm: </label>&ensp;
                 <select onChange={this.onChangeReply} value={this.state.reply} name="reply">
-                    <option >Choose reply</option>
-                  <option value="confirmed">Confirmed</option>
+                    <option >Choose option</option>
+                  <option value="confirmed">Accept</option>
                   <option value="reject">Reject</option>
                 </select>
               </div>
               {this.state.reply === 'reject' ? (
                   <div className="form-group">
-                      <label>Reason for reject: </label>&ensp;
+                      <label>Rejection: </label>&ensp;
                       <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -129,14 +137,20 @@ class ReplyModal extends Component {
                   </div>
               ) : ''}
               {this.state.reply === "confirmed" ? (
+                <div>
                   <div className="form-group">
-                      <label>Link call of consultation: </label>&ensp;
+                      <label>Meeting Link: </label>&ensp;
                       <input type='text' value={this.state.link_call} name="link_call" onChange={this.onChangeCall} className="form-control mt-2"/>
                   </div>
+                  <div className="form-group">
+                      <label>Note: </label>&ensp;
+                      <input type='text' value={this.state.note} name="note" onChange={this.onChangeNote} className="form-control mt-2"/>
+                  </div>
+                </div>
+                  
+                  
               ) : ""}
-              <p className="text-danger">
-                The duration of a consultation is 60 minutes.
-              </p>
+              
             </div>
             <div className="modal-footer">
               <button
@@ -152,7 +166,7 @@ class ReplyModal extends Component {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-                Confirm
+               Submit
               </button>
             </div>
           </div>

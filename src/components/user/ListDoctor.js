@@ -22,7 +22,7 @@ class ListDoctor extends Component{
         const {list_doctor} = this.state;
         return(
             <div className="col col-md-3 mt-5 overflow-auto doctors">
-                <h3 className="h3 border-bottom mb-3 center-text">List of doctors</h3>
+                <h3 className="h3 border-bottom mb-3 left-text">Doctors</h3>
                 {list_doctor.length > 0 ? (list_doctor.map((doctor, index) => (
                      <div className=" row list-doctor p-3 mb-3" onClick={(e) =>this.chooseDoctor(doctor._id)} key={index}>
                      {/* <img className="rounded-circle mb-2" src={doctor.avatar} height="100" width="100" />
@@ -32,7 +32,7 @@ class ListDoctor extends Component{
             <img className="rounded-circle " src={doctor.avatar} height="80" width="80" alt="" />
           </div>
           <div className="col col-10 info-consultation pl-5">
-            <h4 className="name-doctor">{doctor.qualification} {doctor.fullname}</h4>
+            <h4 className="name-doctor">{doctor.fullname}</h4>
             <p className="mt-1">Department: {doctor.department}</p>
           </div>
                  </div>

@@ -21,6 +21,9 @@ class HeaderUser extends Component {
         }
       })
   }
+  Logout = () => {
+
+  }
   render() {
     return (
       <header className="navbar navbar-expand-md d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 scrolling-navbar dark navbar-light">
@@ -48,19 +51,31 @@ class HeaderUser extends Component {
                 Home
               </NavLink>
             </li>
-            <li >
-              <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3" >
-                Question and answer
+            <li className="nav-item dropdown ml-lg-3 mr-lg-2">
+              <NavLink activeClassName="active" exact to="#" className="nav-link px-3 dropdown-toggle" data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false">
+                Q&A
+                
               </NavLink>
+              <div className="dropdown-menu dropdown-menu-right drop">
+                <Link className="dropdown-item" to="/q&a/my">
+                  My Question
+                </Link>
+                <Link className="dropdown-item" to="/q&a">
+                  All Question
+                </Link>
+              </div>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3">
-                Consultation
+              <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3" >
+                Appointment
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="" className="nav-link px-3">
-                Medical center
+                Medical Center
               </NavLink>
             </li>
           </ul>
@@ -86,7 +101,7 @@ class HeaderUser extends Component {
                 <Link className="dropdown-item" to="#">
                   Profile
                 </Link>
-                <Link className="dropdown-item" to="">
+                <Link className="dropdown-item" to="" onClick={this.Logout()}>
                   Logout
                 </Link>
               </div>

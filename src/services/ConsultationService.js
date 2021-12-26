@@ -25,8 +25,8 @@ let ConsultationService = {
     updateConsultation: (id, content, file) => {
         return callApi('consultation/'+ id, 'PUT', {"content": content, "file": file})
     },
-    updateStatus : (id, reply, reason, linkCall) => {
-        return callApi('consultation/'+ id, 'PUT', {"status": reply, "reasonOfReject": reason, "linkCall": linkCall})
+    updateStatus : (id, reply, reason, linkCall, note) => {
+        return callApi('consultation/'+ id, 'PUT', {"status": reply, "reasonOfReject": reason, "linkCall": linkCall, "note":note})
     }
 }
 export default ConsultationService;

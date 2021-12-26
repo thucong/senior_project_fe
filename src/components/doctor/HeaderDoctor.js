@@ -50,12 +50,12 @@ class HeaderDoctor extends Component {
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3">
-                Question and answer
+                Q&A
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3">
-                Consultation
+                Appointment
               </NavLink>
             </li>
           </ul>

@@ -81,7 +81,7 @@ onSubmit = (e) => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content" >
             <div className="modal-header">
-              <h5 className="modal-title h4">Add question</h5>
+              <h5 className="modal-title h4">Add Question</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -101,7 +101,7 @@ onSubmit = (e) => {
                 ></textarea>
               </div>
               <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Hashtag </label>
+                <label htmlFor="exampleFormControlInput1">Symptom</label>
                   <Typeahead
                       id="public-methods-example"
                       name="hashtag1"
@@ -109,7 +109,7 @@ onSubmit = (e) => {
                       labelKey="name"
                       multiple
                       options={this.props.list_hashtag}
-                      placeholder="Please enter hastag"
+                      placeholder="Please enter symptom"
                       ref={ref}
                       onChange={this.onChangeHashtag}
                       //onBlur={this.onBlurHashtag}
@@ -117,7 +117,7 @@ onSubmit = (e) => {
                   />
               </div>
               <div>
-                <label>Upload images </label> &ensp;
+                <label>Upload Image </label> &ensp;
                 <input type="file" name="file" onChange={this.uploadImage}></input> <br />
                 <img src={this.state.file} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
               </div>

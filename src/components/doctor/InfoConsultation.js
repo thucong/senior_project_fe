@@ -25,7 +25,7 @@ class InfoConsultation extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Information about consultation</h5>
+              <h5 className="modal-title h4">Information about Appointment</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -52,7 +52,7 @@ class InfoConsultation extends Component {
                <p>Time: <span className="info-item">{Moment(this.props.info_consultation.start).format(' hh:mm a')} - {Moment(this.props.info_consultation.end).format(' hh:mm a')}</span></p>
               </div>
               <div className="form-group">
-               <p>Reason for consultation: <span className="info-item">{this.props.info_consultation.content}</span></p>
+               <p>Reason for appointment: <span className="info-item">{this.props.info_consultation.content}</span></p>
               </div>
               {this.props.info_consultation.file !== "" ? (
                 <div className="mb-2">
@@ -66,12 +66,15 @@ class InfoConsultation extends Component {
               ) : (
                 ""
               )}
+              {this.props.info_consultation.note !== "" ? (
                 <div className="form-group">
-                    <p>Link call: <button className="btn btn-success" onClick={(e) => this.startCall(this.props.info_consultation.linkCall)}>Start call</button></p>
+                <p>Note: <span className="info-item">{this.props.info_consultation.note}</span></p>
+               </div>
+              ) : " "}
+              
+                <div className="form-group">
+                    <p>Link: <button className="btn btn-success" onClick={(e) => this.startCall(this.props.info_consultation.linkCall)}>Start call</button></p>
                 </div>
-              <p className="text-danger">
-                The duration of a consultation is 60 minutes.
-              </p>
             </div>
             <div className="modal-footer">
               <button

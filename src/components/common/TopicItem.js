@@ -56,20 +56,6 @@ class TopicItem extends Component {
       })
     }
     }
-    // onDelete = async (id) => {
-    //   console.log(id)
-    //   window.$('#deleteQuestion').modal('show');
-    //   await this.setState({choice_delete:id});
-    //   console.log(this.state.choice_delete)
-    // }
-    // onEdit = async (id) => {
-    //   //console.log(id)
-    //   await axios.get(API_URL + "topic/" + id).then((res) => {
-    //     this.setState({info_topic: res.data[0]})
-    //   })
-    //   console.log(this.state.info_topic)
-    //   window.$('#editQuestion').modal('show')
-    // }
     showHashtag = (listHashtag) => {
       let result = null;
       if(listHashtag.length > 0){

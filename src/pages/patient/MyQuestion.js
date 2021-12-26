@@ -1,145 +1,121 @@
-import axios from "axios";
+
 import React, { Component } from "react";
-import { API_URL } from "../../constants/ApiUrl";
 import Cookies from "universal-cookie";
-import Moment from "moment";
-import avatar from "../../images/avatar1.jpg";
-import CommentService from "../../services/CommentService";
+import AddQuestion from "../../components/user/AddQuestion";
+import MyTopic from "../../components/user/MyTopic";
+import { Typeahead } from 'react-bootstrap-typeahead';
+import * as actions from '../../actions/index';
+import { connect } from 'react-redux';
+import TopicSearch from "../../components/common/TopicSearch";
+import axios from "axios";
+import { API_URL } from "../../constants/ApiUrl";
+
 const cookies = new Cookies();
 class MyQuestion extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            my_question : '',
-            reply: false,
-            comments:''
-        }
+  constructor(props){
+    super(props);
+    this.state ={
+      hashtag: [],
+      name: '',
+      list_topic:'',
+      topic_search:''
     }
-    componentDidMount(){
-        axios.get(API_URL + "topic/my/" +  cookies.get('id_user')).then((res) => {
-            this.setState({my_question:res.data})
-        })
-    }
-    onReply = (id) => {
-        this.setState({ reply: !this.state.reply });
-        axios({ method: "GET", url: API_URL + "comment/"+ id  }).then((res) => {
-            if (res) {
-              this.setState({ comments: res.data });
-            }
-          });
-      };
-      onChange = (e) => {
-        let target = e.target;
-            let name = target.name;
-            let value = target.value;
-            this.setState({
-                [name]: value
-            });
+  }
+    onAdd = (e) => {
+      if (cookies.get("role") === "patient") {
+        window.$("#addQuestion").modal("show");
+      } else {
+        this.props.history.push("/login");
       }
-      onSubmit = (e) => {
-        e.preventDefault();
-        let content = this.state.content;
-        let topicId = this.props.topic._id;
-        let userId = cookies.get('id_user');
-        if(content){
-          CommentService.fetchCommentAPI(content,topicId,userId).then((res) => {
-            if(res.status === 200){
-              window.location.reload();
-            }
-          })
+    };
+    onChangeName = (e) => {
+      this.setState({ name: e.target.value });
+    };
+    onChangeHashtag = (e) => {
+      this.setState({ hashtag: e });
+    };
+    onSubmitSearch = (e) => {
+      e.preventDefault();
+      axios.get(API_URL + `topics?name=${this.state.name}&query=${this.state.hashtag}`).then((res) => {
+        this.setState({topic_search: res.data})
+        console.log(this.state.topic_search)
+      }).catch((err) => {
+        if(err.response.status === 404){
+          console.log(err)
         }
-        }
-  render() {
-      const {my_question, comments} = this.state;
-    return (
-        <div className="row">
-          <div className="col-lg-8 mt-3">
-            {my_question.length > 0 ? my_question.map((qa, index) => (
-                <div className="item mx-1 mb-4 rounded topic-item" data-aos="fade-right" key={index}>
-                <div className="row pt-3 pl-4">
-                  <div>
-                    <img
-                      className="rounded-circle"
-                      src={qa.createdBy.avatar}
-                      width="40px"
-                      height="40px"
-                      alt=""
-                    ></img>
-                  </div>
-                  <div className="ml-2">
-                    <h3 className="mb-1 name">{qa.createdBy.fullname}</h3>
-                    <h6 className="date">{Moment(qa.createdAt).format("YYYY-MM-DD")}</h6>
-                  </div>
+      })
+      
+    }
+    render() {
+      const ref = React.createRef();
+      return (
+        <div className="col col-md-10 center mt-5">
+          {cookies.get("role") === "doctor" ? (
+            ""
+          ) : (
+         
+               <div className="">
+              <button className="btn btn-success" onClick={this.onAdd}>
+                Add Question
+              </button>
+            </div>
+          
+          )}
+        
+          <div className="row">
+            {this.state.topic_search === '' ?<MyTopic /> : <TopicSearch topic_search={this.state.topic_search}/> }
+            <div className="col-md-4  mt-3 form-search">
+            <div className="container sticky-top ">
+              <form  className="">
+                <div className="mt-3">
+                <input
+              type="text"
+              className="form-control form-control-lg"
+              placeholder="Search by keyword..."
+              onChange={this.onChangeName}
+              name="name"
+            />
                 </div>
-                <div className="mt-3 pl-4">
-                  <h5 className="h5">{qa.content}</h5>
+                <div className="mt-3 search_text">
+                <Typeahead
+                            id="public-methods-example"
+                            labelKey="name"
+                            multiple
+                            options={this.props.list_hashtag}
+                            placeholder="Search by symptom..."
+                            ref={ref}
+                            size="large"
+                            onChange={this.onChangeHashtag}
+                            selected={this.state.hashtag}
+                            
+                        />
+                        
                 </div>
-                
-                <div className="mt-3 pl-4 pb-3">
-                  <a className="" onClick={(e) => this.onReply(qa._id)}>a reply</a>
-                  {this.state.reply ? (
-                    <div className="mt-3 border-top ">
-                        { cookies.get("role")  ? (
-                            <div className="row  pl-2 ">
-                                <div className="mt-3">
-                                    <img
-                                    className="rounded-circle"
-                                    src={avatar}
-                                    width="40px"
-                                    height="40px"
-                                    alt=""
-                                    ></img>
-                                </div>
-                                <div className="ml-2 mt-3  ">
-                                    <input
-                                    type="text"
-                                    placeholder="Write your reply"
-                                    value={this.state.content}
-                                    className="bg text-reply p-2"
-                                    name="content"
-                                    onChange={this.onChange}
-                                    />
-                                    <button className="btn btn-success mt-1" onClick={this.onSubmit}>Send</button>
-                                </div>
-                            </div>
-                        ) : ( "")}   
-                        {comments.length > 0 ? (comments.map((comment, index) => (
-                            <div className="row pt-2 pl-2 mb-2" key={index}>
-                                <div className="">
-                                    <img
-                                    className="rounded-circle"
-                                    src={avatar}
-                                    width="40px"
-                                    height="40px"
-                                    alt=""
-                                    ></img>
-                                </div>
-                                <div className="ml-2 ">
-                                    <div className="rounded bg w-auto p-2">
-                                    <h3 className="mb-1 name">{comment.userId.fullname}</h3>
-                                    <h6 className="">{comment.content}</h6>
-                                    </div>
-                                    <div className="mt-1 ">
-                                    <span className="date">
-                                        {Moment(comment.createdAt).format("YYYY-MM-DD")}
-                                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))) : "" } 
+                <div className=" mt-3 ">
+                        <button type="submit" className="btn btn-success" onClick={this.onSubmitSearch}>Search</button>
                     </div>
-                     ): ""}
-                     </div>
-                     </div>
-                )): ""}
-             </div>
-            
-          <div className="col-md-4 d-none d-sm-none d-md-none d-lg-block mt-3 hospital">
-                ffffffffff
+              </form>
+            </div>
           </div>
+          </div>
+          <AddQuestion />
         </div>
-
-    );
+      );
+    }
+}
+const mapStateToProps = state => {
+  return {
+    list_hashtag : state.list_hashtag,
   }
 }
-export default MyQuestion;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onChangeHashtag: (hashtag) => {
+      dispatch(actions.changeHashtag(hashtag))
+    },
+    fetchListHashtag : () => {
+      dispatch(actions.fetchListHashtag())
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MyQuestion);

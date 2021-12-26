@@ -44,20 +44,6 @@ class ConsultationItem extends Component {
   countdown = (time) => {
   
     var time_consultation = new Date(time).getTime();
-    // var timer = '',
-    // calculate = () => {
-    //   var now = new Date().getTime();
-    //   var remaining =  time_consultation - now;
-    //   if(remaining <= 0){
-    //     clearInterval(timer)
-    //   }else{
-    //     if(!timer){
-    //       timer = setInterval(calculate,time_consultation)
-    //     }
-    //   }
-    // }
-   
-    
       setInterval(() => {
         var now = new Date().getTime();
         var D = time_consultation - now
@@ -92,16 +78,17 @@ class ConsultationItem extends Component {
       window.location.reload();
     })
   }
+
   render() {
     const {consultation} = this.state;
     var now = new Date().getTime();
     console.log(now)
 
     return (
-      <div className="col col-lg-8 mt-5 pr-5 border-right ">
-        <h3 className="h3 border-bottom mb-3 center-text">List of consultation schedule</h3>
+      <div className="col col-lg-8 mt-5 pr-5 ">
+        <h3 className="h3 border-bottom mb-3 left-text">Appointments</h3>
         {consultation.length > 0 ? (consultation.map((item, index) => (
-          <div className="row mb-3 consultation p-3" key={index}>
+          <div className="row mb-3 consultation p-3" key={index} >
           <div className="col col-2">
             <img className="mx-auto " src={item.doctorId.avatar} height="150" width="150" alt="" />
           </div>
@@ -109,9 +96,9 @@ class ConsultationItem extends Component {
             <p>Doctor's name: <span className="info-item">{item.doctorId.fullname}</span></p>
             <p>Date: <span className="info-item">{item.date}</span></p>
             <p>Time: <span className="info-item">{Moment(item.start).format(' hh:mm a')} - {Moment(item.end).format(' hh:mm a')}</span></p>
-            <p>Reason for consultation: <span className="info-item">{item.content}</span></p>
+            <p>Reason for appointment: <span className="info-item">{item.content}</span></p>
             <p>Status: <span className={item.status === 'waiting' ? 'wait' : '' || item.status === 'reject' ? 'reject' : '' || item.status === 'confirm'||'done' ? 'confirm': ''}>{item.status.toUpperCase()}</span></p>
-            {item.status === "done" ? <Link className="send-comment" to="/">Please send comment after consultation</Link> : ""}
+            {item.status === "done" ? <Link className="send-comment" to={"/doctor/" + item.doctorId._id}>Please send feedback to doctor</Link> : ""}
             {item.status === "waiting" ? (
                  <div className="mt-2">
                  <button className="btn btn-success" onClick={(e) => this.onChoose(item._id)}>Edit</button>&ensp;
@@ -121,14 +108,17 @@ class ConsultationItem extends Component {
                
             {item.status === "confirmed" ? (
               <div>
+                <div>
+                  <p>Note: <span className="info-item">{item.note}</span></p>
+                </div>
                 {(new Date().getTime() < new Date(item.start).getTime()) ? this.countdown(item.start) : ''}
                 {(new Date().getTime() > new Date(item.end).getTime()) ? this.changeStatus(item._id) : ''}
                {(this.state.hours > 0) || (this.state.minutes > 0) || (this.state.seconds > 0) ? (
-                  <p>Time left until the consultation: <span  className="info-item">{this.state.hours}:{this.state.minutes}:{this.state.seconds} </span></p>
+                  <p>Time left until the appointment: <span  className="info-item">{this.state.hours}:{this.state.minutes}:{this.state.seconds} </span></p>
                 ) :  <button className="btn btn-success mt-1" onClick={(e) => this.call(item.linkCall)}>Start call</button>} 
               </div>
             ) : ""}
-            {item.status === 'reject' ? (<p>Reason for reject: <span className="info-item">{item.reasonOfReject}</span></p>) : ''}
+            {item.status === 'reject' ? (<p>Rejection: <span className="info-item">{item.reasonOfReject}</span></p>) : ''}
           </div>
         </div>
         ))) : ""}

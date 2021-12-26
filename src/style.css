@@ -397,6 +397,10 @@ td {
 .consultation{
   border: 1px solid #eceff1 ;
   border-radius: 4px;
+  position: relative;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  padding: 10px;
+  background: white;
 }
 .info-consultation{
   line-height: 24px;
@@ -481,7 +485,9 @@ td {
   height: 800px;
   margin-left: 35px;
 }
-
+.label-time{
+  width: 80px;
+}
 /*consultation_doctor*/
 .consultation_doctor{
   border: 1px solid #eceff1 ;
@@ -490,5 +496,17 @@ td {
 }
 .reply{
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
+}
+.send_feed{
+  display: flex;
+}
+.search_text{
+  width: 500px;
+
+}
+.form-search{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  height: 200px;
 }
