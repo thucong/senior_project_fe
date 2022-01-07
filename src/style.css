@@ -305,6 +305,26 @@ td {
   padding: 10px;
   background: white;
 }
+.choose_question{
+  font-size: 20px;
+  font-weight:200px;
+  cursor: pointer;
+}
+.color_question{
+  color: blue;
+
+}
+.grid{
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-gap: 10px;
+ 
+}
+.text{
+  font-size: 14px;
+  color: #6e6e70;
+  cursor: pointer;
+}
 /*chart*/
 .bar-chart {
   border: 1px solid #eceff1 ;
@@ -371,4 +391,183 @@ td {
 .list-news{
   line-height: 22px;
   cursor: pointer;
+}
+
+/*consultation*/
+.consultation{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  padding: 10px;
+  background: white;
+}
+.info-consultation{
+  line-height: 24px;
+  font-size: 18px;
+  
+}
+.info-item{
+  font-weight: bold;
+}
+.wait {
+  color: #D7DF01;
+  font-weight: bold;
+}
+.confirm{
+  color: #28a745;
+  font-weight: bold;
+}
+.reject{
+  color: #dc3545;
+  font-weight: bold;
+}
+.list-doctor{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.list-doctor:hover .name-doctor{
+  color: blue;
+}
+.department{
+  font-size: 17px;
+}
+/* .doctor{
+  margin-top: 25px;
+} */
+.info-doctor{
+  line-height: 20px;
+  font-size: 18px;
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+}
+.feedback{
+  border-top: 1px solid #eceff1;
+}
+.info-feedback{
+  display: flex;
+}
+.date-feed{
+  font-size: 16px;
+  color: blue;
+  margin-left: 7px;
+}
+.schedule{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+}
+.title-schedule{
+  font-size: 24px;
+  background-color:#0066FF;
+  color: #fff;
+  height: 40px;
+  text-align: center;
+}
+/* .select-choose{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #eceff1 ;
+  border-radius: 3px;
+} */
+/* .time-schedule{
+  height: 35px;
+  border-radius: 4px;
+  border: 1px solid #eceff1 ;
+  width: 100px;
+} */
+.send-comment{
+  color: #0066FF;
+  font-weight: bold;
+  font-style: italic;
+}
+.doctors{
+  height: 800px;
+  margin-left: 35px;
+}
+.label-time{
+  width: 80px;
+}
+/*consultation_doctor*/
+.consultation_doctor{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.reply{
+  font-weight: bold;
+  font-size: 18px;
+}
+.send_feed{
+  display: flex;
+}
+.search_text{
+  width: 500px;
+
+}
+.form-search{
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+  height: 200px;
+}
+
+.company-logo img {
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+}
+.company-logo {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+.link {
+  color: #000;
+}
+.link:hover {
+  color: #000;
+}
+.company-card {
+  transition: all 0.5s ease-in-out;
+}
+.company-card:hover {
+  transform: scale(1.04);
+}
+.search{
+  margin-left: 600px;
+}
+/*profile*/
+.profile {
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #000000;
+}
+
+.div-image-change {
+  width: 170px;
+  height: 170px;
+}
+
+.div-image-change:hover .overlay {
+  opacity: 0.4;
+}
+.overlay-loading {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+  opacity: 0.4;
+  
 }

@@ -1,9 +1,32 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo_img from "../../images/Logo2.png";
-import avatar from "../../images/avatar1.jpg";
 import Notification from "../common/Notification";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import { API_URL } from "../../constants/ApiUrl";
+
+const cookies = new Cookies();
 class HeaderUser extends Component {
+  constructor(props){
+    super(props);
+    this.state ={
+      avatar: "https://freetuts.net/upload/product_series/images/2021/06/24/1350/avatar-de-thuong-kute-2021-2.jpg"
+    }
+  }
+  componentDidMount(){
+      axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+        if(res.data[0].avatar !== ''){
+          this.setState({avatar: res.data[0].avatar})
+        }
+      })
+  }
+  Logout = () => {
+    cookies.remove("id_user");
+    cookies.remove("role");
+    cookies.remove("token");
+    window.location.href = "/login";
+  }
   render() {
     return (
       <header className="navbar navbar-expand-md d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 scrolling-navbar dark navbar-light">
@@ -31,19 +54,31 @@ class HeaderUser extends Component {
                 Home
               </NavLink>
             </li>
+            <li className="nav-item dropdown ml-lg-3 mr-lg-2">
+              <NavLink activeClassName="active" exact to="#" className="nav-link px-3 dropdown-toggle" data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false">
+                Q&A
+                
+              </NavLink>
+              <div className="dropdown-menu dropdown-menu-right drop">
+                <Link className="dropdown-item" to="/q&a/my">
+                  My Question
+                </Link>
+                <Link className="dropdown-item" to="/q&a">
+                  All Question
+                </Link>
+              </div>
+            </li>
             <li>
-              <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3">
-                Question and answer
+              <NavLink activeClassName="active" exact to="/appointment" className="nav-link px-3" >
+                Appointment
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="" className="nav-link px-3">
-                Consultation
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName="active" exact to="" className="nav-link px-3">
-                Medical center
+              <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
+                Medical Center
               </NavLink>
             </li>
           </ul>
@@ -59,17 +94,17 @@ class HeaderUser extends Component {
               >
                 <img
                   className="rounded-circle"
-                  src={avatar}
+                  src={this.state.avatar}
                   width="38px"
                   height="38px"
                   alt=""
                 ></img>
               </div>
               <div className="dropdown-menu dropdown-menu-right drop">
-                <Link className="dropdown-item" to="#">
+                <Link className="dropdown-item" to="/profile">
                   Profile
                 </Link>
-                <Link className="dropdown-item" to="">
+                <Link className="dropdown-item" to="" onClick={this.Logout}>
                   Logout
                 </Link>
               </div>

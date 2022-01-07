@@ -43,12 +43,12 @@ class DetailNews extends Component {
         <div className="row ">
           <div className="col col-lg-8 mb-5 mt-5 detail-news">
             <div className=" p-5 ">
-              <h5 className=" mb-3 text news-subject">
+              <h5 className=" mb-3 news-subject">
                 {this.state.news.subject}
               </h5>
               <h5 className="text mt-2">
                 Post at:{" "}
-                {Moment(this.state.news.createdAt).format("DD-MM-yyyy")}
+                {Moment(this.state.news.createdAt).format("YYYY-MM-DD")}
               </h5>
               <div className="clearfix mt-3">
                 <img

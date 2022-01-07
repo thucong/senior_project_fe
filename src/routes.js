@@ -7,11 +7,17 @@ import ErrorValidate from "./pages/ErrorValidate";
 import ForgotPassword from "./pages/ForgotPassword";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Consultation from "./pages/patient/Consultation";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Topic from "./pages/Topic";
 import ValidateAccount from "./pages/ValidateAccount";
-
+import DetailDoctor from "./pages/patient/DetailDoctor";
+import ConsultationDoctor from "./pages/doctor/ConsultationDoctor";
+import MyQuestion from "./pages/patient/MyQuestion"
+import MedicalCenter from "./pages/MedicalCenter"
+import DetailHospital from "./pages/DetailHospital";
+import Profile from "./pages/patient/Profile";
 const cookies = new Cookies();
 const routes = [
   {
@@ -41,6 +47,54 @@ const routes = [
     main: (props) => {
       return <Topic  {...props}/>;
     },
+  },
+  {
+    path: "/appointment",
+    exact: true,
+    main: (props) => {
+      const role = cookies.get("role");
+      if (role === "patient") {
+      return <Consultation {...props}/>
+      }else if(role === "doctor"){
+        return <ConsultationDoctor {...props}/>
+      }
+    }
+  },
+  {
+    path: "/doctor/:id",
+    exact: true,
+    main: (props) => {
+      return <DetailDoctor {...props}/>
+    }
+  },
+  {
+    path: "/q&a/my",
+    exact: true,
+    main: (props) => {return <MyQuestion {...props} />}
+  },
+  // {
+  //   path: "/consultation/doctor",
+  //   exact: true,
+  //   main: (props) => {
+  //     return <ConsultationDoctor {...props}/>
+  //   }
+  // },
+  {
+    path: "/hospital",
+    exact: true,
+    main: () => {
+      return <MedicalCenter />
+    }
+  },
+  {
+    path: '/hospital/:id',
+    exact: true,
+    main : (props) => {return <DetailHospital {...props}/>}
+  },
+  {
+    path: "/profile",
+    exact: true,
+    main: () => {return <Profile />}
   },
   {
     path: "/login",
