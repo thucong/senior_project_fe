@@ -63,7 +63,7 @@ class MyQuestion extends Component {
           )}
         
           <div className="row">
-            {this.state.topic_search === '' ?<MyTopic /> : <TopicSearch topic_search={this.state.topic_search}/> }
+            {this.state.topic_search === '' ? <MyTopic /> : <TopicSearch topic_search={this.state.topic_search}/> }
             <div className="col-md-4  mt-3 form-search">
             <div className="container sticky-top ">
               <form  className="">

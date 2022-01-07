@@ -22,7 +22,10 @@ class HeaderUser extends Component {
       })
   }
   Logout = () => {
-
+    cookies.remove("id_user");
+    cookies.remove("role");
+    cookies.remove("token");
+    window.location.href = "/login";
   }
   render() {
     return (
@@ -69,12 +72,12 @@ class HeaderUser extends Component {
               </div>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3" >
+              <NavLink activeClassName="active" exact to="/appointment" className="nav-link px-3" >
                 Appointment
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="" className="nav-link px-3">
+              <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
                 Medical Center
               </NavLink>
             </li>
@@ -98,10 +101,10 @@ class HeaderUser extends Component {
                 ></img>
               </div>
               <div className="dropdown-menu dropdown-menu-right drop">
-                <Link className="dropdown-item" to="#">
+                <Link className="dropdown-item" to="/profile">
                   Profile
                 </Link>
-                <Link className="dropdown-item" to="" onClick={this.Logout()}>
+                <Link className="dropdown-item" to="" onClick={this.Logout}>
                   Logout
                 </Link>
               </div>

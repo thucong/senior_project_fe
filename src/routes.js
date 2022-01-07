@@ -15,7 +15,9 @@ import ValidateAccount from "./pages/ValidateAccount";
 import DetailDoctor from "./pages/patient/DetailDoctor";
 import ConsultationDoctor from "./pages/doctor/ConsultationDoctor";
 import MyQuestion from "./pages/patient/MyQuestion"
-
+import MedicalCenter from "./pages/MedicalCenter"
+import DetailHospital from "./pages/DetailHospital";
+import Profile from "./pages/patient/Profile";
 const cookies = new Cookies();
 const routes = [
   {
@@ -47,7 +49,7 @@ const routes = [
     },
   },
   {
-    path: "/consultation",
+    path: "/appointment",
     exact: true,
     main: (props) => {
       const role = cookies.get("role");
@@ -77,6 +79,23 @@ const routes = [
   //     return <ConsultationDoctor {...props}/>
   //   }
   // },
+  {
+    path: "/hospital",
+    exact: true,
+    main: () => {
+      return <MedicalCenter />
+    }
+  },
+  {
+    path: '/hospital/:id',
+    exact: true,
+    main : (props) => {return <DetailHospital {...props}/>}
+  },
+  {
+    path: "/profile",
+    exact: true,
+    main: () => {return <Profile />}
+  },
   {
     path: "/login",
     exact: true,

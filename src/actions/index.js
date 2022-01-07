@@ -48,3 +48,28 @@ export const fetchListHashtag = () => {
         });
     }
 }
+export const changePlace = (place) => {
+    return {
+        type : types.CHANGE_PLACE,
+        place
+    };
+}
+export const setListPlace = (list_place) => {
+    return {
+        type : types.SET_LIST_PLACE,
+        list_place
+    };
+}
+export const fetchListPlace = () => {
+    let list_place = [];
+    return (dispatch) => {
+        return axios.get(API_URL + "place").then(res => {
+            if (res.status === 200) {
+                res.data.map((place,index) => {
+                    list_place.push(place.place)
+                })
+                dispatch(setListPlace(list_place));
+            }
+        });
+    }
+}

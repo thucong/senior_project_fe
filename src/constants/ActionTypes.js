@@ -4,3 +4,5 @@ export const SET_ROLE = "SET_ROLE";
 export const CHOICE_PLACE = "CHOICE_PLACE";
 export const SET_LIST_HASHTAG = 'SET_LIST_HASHTAG';
 export const CHANGE_HASHTAG = 'CHANGE_HASHTAG';
+export const SET_LIST_PLACE = 'SET_LIST_PLACE';
+export const CHANGE_PLACE = 'CHANGE_PLACE';

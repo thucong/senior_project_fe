@@ -510,3 +510,64 @@ td {
   border-radius: 4px;
   height: 200px;
 }
+
+.company-logo img {
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+}
+.company-logo {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+.link {
+  color: #000;
+}
+.link:hover {
+  color: #000;
+}
+.company-card {
+  transition: all 0.5s ease-in-out;
+}
+.company-card:hover {
+  transform: scale(1.04);
+}
+.search{
+  margin-left: 600px;
+}
+/*profile*/
+.profile {
+  border: 1px solid #eceff1 ;
+  border-radius: 4px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #000000;
+}
+
+.div-image-change {
+  width: 170px;
+  height: 170px;
+}
+
+.div-image-change:hover .overlay {
+  opacity: 0.4;
+}
+.overlay-loading {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000000;
+  opacity: 0.4;
+  
+}

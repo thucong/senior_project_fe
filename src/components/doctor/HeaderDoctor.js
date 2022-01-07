@@ -21,6 +21,12 @@ class HeaderDoctor extends Component {
       }
     })
 }
+Logout = () => {
+  cookies.remove("id_user");
+  cookies.remove("role");
+  cookies.remove("token");
+  window.location.href = "/login";
+}
   render() {
     return (
       <header className="navbar navbar-expand-md d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 scrolling-navbar dark navbar-light">
@@ -54,7 +60,7 @@ class HeaderDoctor extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" exact to="/consultation" className="nav-link px-3">
+              <NavLink activeClassName="active" exact to="/appointment" className="nav-link px-3">
                 Appointment
               </NavLink>
             </li>
@@ -81,7 +87,7 @@ class HeaderDoctor extends Component {
                 <Link className="dropdown-item" to="#">
                   Profile
                 </Link>
-                <Link className="dropdown-item" to="">
+                <Link className="dropdown-item" to="" onClick={this.Logout}>
                   Logout
                 </Link>
                

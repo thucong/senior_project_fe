@@ -54,7 +54,7 @@ class ListConsultation extends Component {
                     </div>
                 ))
                    
-                ) : <h3 className="h3 text-center text-muted">No consultation!</h3>}
+                ) : <h3 className="h3 text-center text-muted">No appointment!</h3>}
             
             </div>
             <div className="modal-footer">
