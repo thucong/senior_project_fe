@@ -95,13 +95,13 @@ class MedicalCenter extends Component {
                 </div>
             )
           })
-        }else {
+        }else if(hospitals.length === 0){
           result = (
             <div className="center">
               <p className="text-danger mb-3 h4"> Sorry, we couldn't find any results for your search! </p>
             </div>
           )
-        }
+          }
         return result
       }
       showPage = (page_count, page_choose) => {

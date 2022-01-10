@@ -3,7 +3,6 @@ import Moment from "moment";
 import { API_URL } from "../../constants/ApiUrl";
 import Cookies from "universal-cookie";
 import CommentService from "../../services/CommentService";
-import avatar from "../../images/avatar1.jpg";
 import axios from "axios";
 
 

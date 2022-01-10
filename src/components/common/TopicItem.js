@@ -5,8 +5,6 @@ import { API_URL } from "../../constants/ApiUrl";
 import axios from "axios";
 import CommentService from "../../services/CommentService";
 import { withRouter } from "react-router-dom";
-import DeleteQuestion from "../user/DeleteQuestion";
-import EditQuestion from "../user/EditQuestion";
 
 const cookies = new Cookies();
 class TopicItem extends Component {

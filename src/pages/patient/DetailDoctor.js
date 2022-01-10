@@ -167,6 +167,7 @@ class DetailDoctor extends Component {
               src={information.avatar}
               height="150"
               width="150"
+              alt=""
             />
           </div>
           <div className="col col-10 mt-2">

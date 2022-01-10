@@ -40,10 +40,8 @@ class MyQuestion extends Component {
         this.setState({topic_search: res.data})
         console.log(this.state.topic_search)
       }).catch((err) => {
-        if(err.response.status === 404){
-          console.log(err)
-        }
-      })
+            console.log(err)
+        })
       
     }
     render() {

@@ -56,7 +56,6 @@ class InfectedChart extends Component {
       axios
         .get(API_URL + "covidOfCity/" + this.props.choice_place._id)
         .then((res) => {
-          console.log(res.data);
           const data = res.data.slice(Math.max(res.data.length - 7, 1));
           for (const dataObj of data) {
             date.push(Moment(dataObj.createdAt).format("DD-MM"));
@@ -91,8 +90,6 @@ class InfectedChart extends Component {
   }
 
   render() {
-    // console.log(this.state.chartData);
-    console.log(this.props.choice_place);
     return (
       <div className="">
         <Bar

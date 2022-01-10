@@ -26,6 +26,7 @@ class DetailHospital extends Component{
                         src={info_hospital.image}
                         height="150"
                         width="150"
+                        alt=""
                         />
                     </div>
                     <div className="col col-10 mt-2">
