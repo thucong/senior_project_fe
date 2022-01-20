@@ -20,7 +20,7 @@ class MyTopic extends Component{
         Aos.init({ duration: 1000 });
       }
       componentDidMount() {
-        axios({ method: "GET", url: API_URL + "topic/my/" +  cookies.get('id_user') }).then((res) => {
+        axios({ method: "GET", url: API_URL + "topic/my/" +  cookies.get('id_user'), headers: { Authorization: `Bearer ${cookies.get("token")}` } }).then((res) => {
           if (res) {
             this.setState({ topics: res.data });
           }

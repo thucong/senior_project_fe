@@ -14,12 +14,13 @@ class ListHospital extends Component {
     }
     componentDidMount(){
       let id_user = cookies.get('id_user');
-      axios.get(API_URL + "user/" + id_user).then((res) => {
-        if(res.status === 200){
-          this.setState({user: res.data[0]})
-        }
-      })
+      let token = cookies.get('token');
       if(id_user){
+        axios.get(API_URL + "user/" + id_user,{  headers: { Authorization: `Bearer ${token}` }}).then((res) => {
+          if(res.status === 200){
+            this.setState({user: res.data[0]})
+          }
+        })
         axios.get(API_URL + "hospital").then((res) => {
           if(res.status === 200){
               let hospital1 = res.data.filter((item) => item.provinceOrCity === this.state.user.provinceOrCity);

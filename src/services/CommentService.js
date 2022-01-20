@@ -1,6 +1,9 @@
 import { API_URL } from "./../constants/ApiUrl";
 import axios from "axios";
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
+const token = cookies.get("token");
 let CommentService = {
     fetchCommentAPI: (content, topicId, userId) => {
         return axios({
@@ -10,7 +13,8 @@ let CommentService = {
                 "topicId": topicId, 
                 "content": content,
                 "userId": userId
-            }
+            },
+            headers: { Authorization: `Bearer ${token}` }
         });
     },
 

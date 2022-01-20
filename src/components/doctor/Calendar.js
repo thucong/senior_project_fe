@@ -21,7 +21,7 @@ class Calendar extends Component{
     }
     
     componentDidMount(){
-        axios.get(API_URL + "consultation/doctor/" + cookies.get('id_user')).then((res) => {
+        axios.get(API_URL + "consultation/doctor/" + cookies.get('id_user'),  {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
             let confirm = res.data.filter((item) => (item.status === 'confirmed' || item.status ==='done'))
             this.setState({list_consultation: confirm});
             let wait = res.data.filter((item) => item.status === 'waiting');
@@ -29,10 +29,10 @@ class Calendar extends Component{
         })
     }
     onReply = (id) => {
-       axios.get(API_URL + "consultation/" + id).then((res) => {
+       axios.get(API_URL + "consultation/" + id,  {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
             this.setState({info_consultation: res.data[0]})
        })
-       console.log(this.state.info_consultation)
+       //console.log(this.state.info_consultation)
         window.$('#reply').modal('show')
     }
     handleSelect = (info) => {
@@ -43,8 +43,8 @@ class Calendar extends Component{
     }
     render(){
         const {list_consultation, list_wait} = this.state;
-        console.log(this.state.list_consultation)
-        console.log(list_wait)
+        //console.log(this.state.list_consultation)
+        //console.log(list_wait)
         return(
             <div>
                 {list_wait.length > 0 ? (

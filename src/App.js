@@ -59,8 +59,12 @@ setShowHeader = () => {
 componentDidMount() {
   //Lay thong tin nguoi dung khi khoi dong
   this.setState({getting_data: true});
-//   const token = this.cookies.get('token');
-  
+//    const token = this.cookies.get('token');
+//     if(!token){
+//         this.setState({getting_data: false});
+//     }else{
+//         this.setState({getting_data: false});
+//     }
   //Thiet lap an header khi o trang chu
   if (window.location.pathname === "/") {
       if (!this.props.hide_header) {

@@ -7,14 +7,16 @@ import { API_URL } from "../../constants/ApiUrl";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-
 class TopicSearch extends Component{
     constructor(props) {
         super(props);
         this.state = {
           topics: [],
           choice_delete: '',
-          info_topic:''
+          info_topic:'',
+          page: 1 ,
+          loading: false,
+          count_topic: 0,
           
         };
         Aos.init({ duration: 1000 });
@@ -33,19 +35,17 @@ class TopicSearch extends Component{
         //console.log(this.state.choice_delete)
       }
     render(){
-        const topics = this.props.topic_search;
+      const topics = this.props.topic_search;
         return (
             <div className="col-lg-8 mt-3">
-        
-        
-        {topics.length > 0
-          ? topics.map((topic, index) => (
-              <TopicItem key={index} topic={topic} update={(e) => this.onUpdate(topic._id)} delete={(e) => this.onDelete(topic._id)}/>
-            ))
-          : <p className="text-danger h3 mt-3">No matching content found!</p>}
-         <EditQuestion info_topic={this.state.info_topic}/>
-         <DeleteQuestion choice_delete={this.state.choice_delete} />
-      </div>
+              {topics.length > 0
+                ? topics.map((topic, index) => (
+                    <TopicItem key={index} topic={topic} update={(e) => this.onUpdate(topic._id)} delete={(e) => this.onDelete(topic._id)}/>
+                  ))
+                : <p className="text-danger h3 mt-3">Sorry, we couldn't find any results for your search!</p>}
+              <EditQuestion info_topic={this.state.info_topic}/>
+              <DeleteQuestion choice_delete={this.state.choice_delete} />
+           </div>
         )
     }
 }

@@ -53,7 +53,7 @@ onSubmit = (e) => {
   if(start && content){
     ConsultationService.createConsultation(start, end, content, file, status, doctorId, patientId, date).then((res) => {
       if(res.status === 200){
-        this.props.history.push('/consultation')
+        this.props.history.push('/appointment')
       }
     })
   }else if(!start){
@@ -66,9 +66,9 @@ onSubmit = (e) => {
 }
   render() {
     //console.log(Moment(this.state.start).format("dd-mm-yyyy"))
-   let a = new Date(Date.parse(this.state.start) + 3600000);
+   //let a = new Date(Date.parse(this.state.start) + 3600000);
     
-   console.log(a)
+   //console.log(a)
     return (
       <div
         className="modal fade bd-example-modal-lg"

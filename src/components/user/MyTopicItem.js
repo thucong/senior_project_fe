@@ -3,7 +3,6 @@ import Moment from "moment";
 import { API_URL } from "../../constants/ApiUrl";
 import Cookies from "universal-cookie";
 import CommentService from "../../services/CommentService";
-import avatar from "../../images/avatar1.jpg";
 import axios from "axios";
 
 
@@ -28,7 +27,7 @@ class MyTopicItem extends Component{
             this.setState({ comments: res.data });
           }
         });
-        axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+        axios.get(API_URL + "user/" + cookies.get("id_user"),{  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
             if(res.data[0].avatar !== ''){
               this.setState({avatar: res.data[0].avatar})
             }

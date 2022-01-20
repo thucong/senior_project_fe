@@ -12,7 +12,7 @@ let NewsService = {
   getNewsById : (id) => {
     return axios({
       method: "GET",
-      url: API_URL + "news" + `/${id}`,
+      url: API_URL + `news/${id}`,
       data:{}
     })
   }

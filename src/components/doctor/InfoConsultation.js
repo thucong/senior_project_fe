@@ -12,7 +12,7 @@ class InfoConsultation extends Component {
      window.open(call, "_blank");
  }
   render() {
-      console.log(this.props.info_consultation)
+      //console.log(this.props.info_consultation)
     return (
       <div
         className="modal fade bd-example-modal-lg"

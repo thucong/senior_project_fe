@@ -5,8 +5,6 @@ import { API_URL } from "../../constants/ApiUrl";
 import axios from "axios";
 import CommentService from "../../services/CommentService";
 import { withRouter } from "react-router-dom";
-import DeleteQuestion from "../user/DeleteQuestion";
-import EditQuestion from "../user/EditQuestion";
 
 const cookies = new Cookies();
 class TopicItem extends Component {
@@ -29,7 +27,7 @@ class TopicItem extends Component {
         this.setState({ comments: res.data });
       }
     });
-    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+    axios.get(API_URL + "user/" + cookies.get("id_user"), {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
       if(res.data[0].avatar !== ''){
         this.setState({avatar: res.data[0].avatar})
       }

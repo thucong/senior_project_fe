@@ -65,7 +65,7 @@ class ChangePassword extends Component{
            axios.put( API_URL +  "change-password/" + cookies.get('id_user'), {
                 "oldPass": this.state.old_password,
                 "newPass": this.state.new_password
-            }).then(rs => {
+            }, {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then(rs => {
                 if (rs) {
                     console.log('ok')
                     cookies.remove("id_user");

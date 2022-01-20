@@ -1,7 +1,10 @@
 import { API_URL } from "./../constants/ApiUrl";
 import axios from "axios";
 import callApi from "../utils/apiCaller";
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
+const token = cookies.get("token");
 let ConsultationService = {
     createConsultation: (start, end, content, file, status, doctorId, patientId,date) => {
         return axios({
@@ -16,7 +19,8 @@ let ConsultationService = {
                 "doctorId": doctorId,
                 "patientId": patientId,
                 "date": date
-            }
+            },
+            headers: { Authorization: `Bearer ${token}` }
         })
     },
     deleteConsultation: (id) => {

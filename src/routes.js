@@ -18,6 +18,8 @@ import MyQuestion from "./pages/patient/MyQuestion"
 import MedicalCenter from "./pages/MedicalCenter"
 import DetailHospital from "./pages/DetailHospital";
 import Profile from "./pages/patient/Profile";
+import ProfileDoctor from "./pages/doctor/ProfileDoctor";
+
 const cookies = new Cookies();
 const routes = [
   {
@@ -94,7 +96,14 @@ const routes = [
   {
     path: "/profile",
     exact: true,
-    main: () => {return <Profile />}
+    main: () => {
+      const role = cookies.get("role");
+      if (role === "patient") {
+        return <Profile/>
+        }else if(role === "doctor"){
+          return <ProfileDoctor />
+        }
+      }
   },
   {
     path: "/login",

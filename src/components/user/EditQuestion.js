@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Cookies from "universal-cookie";
 import TopicService from "../../services/TopicService";
 import * as actions from "../../actions/index";
 import { connect } from "react-redux";
@@ -7,7 +6,7 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import axios from "axios";
 // import ImageModal from "./ImageModal";
 
-const cookies = new Cookies();
+
 class EditQuestion extends Component {
   constructor(props) {
     super(props);
@@ -76,8 +75,8 @@ class EditQuestion extends Component {
   // }
   render() {
     let ref = React.createRef();
-    console.log(this.props.info_topic);
-    console.log(this.state.content);
+    //console.log(this.props.info_topic);
+    //console.log(this.state.content);
     return (
       <div
         className="modal fade bd-example-modal-lg"
@@ -128,7 +127,7 @@ class EditQuestion extends Component {
               <div>
                 <label>Upload image </label> &ensp;
                 <input
-                  class="upload-image-input"
+                  className="upload-image-input"
                   type="file"
                   name="file"
                   onChange={this.uploadImage}
