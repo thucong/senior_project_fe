@@ -139,7 +139,7 @@ class MedicalCenter extends Component {
         this.setCountPage();
       };
     render(){
-      console.log(this.state.list_hospital)
+      //console.log(this.state.list_hospital)
         return (
             <div className="">
                 <div className="search">

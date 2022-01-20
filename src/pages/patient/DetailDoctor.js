@@ -33,7 +33,7 @@ class DetailDoctor extends Component {
   }
   componentDidMount() {
     axios
-      .get(API_URL + "user/" + this.props.match.params.id)
+      .get(API_URL + "user/" + this.props.match.params.id, {  headers: { Authorization: `Bearer ${cookies.get("token")}` }})
       .then((res) => {
         if (res.status === 200) {
           return res.data;
@@ -44,7 +44,7 @@ class DetailDoctor extends Component {
         this.setState({ information: data });
       });
     axios
-      .get(API_URL + "consultation/doctor/" + this.props.match.params.id)
+      .get(API_URL + "consultation/doctor/" + this.props.match.params.id,  {  headers: { Authorization: `Bearer ${cookies.get("token")}` }})
       .then((res) => {
         this.setState({ data_consultation: res.data });
       });
@@ -59,7 +59,7 @@ class DetailDoctor extends Component {
     let time = new Date(`${year}-${month + 1}-${day}`).getTime();
     this.setState({ time_present: time });
     axios
-      .get(API_URL + "consultation/patient/" + cookies.get("id_user"))
+      .get(API_URL + "consultation/patient/" + cookies.get("id_user"), {  headers: { Authorization: `Bearer ${cookies.get("token")}` }})
       .then((res) => {
         let consultation_patient = res.data.filter(
           (item) => item.doctorId._id === this.props.match.params.id
@@ -68,9 +68,9 @@ class DetailDoctor extends Component {
           (item) => item.status === "done"
         );
         this.setState({ patient: data });
-        console.log(this.state.patient);
+        //console.log(this.state.patient);
       });
-    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+    axios.get(API_URL + "user/" + cookies.get("id_user"), {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
       if (res.data[0].avatar !== "") {
         this.setState({ avatar: res.data[0].avatar });
       }
@@ -116,11 +116,11 @@ class DetailDoctor extends Component {
               result.push(sorted_arr[i]);
             }
           }
-          console.log(result);
+         // console.log(result);
           let result1 = result.filter(
             (item) => new Date(item).getTime() > new Date().getTime()
           );
-          console.log(result1);
+          //console.log(result1);
           this.setState({ list_schedule: result1 });
           window.$("#consultation").modal("show");
         } else {
@@ -149,14 +149,14 @@ class DetailDoctor extends Component {
       content: content,
       doctorId: doctorId,
       patientId: patientId,
-    }).then((res) => {
+    }, {headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
       window.location.reload();
     })
   };
   render() {
     const { information } = this.state;
-    const { data_consultation } = this.state;
-    console.log(data_consultation);
+    //const { data_consultation } = this.state;
+    //console.log(data_consultation);
 
     return (
       <div className="col col-md-10 center">

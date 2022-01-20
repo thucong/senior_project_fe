@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { API_URL } from "../../constants/ApiUrl";
 import Moment from "moment";
 import InfoConsultation from "./InfoConsultation";
-
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 class ListConsultation extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ class ListConsultation extends Component {
     window.$("#list_consultation").modal("hide");
   };
   onRead =(id) => {
-    axios.get(API_URL + "consultation/" + id).then((res) => {
+    axios.get(API_URL + "consultation/" + id, {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
         this.setState({info_consultation: res.data[0]});
         this.setState({info_patient: res.data[0].patientId})
    })

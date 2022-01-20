@@ -3,8 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo_img from "../../images/Logo2.png";
 import Notification from "../common/Notification";
 import Cookies from "universal-cookie";
-import axios from "axios";
-import { API_URL } from "../../constants/ApiUrl";
+import callApi from "../../utils/apiCaller";
 
 const cookies = new Cookies();
 class HeaderDoctor extends Component {
@@ -15,11 +14,16 @@ class HeaderDoctor extends Component {
     }
   }
   componentDidMount(){
-    axios.get(API_URL + "user/" + cookies.get("id_user")).then((res) => {
+    callApi("user/" + cookies.get("id_user"), 'GET').then((res) => {
       if(res.data[0].avatar !== ''){
         this.setState({avatar: res.data[0].avatar})
       }
     })
+    // axios.get(API_URL + "user/" + cookies.get("id_user"), {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
+    //   if(res.data[0].avatar !== ''){
+    //     this.setState({avatar: res.data[0].avatar})
+    //   }
+    // })
 }
 Logout = () => {
   cookies.remove("id_user");
@@ -84,7 +88,7 @@ Logout = () => {
                 ></img>
               </div>
               <div className="dropdown-menu dropdown-menu-right drop">
-                <Link className="dropdown-item" to="#">
+                <Link className="dropdown-item" to="/profile">
                   Profile
                 </Link>
                 <Link className="dropdown-item" to="" onClick={this.Logout}>

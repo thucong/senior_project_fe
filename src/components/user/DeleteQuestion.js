@@ -1,12 +1,15 @@
 import axios from "axios";
 import React,{ Component } from "react";
 import { API_URL } from "../../constants/ApiUrl";
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
+const token = cookies.get("token");
 
 class DeleteQuestion extends Component{
     delete = async () => {
         //console.log(this.props.choice_delete)
-        await axios.delete(API_URL + "topic/" + this.props.choice_delete).then((res) => {
+        await axios.delete(API_URL + "topic/" + this.props.choice_delete, { headers: { Authorization: `Bearer ${token}` }}).then((res) => {
             window.$('#deleteQuestion').modal('hide');
             window.location.reload();
         })

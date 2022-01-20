@@ -26,13 +26,13 @@ class ConsultationItem extends Component {
     }
   }
   componentDidMount(){
-    axios.get(API_URL + "consultation/patient/" + cookies.get('id_user')).then((res) => {
+    axios.get(API_URL + "consultation/patient/" + cookies.get('id_user'),{  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
       this.setState({consultation: res.data})
     })
 
   }
   onChoose = (id) => {
-    axios.get(API_URL + "consultation/" + id).then((res) => {
+    axios.get(API_URL + "consultation/" + id, {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
         this.setState({info_consultation: res.data[0]});
     })
     window.$('#editConsultation').modal('show');
@@ -81,8 +81,8 @@ class ConsultationItem extends Component {
 
   render() {
     const {consultation} = this.state;
-    var now = new Date().getTime();
-    console.log(now)
+   // var now = new Date().getTime();
+    //console.log(now)
 
     return (
       <div className="col col-lg-8 mt-5 pr-5 ">

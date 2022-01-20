@@ -53,7 +53,7 @@ class EditProfile extends Component {
     }
   };
   componentDidMount() {
-    axios.get(API_URL + "user/" + cookies.get("id_user")).then((rs) => {
+    axios.get(API_URL + "user/" + cookies.get("id_user"),{  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((rs) => {
       this.setState({
         name: rs.data[0].fullname,
         gender: rs.data[0].gender,
@@ -75,17 +75,19 @@ class EditProfile extends Component {
     } else {
       axios
         .put(API_URL + "update-profile/" + cookies.get("id_user"), {
-          name: this.state.name,
-          dob: new Date(this.state.dob),
+          fullname: this.state.name,
+          birthday: new Date(this.state.dob),
           gender: this.state.gender,
-          place: this.state.place,
+          provinceOrCity: this.state.place,
           phone: this.state.phone,
           email: this.state.email,
           address: this.state.address,
           avatar: this.state.avatar,
-        })
+        },{  headers: { Authorization: `Bearer ${cookies.get("token")}` }} )
         .then((rs) => {
-          this.setState({ success: true });
+          if(rs){
+            this.setState({ success: true });
+          }
         });
     }
   };
@@ -113,7 +115,7 @@ class EditProfile extends Component {
         <h5 className="h5 mt-5 mb-4">Information</h5>
         <div className="mt-2">
           <div className="form-group">
-            Full name (*):
+            Fullname (*):
             <input
               type="text"
               className="form-control mt-3"
@@ -125,7 +127,7 @@ class EditProfile extends Component {
           </div>
           {this.state.name_blank === true ? (
             <p className="text-danger mt-1 mb-3">
-              (*) Full name cannot be left blank !
+              (*) Fullname cannot be left blank!
             </p>
           ) : (
             ""

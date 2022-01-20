@@ -75,8 +75,8 @@ class EditQuestion extends Component {
   // }
   render() {
     let ref = React.createRef();
-    console.log(this.props.info_topic);
-    console.log(this.state.content);
+    //console.log(this.props.info_topic);
+    //console.log(this.state.content);
     return (
       <div
         className="modal fade bd-example-modal-lg"
@@ -127,7 +127,7 @@ class EditQuestion extends Component {
               <div>
                 <label>Upload image </label> &ensp;
                 <input
-                  class="upload-image-input"
+                  className="upload-image-input"
                   type="file"
                   name="file"
                   onChange={this.uploadImage}
