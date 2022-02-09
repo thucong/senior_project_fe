@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-adapter-ckfinder": "^31.1.0",
+    "@ckeditor/ckeditor5-build-classic": "^31.1.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@ckeditor/ckeditor5-upload": "^31.1.0",
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/interaction": "^5.10.1",
     "@fullcalendar/react": "^5.10.1",
@@ -19,6 +23,7 @@
     "react": "^17.0.2",
     "react-bootstrap-typeahead": "^5.1.4",
     "react-chartjs-2": "^4.0.0",
+    "react-ckeditor-component": "^1.1.0",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router": "^6.0.2",

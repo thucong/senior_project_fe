@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/common/Header";
 import HeaderDoctor from "./components/doctor/HeaderDoctor";
 import HeaderUser from "./components/user/HeaderUser";
+import HeaderAdmin from "./components/admin/HeaderAdmin"
 import { createBrowserHistory } from "history";
 import React,{ Component } from "react";
 import { Router, Switch, Route } from 'react-router-dom';
@@ -36,6 +37,9 @@ class App extends Component{
 setShowHeader = () => {
   const hide_header_paths = [
       "/login",
+      "/admin/news",
+      "/admin/hospital",
+      "/admin/doctor"
     
   ];
   let show_header = true;
@@ -97,7 +101,9 @@ showHeader = () => {
   else if (role === "patient") {
       return <HeaderUser />;
   }
-  else {
+  else if(role === "admin"){
+      return <HeaderAdmin />
+  }else {
       return <Header />;
   }
 }
