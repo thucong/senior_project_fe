@@ -4,6 +4,7 @@ import SideBar from "../../components/admin/SideBar";
 
 class IndexAdmin extends Component {
     render() {
+        document.body.style.backgroundColor = "white";
         return (
             <div>
                 <div className="row mx-0">
