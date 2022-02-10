@@ -47,9 +47,10 @@ class DetailHospital extends Component{
                 <hr />
                 <div className="row mt-3">
                     <div className="col col-lg-8">
-                        <div className="info-doctor p-3">
+                        {/* <div className="info-doctor p-3">
                             {info_hospital.description}
-                        </div>
+                        </div> */}
+                        <div className="editor info-doctor p-3 lh-24" dangerouslySetInnerHTML={{__html:info_hospital.description}}/>
                     </div>
                     <div className="col col-md-4">
                          <div className="schedule p-3">

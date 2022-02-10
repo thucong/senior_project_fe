@@ -19,7 +19,10 @@ import MedicalCenter from "./pages/MedicalCenter"
 import DetailHospital from "./pages/DetailHospital";
 import Profile from "./pages/patient/Profile";
 import ProfileDoctor from "./pages/doctor/ProfileDoctor";
-
+import IndexAdmin from "./pages/admin/IndexAdmin";
+import IndexNews from "./pages/admin/IndexNews"
+import IndexHospital from "./pages/admin/IndexHospital";
+import IndexDoctor from "./pages/admin/IndexDoctor";
 const cookies = new Cookies();
 const routes = [
   {
@@ -31,7 +34,9 @@ const routes = [
         return <Index />;
       } else if (role === "patient") {
         return <Index />;
-      } else {
+      } else if(role === "admin"){
+        return <IndexAdmin />
+      }else{
         return <Index />;
       }
     },
@@ -104,6 +109,42 @@ const routes = [
           return <ProfileDoctor />
         }
       }
+  },
+  {
+    path: "/admin/news",
+    exact: true,
+    main: (match) => {
+        const role = cookies.get('role');
+        if(role === "admin"){
+            return <IndexNews />
+        }else {
+            return <Redirect to="/" />
+        }
+    }
+  },
+  {
+    path: "/admin/hospital",
+    exact: true,
+    main: (match) => {
+        const role = cookies.get('role');
+        if(role === "admin"){
+            return <IndexHospital />
+        }else {
+            return <Redirect to="/" />
+        }
+    }
+  },
+  {
+    path: "/admin/doctor",
+    exact: true,
+    main: (match) => {
+        const role = cookies.get('role');
+        if(role === "admin"){
+            return <IndexDoctor />
+        }else {
+            return <Redirect to="/" />
+        }
+    }
   },
   {
     path: "/login",

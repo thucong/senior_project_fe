@@ -193,8 +193,10 @@ class DetailDoctor extends Component {
         <hr />
         <div className="row mt-3">
           <div className="col col-lg-8">
+          
             <div className="info-doctor p-3">
-              <h2>Doctor Nguyen A</h2>
+            <div className="editor lh-24" dangerouslySetInnerHTML={{__html:information.experience}}/>
+              {/* <h2>Doctor Nguyen A</h2>
               <ul>
                 <li>- Doctor of Dermatology</li>
                 <li>- Graduated from Hanoi Medical University (1977)</li>
@@ -229,7 +231,7 @@ class DetailDoctor extends Component {
                 <li>- Psoriasis treatment</li>
                 <li>- Curing hair loss</li>
                 <li>- Cure atopic dermatitis</li>
-              </ul>
+              </ul> */}
               <hr />
               <h2>Patient Feedback</h2>
               <div className=" p-2 mt-2">

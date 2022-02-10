@@ -36,8 +36,8 @@ class DetailNews extends Component {
   };
   render() {
     const newsByCategory = this.state.newsByCategory;
-    console.log(this.state.news.category);
-    console.log(this.state.newsByCategory);
+    //console.log(this.state.news.category);
+   // console.log(this.state.newsByCategory);
     return (
       <div className="col col-md-10 center ">
         <div className="row ">
@@ -57,11 +57,12 @@ class DetailNews extends Component {
                   height="300px"
                   alt=""
                 />
-                <p className="content lh-24">{this.state.news.content}</p>
+                {/* <p className="content lh-24">{this.state.news.content}</p> */}
+                <div className="editor content lh-24" dangerouslySetInnerHTML={{__html:this.state.news.content}}/>
               </div>
               <h5 className="text-truncate mt-3">
                 {" "}
-                Written by {this.state.news.writer}
+                Published by {this.state.news.writer}
               </h5>
             </div>
           </div>

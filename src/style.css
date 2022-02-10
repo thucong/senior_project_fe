@@ -571,3 +571,24 @@ td {
   opacity: 0.4;
   
 }
+
+/*admin*/
+.admin-left-bar {
+  background-color: #86baeb;
+  height: 140vh;
+}
+
+.admin-left-bar .list-group-item {
+  background-color: #86baeb;
+}
+
+.admin-left-bar .list-group-item {
+    background-color: #86baeb;
+}
+.success-create-post {
+  display: none;
+}
+
+.fail-create-post {
+  display: none;
+}
