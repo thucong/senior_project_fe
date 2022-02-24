@@ -40,7 +40,9 @@ class Register extends Component {
       [name]: value,
     });
   };
-
+  onChangeCity = e => {
+    this.setState({provinceOrCity: e.target.value})
+  }
   onBlurRePassword = () => {
     const { password, repassword } = this.state;
     if (password !== repassword) {
@@ -326,7 +328,7 @@ class Register extends Component {
           )}
             <div className="info mb-2">
               <label>Province/City <span className="span">*</span></label>
-             <select className="form-control mt-2" onChange={this.onHandleChange} onBlur={this.onBlurCity}>
+             <select className="form-control mt-2" onChange={this.onChangeCity} onBlur={this.onBlurCity}>
                 <option>--Select Province/City--</option>
                 {this.showListPlace(this.props.list_place)}
               </select>
