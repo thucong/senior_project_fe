@@ -156,7 +156,7 @@ class Register extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    const { name, email, gender, dob, password, repassword, role, avatar } = this.state;
+    const { name, email, gender, dob, password, repassword, role, avatar, address, provinceOrCity } = this.state;
     if (
       password === repassword &&
       name &&
