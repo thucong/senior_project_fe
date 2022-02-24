@@ -88,7 +88,8 @@ class MedicalCenter extends Component {
                         </div>
                         <div className="card-body">
                             <h4 className="h4 card-title">{hospital.name}</h4>
-                            <p className="card-text">{hospital.description && hospital.description.substring(0, 150)}</p>
+                            <p className="card-text editor" dangerouslySetInnerHTML={{__html: hospital.description.substring(0, 150)}}></p>
+                            {/* <div className="editor info-doctor p-3 lh-24" dangerouslySetInnerHTML={{__html: hospital.description.substring(0, 150)}}/> */}
                         </div>
                     </div>
                 </Link>

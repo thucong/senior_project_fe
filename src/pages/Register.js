@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import loading_gif from "../images/loader.gif";
 import { withRouter } from "react-router-dom";
 import RegisterService from "../services/RegisterService";
+import { connect } from "react-redux";
+import * as actions from "../actions/index";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +19,16 @@ class Register extends Component {
         password: false,
         name: false,
         email: false,
+        address: false,
+        provinceOrCity: false,
         repassword: false,
         validate: false,
       },
       notifmess: "",
       loading: false,
+      avatar: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+      address: "",
+      provinceOrCity:''
     };
   }
   onHandleChange = (e) => {
@@ -33,6 +40,7 @@ class Register extends Component {
       [name]: value,
     });
   };
+
   onBlurRePassword = () => {
     const { password, repassword } = this.state;
     if (password !== repassword) {
@@ -89,6 +97,30 @@ class Register extends Component {
       this.setState({ notif });
     }
   };
+  onBlurAddress = () => {
+    const { address } = this.state;
+    if (!address) {
+      const notif = this.state.notif;
+      notif.address = true;
+      this.setState({ notif });
+    } else {
+      const notif = this.state.notif;
+      notif.address = false;
+      this.setState({ notif });
+    }
+  }
+  onBlurCity = () => {
+    const { provinceOrCity } = this.state;
+    if (!provinceOrCity) {
+      const notif = this.state.notif;
+      notif.provinceOrCity = true;
+      this.setState({ notif });
+    } else {
+      const notif = this.state.notif;
+      notif.provinceOrCity = false;
+      this.setState({ notif });
+    }
+  }
   onChangeDob = (e) => {
     this.setState({ dob: e.target.value });
   };
@@ -103,17 +135,35 @@ class Register extends Component {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return email.test(this.state.email);
   };
+  componentDidMount(){
+    if (this.props.list_place.length === 0) {
+      this.props.fetchListPlace();
+    }
+  }
+  showListPlace = (list_place) => {
+    let result = null;
+    if (list_place.length > 0) {
+      result = list_place.map((place, index) => {
+        return (
+          <option key={index} value={place}>
+            {place}
+          </option>
+        );
+      });
+      return result;
+    }
+  };
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    const { name, email, gender, dob, password, repassword, role } = this.state;
+    const { name, email, gender, dob, password, repassword, role, avatar } = this.state;
     if (
       password === repassword &&
       name &&
       email &&
       password &&
       this.validateEmail() &&
-      role
+      role && address && provinceOrCity
     ) {
       RegisterService.fetchRegisterAPI(
         name,
@@ -121,12 +171,12 @@ class Register extends Component {
         gender,
         new Date(dob),
         password,
-        role
+        role, avatar
       )
         .then((res) => {
           this.setState({ loading: false });
           if (res.status === 200) {
-            this.props.history.push("/register/email-activate");
+            this.props.history.push("/login");
           }
         })
         .catch((err) => {
@@ -137,7 +187,7 @@ class Register extends Component {
             });
           }
         });
-    } else if (!name && !email && !password) {
+    } else if (!name && !email && !password && !address && !provinceOrCity) {
       this.setState({ loading: false });
       const notif = this.state.notif;
       notif.password = true;
@@ -169,6 +219,16 @@ class Register extends Component {
       const notif = this.state.notif;
       notif.validate = true;
       this.setState({ notif });
+    }else if(!address){
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.address = true;
+      this.setState({ notif });
+    }else if(!provinceOrCity){
+      this.setState({ loading: false });
+      const notif = this.state.notif;
+      notif.provinceOrCity = true;
+      this.setState({ notif });
     }
   };
   render() {
@@ -177,14 +237,14 @@ class Register extends Component {
       <div className="col-lg-4 col-md-6 content jumbotron center mt-3">
         <h1 className="center h1">Register an account</h1>
         <form>
-          <div className="info">
+          <div className="info mb-2">
             <label>
               Fullname <span className="span">*</span>
             </label>
             <input
               type="text"
               name="name"
-              className="form-control"
+              className="form-control mt-2"
               placeholder=""
               onChange={this.onHandleChange}
               onBlur={this.onBlurName}
@@ -195,14 +255,14 @@ class Register extends Component {
           ) : (
             ""
           )}
-          <div className="info">
+          <div className="info mb-2">
             <label>
               E-mail <span className="span">*</span>
             </label>
             <input
               type="text"
               name="email"
-              className="form-control"
+              className="form-control mt-2"
               placeholder=""
               onChange={this.onHandleChange}
               onBlur={this.onBlurEmail}
@@ -218,7 +278,7 @@ class Register extends Component {
           ) : (
             ""
           )}
-          <div className="info">
+          <div className="info mb-2">
             <label>Gender </label> &#12644;
             <input
               type="radio"
@@ -237,48 +297,59 @@ class Register extends Component {
             />
             &nbsp;Female
           </div>
-          <div className="info">
+          <div className="info mb-2">
             <label>Date of birth </label>
             <div>
               <input
                 type="date"
                 value={this.state.dob}
-                className="form-control"
+                className="form-control mt-2"
                 onChange={this.onChangeDob}
               />
             </div>
           </div>
-          {/* <div className="info">
+          <div className="info mb-2">
             <label>Address <span className="span">*</span></label>
-
-            <div className="address">
-              <select className="form-control">
-                <option>--Select Province/City--</option>
-              </select>
-
-              <select className="form-control">
-                <option>--Select District--</option>
-              </select>
-              <select className="form-control">
-                <option>-Select Ward/Commune--</option>
-              </select>
-            </div>
-
             <input
               type="text"
               name="address"
-              className="form-control"
-              placeholder="Number of houses, streets, locality/ village/ team"
+              className="form-control mt-2"
+              placeholder="Address"
+              onChange={this.onHandleChange}
+              onBlur={this.onBlurAddress}
             />
-          </div> */}
-          <div className="info">
+            </div>
+            {this.state.notif.address === true ? (
+            <p className="text-danger mt-1">(*) Address can not be blank!</p>
+          ) : (
+            ""
+          )}
+            <div className="info mb-2">
+              <label>Province/City <span className="span">*</span></label>
+             <select className="form-control mt-2" onChange={this.onHandleChange} onBlur={this.onBlurCity}>
+                <option>--Select Province/City--</option>
+                {this.showListPlace(this.props.list_place)}
+              </select>
+            </div>
+            {this.state.notif.provinceOrCity === true ? (
+            <p className="text-danger mt-1">(*) Province or City can not be blank!</p>
+          ) : (
+            ""
+          )}
+            {/* <div className="address mt-2">
+              
+            </div>
+
+            */}
+         
+          <div className="info mb-2">
             <label>
               Password <span className="span">*</span>
             </label>
             <input
               type="password"
               name="password"
-              className="form-control"
+              className="form-control mt-2"
               placeholder=""
               onChange={this.onHandleChange}
               onBlur={this.onBlurPassword}
@@ -289,14 +360,14 @@ class Register extends Component {
           ) : (
             ""
           )}
-          <div className="info">
+          <div className="info mb-2">
             <label>
               Confirm password <span className="span">*</span>
             </label>
             <input
               type="password"
               name="repassword"
-              className="form-control"
+              className="form-control mt-2"
               placeholder=""
               onChange={this.onHandleChange}
               onBlur={this.onBlurRePassword}
@@ -344,4 +415,16 @@ class Register extends Component {
     );
   }
 }
-export default withRouter(Register);
+const mapStateToProps = (state) => {
+  return {
+    list_place: state.list_place,
+  };
+};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchListPlace: () => {
+      dispatch(actions.fetchListPlace());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));

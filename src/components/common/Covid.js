@@ -32,7 +32,7 @@ class Covid extends Component {
             <tr>
               <th scope="col">Province/City</th>
               <th scope="col">Total</th>
-              <th scope="col">Today</th>
+              <th scope="col">The last 24 hours</th>
               <th scope="col">Dead</th>
             </tr>
           </thead>

@@ -162,8 +162,11 @@ class EditNews extends Component {
                   onChange={this.onChangeCategory}
                   value={this.state.category}
                 >
-                  <option value="covid">Covid</option>
-                  <option value="health">Health</option>
+                  <option value="Covid">Covid</option>
+                  <option value="Health">Health</option>
+                  <option value="Vaccine">Vaccine</option>
+                  <option value="Nutrition">Nutrition</option>
+                  <option value="Diseases">Diseases</option>
                 </select>
               </div>
             </div>

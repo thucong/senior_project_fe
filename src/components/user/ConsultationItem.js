@@ -98,7 +98,7 @@ class ConsultationItem extends Component {
             <p>Time: <span className="info-item">{Moment(item.start).format(' hh:mm a')} - {Moment(item.end).format(' hh:mm a')}</span></p>
             <p>Reason for appointment: <span className="info-item">{item.content}</span></p>
             <p>Status: <span className={item.status === 'waiting' ? 'wait' : '' || item.status === 'reject' ? 'reject' : '' || item.status === 'confirm'||'done' ? 'confirm': ''}>{item.status.toUpperCase()}</span></p>
-            {item.status === "done" ? <Link className="send-comment" to={"/doctor/" + item.doctorId._id}>Please send feedback to doctor</Link> : ""}
+            {item.status === "done" ? <Link className="send-comment" to={"/doctor/" + item.doctorId._id}>Please send feedback for doctor</Link> : ""}
             {item.status === "waiting" ? (
                  <div className="mt-2">
                  <button className="btn btn-success" onClick={(e) => this.onChoose(item._id)}>Edit</button>&ensp;

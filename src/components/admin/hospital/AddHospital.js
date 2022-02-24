@@ -3,6 +3,8 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from "axios";
 import { API_URL } from "../../../constants/ApiUrl";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/index";
 class AddHospital extends Component{
     constructor(props) {
         super(props);
@@ -77,6 +79,24 @@ class AddHospital extends Component{
             }
         })
       }
+      showListPlace = (list_place) => {
+        let result = null;
+        if (list_place.length > 0) {
+          result = list_place.map((place, index) => {
+            return (
+              <option key={index} value={place}>
+                {place}
+              </option>
+            );
+          });
+          return result;
+        }
+      };
+      componentDidMount(){
+        if (this.props.list_place.length === 0) {
+          this.props.fetchListPlace();
+        }
+      }
     render(){
         return(
             <div
@@ -147,8 +167,8 @@ class AddHospital extends Component{
               <div className="form-group">
                 <label>ProvinceOrCity</label>
                 <select className="form-control mt-2" onChange={this.onChangeCity} value={this.state.city}>
-                  <option value="Quang Nam">Quang Nam</option>
-                  <option value="Ha Noi">Ha Noi</option>
+                  <option value="">Choose Place</option>
+                    {this.showListPlace(this.props.list_place)}
                 </select>
               </div>
               <div className="form-group">
@@ -203,4 +223,16 @@ class AddHospital extends Component{
         )
     }
 }
-export default AddHospital
+const mapStateToProps = (state) => {
+  return {
+    list_place: state.list_place,
+  };
+};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchListPlace: () => {
+      dispatch(actions.fetchListPlace());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AddHospital)

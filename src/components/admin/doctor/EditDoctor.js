@@ -125,16 +125,23 @@ class EditDoctor extends Component{
               <div className="form-group">
                 <label>Department</label>
                 <select className="form-control mt-2" onChange={this.onChangeDepartment} value={this.state.department}>
-                  <option value="Quang Nam">Quang Nam</option>
-                  <option value="Ha Noi">Ha Noi</option>
+                <option value="Dermatology">Dermatology</option>
+                  <option value="Nerve">Nerve</option>
+                  <option value="Digest">Digest</option>
+                  <option value="Musculoskeletal">Musculoskeletal</option>
                 </select>
               </div>
               <div className="form-group">
                 <label>Workplace</label>
-                <select className="form-control mt-2" onChange={this.onChangeWork} value={this.state.workplace}>
-                  <option value="Quang Nam">Quang Nam</option>
-                  <option value="Ha Noi">Ha Noi</option>
-                </select>
+                <textarea
+                  className="form-control mt-2"
+                  rows="1"
+                  cols="63"
+                  id="qualification"
+                  name="qualification"
+                  value={this.state.workplace}
+                  onChange={this.onChangeWork}
+                ></textarea>
               </div>
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1" className="mb-2">Experience</label>

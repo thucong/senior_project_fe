@@ -95,8 +95,8 @@ class ChangePassword extends Component{
                     </div>
                     {this.state.new_password_notif?<div className="text-danger mb-3">New password cannot be blank!</div>:""}
                     <div className="form-group">
-                          Enter a new password (*)
-                        <input type="password" className="form-control mt-3" placeholder="Enter a new password" onChange={this.onChangeReNewPassword} onBlur={this.onBlurReNewPassword}></input>
+                          Confirm new password (*)
+                        <input type="password" className="form-control mt-3" placeholder="Confirm new password" onChange={this.onChangeReNewPassword} onBlur={this.onBlurReNewPassword}></input>
                     </div>
                     {this.state.re_new_password_notif?<div className="text-danger mb-3">Password does not match!</div>:""}
                     {this.state.incorrect?<div className="text-danger mb-3">Old password is incorrect!</div>:""}

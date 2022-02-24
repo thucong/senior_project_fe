@@ -63,10 +63,10 @@ export const setListPlace = (list_place) => {
 export const fetchListPlace = () => {
     let list_place = [];
     return (dispatch) => {
-        return axios.get(API_URL + "place").then(res => {
+        return axios.get(API_URL + "infoCity").then(res => {
             if (res.status === 200) {
                 res.data.map((place,index) => {
-                    list_place.push(place.place)
+                    list_place.push(place.name)
                 })
                 dispatch(setListPlace(list_place));
             }

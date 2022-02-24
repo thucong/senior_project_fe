@@ -3,16 +3,18 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from "axios";
 import { API_URL } from "../../../constants/ApiUrl";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/index";
 class EditHospital extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            file: '',
+            image: '',
             name: '',
             phone: '',
             email: '',
             address:'',
-            city:'',
+            provinceOrCity:'',
             description:'',
             _id: ''
         };
@@ -39,7 +41,7 @@ class EditHospital extends Component{
         })
      }
      onChangeCity = e => {
-       this.setState({city: e.target.value})
+       this.setState({provinceOrCity: e.target.value})
      }
      uploadImage = (e) => {
         const files = e.target.files;
@@ -49,7 +51,7 @@ class EditHospital extends Component{
         axios
           .post("https://api.cloudinary.com/v1_1/doe5namc3/image/upload", data)
           .then((response) => {
-            this.setState({file:response.data.url});
+            this.setState({image:response.data.url});
           });
       };
       onClose = () => {
@@ -61,9 +63,8 @@ class EditHospital extends Component{
       }
       postData = (e) => {
         e.preventDefault();
-        let {name,phone,email,address, description} = this.state;
-        let image = this.state.file;
-        let provinceOrCity = this.state.city;
+        let {name,phone,email,address, description,provinceOrCity,image} = this.state;
+        //let image = this.state.file;
         axios.put(API_URL + "hospital/" + this.state._id, {name,phone,email,address, provinceOrCity, description, image}).then((res) => {
             if (res.status === 200) {
                 //document.querySelector('.success-create-post').style.display = 'block';
@@ -75,6 +76,24 @@ class EditHospital extends Component{
                // document.querySelector('.fail-create-post').style.display = 'block';
             }
         })
+      }
+      showListPlace = (list_place) => {
+        let result = null;
+        if (list_place.length > 0) {
+          result = list_place.map((place, index) => {
+            return (
+              <option key={index} value={place}>
+                {place}
+              </option>
+            );
+          });
+          return result;
+        }
+      };
+      componentDidMount(){
+        if (this.props.list_place.length === 0) {
+          this.props.fetchListPlace();
+        }
       }
     render(){
         return(
@@ -145,9 +164,9 @@ class EditHospital extends Component{
               </div>
               <div className="form-group">
                 <label>ProvinceOrCity</label>
-                <select className="form-control mt-2" onChange={this.onChangeCity} value={this.state.city}>
-                  <option value="covid">Covid</option>
-                  <option value="health">Health</option>
+                <select className="form-control mt-2" onChange={this.onChangeCity} value={this.state.provinceOrCity}>
+                {/* <option value="">Choose Place</option> */}
+                    {this.showListPlace(this.props.list_place)}
                 </select>
               </div>
               <div className="form-group">
@@ -176,7 +195,7 @@ class EditHospital extends Component{
               <div>
                 <label>Image </label> &ensp;
                 <input type="file" name="file" onChange={this.uploadImage}></input> <br />
-                <img src={this.state.file} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
+                <img src={this.state.image} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
               </div>
             </div>
             <div className="modal-footer">
@@ -202,4 +221,16 @@ class EditHospital extends Component{
         )
     }
 }
-export default EditHospital
+const mapStateToProps = (state) => {
+  return {
+    list_place: state.list_place,
+  };
+};
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchListPlace: () => {
+      dispatch(actions.fetchListPlace());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(EditHospital)
