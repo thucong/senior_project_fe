@@ -173,7 +173,7 @@ class Register extends Component {
         gender,
         new Date(dob),
         password,
-        role, avatar
+        role, avatar, provinceOrCity, address
       )
         .then((res) => {
           this.setState({ loading: false });

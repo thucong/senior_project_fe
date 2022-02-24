@@ -11,7 +11,8 @@ border: 1px solid #eceff1 ;
 border-radius: 4px;
 cursor: pointer
 `
-const types = ['Number of infected', 'Number of cured','Number of dead']
+// const types = ['Number of infected', 'Number of cured','Number of dead']
+const types = ['Number of infected', 'Number of dead']
 const ButtonToggle = styled(Button)`
     
     ${({active}) => active && `background-color: #4b4eb3; color: white`}
@@ -51,12 +52,13 @@ class BarChart extends Component{
             <div className="bar-chart">
                 <div className="mt-3 ml-2">
                     <ButtonToggle onClick={this.onInfected} className="m-1 number-covid" active={active === types[0]} >{types[0]}</ButtonToggle>
-                    <ButtonToggle onClick={this.onCured} className="m-1 number-covid" active={active === types[1]} >{types[1]}</ButtonToggle>
-                    <ButtonToggle onClick={this.onDead} className="m-1 number-covid" active={active === types[2]} >{types[2]}</ButtonToggle>
+                    {/* <ButtonToggle onClick={this.onCured} className="m-1 number-covid" active={active === types[1]} >{types[1]}</ButtonToggle> */}
+                    {/* <ButtonToggle onClick={this.onDead} className="m-1 number-covid" active={active === types[2]} >{types[2]}</ButtonToggle> */}
+                    <ButtonToggle onClick={this.onDead} className="m-1 number-covid" active={active === types[1]} >{types[1]}</ButtonToggle>
                 </div>
                 <div>
                     {this.state.infected ? <InfectedChart /> : ""}
-                    {this.state.cured ? <CuredChart /> : " "}
+                    {/* {this.state.cured ? <CuredChart /> : " "} */}
                     {this.state.dead ? <DeadChart /> : ""}
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo_img from "../../images/Logo2.png";
-import Notification from "../common/Notification";
 import Cookies from "universal-cookie";
 import callApi from "../../utils/apiCaller";
 
@@ -70,7 +69,7 @@ Logout = () => {
             </li>
           </ul>
           <div className="navbar-nav ml-auto">
-              <Notification />
+              {/* <Notification /> */}
             <li className="nav-item dropdown ml-lg-3 mr-lg-2">
               <div
                 className="nav-link dropdown-toggle p-0"

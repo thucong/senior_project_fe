@@ -83,7 +83,7 @@ class MedicalCenter extends Component {
               <div className="col-lg-3 col-md-6 w-100 my-3" key={index}>
                 <Link to={"/hospital/" + hospital._id} className="link" style={{ textDecoration: 'none' }}>
                     <div className="card h-100 company-card">
-                        <div className="company-logo mx-4">
+                        <div className="company-logo ">
                             <img src={hospital.image} alt="" width="100%"/>
                         </div>
                         <div className="card-body">

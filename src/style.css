@@ -520,7 +520,9 @@ td {
 .company-logo {
   position: relative;
   overflow: hidden;
-  padding-bottom: 100%;
+  padding-bottom: 70%;
+  margin-top: 10%;
+  height: 50%;
 }
 .link {
   color: #000;
