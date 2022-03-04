@@ -23,6 +23,7 @@ import IndexAdmin from "./pages/admin/IndexAdmin";
 import IndexNews from "./pages/admin/IndexNews"
 import IndexHospital from "./pages/admin/IndexHospital";
 import IndexDoctor from "./pages/admin/IndexDoctor";
+import Create from "./components/doctor/Create";
 const cookies = new Cookies();
 const routes = [
   {
@@ -144,6 +145,13 @@ const routes = [
         }else {
             return <Redirect to="/" />
         }
+    }
+  },
+  {
+    path: "/create",
+    exact: true,
+    main :() => {
+      return <Create />
     }
   },
   {

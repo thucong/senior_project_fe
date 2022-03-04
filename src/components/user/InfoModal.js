@@ -25,7 +25,7 @@ class InfoModal extends Component {
             </div>
             <div className="modal-body ">
               
-              <p className="mb-2">The schedule hasn't been updated yet. Please choose another date!</p>
+              <p className="mb-2">The doctor hasn't updated the calendar yet. Please choose another date!</p>
              
             </div>
            

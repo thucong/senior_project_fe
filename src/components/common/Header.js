@@ -37,7 +37,7 @@ class Header extends Component {
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
-                Medical center
+                Hospital
               </NavLink>
             </li>
           </ul>

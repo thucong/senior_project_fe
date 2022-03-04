@@ -13,7 +13,7 @@ class HeaderDoctor extends Component {
     }
   }
   componentDidMount(){
-    callApi("user/" + cookies.get("id_user"), 'GET').then((res) => {
+    callApi("user/" + cookies.get("id_user"), 'GET',{  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
       if(res.data[0].avatar !== ''){
         this.setState({avatar: res.data[0].avatar})
       }

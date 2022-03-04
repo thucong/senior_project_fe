@@ -6,3 +6,6 @@ export const SET_LIST_HASHTAG = 'SET_LIST_HASHTAG';
 export const CHANGE_HASHTAG = 'CHANGE_HASHTAG';
 export const SET_LIST_PLACE = 'SET_LIST_PLACE';
 export const CHANGE_PLACE = 'CHANGE_PLACE';
+export const CHANGE_TIME = "CHANGE_TIME";
+export const SET_LIST_TIME = 'SET_LIST_TIME';
+export const CHOICE_DATE =  "CHOICE_DATE";

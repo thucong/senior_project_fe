@@ -594,3 +594,6 @@ td {
 .fail-create-post {
   display: none;
 }
+.create-schedule{
+  margin-left: 300px;
+}

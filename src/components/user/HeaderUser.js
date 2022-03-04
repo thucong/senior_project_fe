@@ -76,7 +76,7 @@ class HeaderUser extends Component {
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
-                Medical Center
+                Hospital
               </NavLink>
             </li>
           </ul>

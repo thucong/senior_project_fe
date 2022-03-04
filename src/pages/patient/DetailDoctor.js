@@ -87,9 +87,9 @@ class DetailDoctor extends Component {
     let time_day = new Date(info.startStr).getDay();
     console.log(time_day);
     if (time_choose >= this.state.time_present) {
-      if (time_day === 0 || time_day === 6) {
-        window.$("#off").modal("show");
-      } else {
+      // if (time_day === 0 || time_day === 6) {
+      //   window.$("#off").modal("show");
+      // } else {
         let list_consultation = [];
         const { data_consultation, data_schedule } = this.state;
         let consultation = data_consultation.filter(
@@ -126,7 +126,7 @@ class DetailDoctor extends Component {
         } else {
           window.$("#information").modal("show");
         }
-      }
+      //}
     } else {
       window.$("#notice").modal("show");
     }
@@ -302,10 +302,10 @@ class DetailDoctor extends Component {
                 select={this.handleSelect}
                 events={[]}
               />
-              <p className="mt-3 text-danger">
+              {/* <p className="mt-3 text-danger">
                 Working time from Monday to Friday: 08:00 am - 11:00 am and
                 02:00 pm - 05:00 pm{" "}
-              </p>
+              </p> */}
               <p className="mt-3 h5">Choose date and book an appointment</p>
             </div>
             <ConsultationModal

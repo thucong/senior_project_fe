@@ -43,7 +43,7 @@ class Calendar extends Component{
     }
     render(){
         const {list_consultation, list_wait} = this.state;
-        //console.log(this.state.list_consultation)
+       // console.log(this.state.list_consultation)
         //console.log(list_wait)
         return(
             <div>
