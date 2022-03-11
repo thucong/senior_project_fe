@@ -32,10 +32,10 @@ class EditNews extends Component {
   };
   handleCkeditorState = (event, editor) => {
     const data = editor.getData({ trim: true });
-    console.log(this.state.content);
-    console.log(data);
+    // console.log(this.state.content);
+    // console.log(data);
 
-    if (this.state.content == data) return;
+    if (this.state.content === data) return;
     this.setState({
       content: data,
     });

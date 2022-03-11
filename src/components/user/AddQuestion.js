@@ -57,7 +57,7 @@ onSubmit = (e) => {
   const createdBy = cookies.get('id_user');
   const status = this.state.status;
   const {file, hashtag} = this.state
-  console.log(hashtag)
+  //console.log(hashtag)
   if(content){
     TopicService.createTopic(content, status, createdBy, file, hashtag).then((res) => {
       this.onClose();

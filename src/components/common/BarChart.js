@@ -1,5 +1,4 @@
 import React,{ Component } from "react";
-import CuredChart from "./CuredChart";
 import DeadChart from "./DeadChart";
 import InfectedChart from "./InfectedChart";
 import styled  from "styled-components";

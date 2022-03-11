@@ -36,7 +36,7 @@ class Calendar extends Component{
         window.$('#reply').modal('show')
     }
     handleSelect = (info) => {
-        console.log(info)
+        //console.log(info)
         let data = this.state.list_consultation.filter((item) => item.date === info.startStr)
         this.setState({schedule: data});
         window.$('#list_consultation').modal('show');

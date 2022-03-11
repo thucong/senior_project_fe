@@ -21,7 +21,7 @@ class Covid extends Component {
   onChoosePlace = (info) => {
     this.props.choicePlace(info);
     
-   console.log(this.props.choicePlace(info))
+   //console.log(this.props.choicePlace(info))
   }
   render() {
     const infoCity = this.state.infoCity;

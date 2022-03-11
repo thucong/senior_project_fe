@@ -8,7 +8,7 @@ import Cookies from "universal-cookie";
 import { connect } from "react-redux";
 import * as actions from "../../actions/index";
 import { withRouter } from "react-router-dom";
-import Moment from "moment";
+
 const cookies = new Cookies();
 class CreateSchedule extends Component{
     constructor(props){
@@ -36,18 +36,15 @@ class CreateSchedule extends Component{
     componentDidMount() {
         let schedule = [];
         axios.get(API_URL + "schedule/doctor/" + cookies.get('id_user'),  {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
-            //this.setState({list_schedule: res.data});
            res.data.map((list, index) => {
-               console.log(list.schedule)
                schedule.push(...list.schedule)
            })
-           console.log(schedule)
            this.setState({list_schedule: schedule})
         })
     }
     render(){
         const {list_schedule} = this.state;
-        console.log(list_schedule)
+        //console.log(list_schedule)
         return(
             <div>
                  {this.state.noti === true ? (

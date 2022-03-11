@@ -21,7 +21,7 @@ class DeadChart extends Component{
         let dead = [];
         if (this.props.choice_place === null) {
             axios.get(API_URL + "last7-covid").then(res => {
-                console.log(res);
+                //console.log(res);
                 for ( const dataObj of res.data){
                     date.push(Moment(dataObj.createdAt).format("DD-MM"));
                     dead.push(parseInt(dataObj.dead));
@@ -81,7 +81,7 @@ class DeadChart extends Component{
         }
       }
     render(){
-        console.log(this.state.chartData)
+       // console.log(this.state.chartData)
         return(
             <div className="">
                 <Bar 

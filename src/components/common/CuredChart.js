@@ -23,7 +23,7 @@ class CuredChart extends Component {
       axios
         .get(API_URL + "last7-covid")
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           for (const dataObj of res.data) {
             date.push(Moment(dataObj.createdAt).format("DD-MM"));
             cured.push(parseInt(dataObj.cured));
@@ -81,7 +81,7 @@ class CuredChart extends Component {
     }
   }
   render() {
-    console.log(this.state.chartData);
+   // console.log(this.state.chartData);
     return (
       <div className="">
         <Bar

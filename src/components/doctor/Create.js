@@ -23,14 +23,6 @@ class Create extends Component {
                 name: res.data[0].fullname,
               });
         })
-        // axios.get(API_URL + "schedule/doctor/" +cookies.get("id_user") ).then((res) => {
-        //         let schedule = res.data.find((item) => item.date = this.props.choice_date);
-        //         console.log(schedule)
-        //         if(schedule) {
-        //           this.setState({time: res.data[0].schedule})
-        //         }
-        //     })
-       
     }
     onChangeTime = (time) => {
         this.setState({time})
@@ -55,10 +47,6 @@ class Create extends Component {
     }
     render(){
         let ref = React.createRef();
-        console.log(this.state.time)
-        console.log(this.props.choice_date)
-        console.log(this.props.list_time)
-        console.log(this.state.list_schedule)
         return(
             <div className="col-5 p-4 mb-5 profile mt-3 center">
                  <form className="mt-2" onSubmit={this.onSubmit}>
@@ -94,26 +82,7 @@ class Create extends Component {
                     <button type="submit" className="btn btn-secondary  mt-4" onClick={this.onCancel}>Hủy</button>&emsp;
                     <button type="submit" className="btn btn-success  mt-4" onClick={this.onSubmit}>Lưu</button>
                     </div>
-                    
-                   
-                   
                 </form>
-                {/* <h1>Create Schedule</h1>
-                <h2>Doctor's name: </h2>
-                <h2>Date: </h2>
-                <h2>Choose schedule</h2>
-                <Typeahead
-                      id="public-methods-example"
-                      name="schedule"
-                      className="mt-2"
-                      labelKey="name"
-                      multiple
-                      options={this.props.list_time}
-                      placeholder="Please choose schedule"
-                      ref={ref}
-                      onChange={this.onChangeTime}
-                      selected={this.state.time}
-                  /> */}
             </div>
         )
     }

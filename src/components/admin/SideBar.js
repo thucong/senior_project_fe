@@ -9,7 +9,7 @@ class SideBar extends Component {
                 <div className="sticky-top">
                     <ul className="">
                         <li className="list-group-item text-center py-4 border-0">
-                            <Link to="/"><img src={logo_img} height="50px" width="60px" className="logo" /></Link>
+                            <Link to="/"><img src={logo_img} height="50px" width="60px" className="logo" alt=""/></Link>
                         </li>
                         <li className="list-group-item text-center py-4 border-0">
                             <img src={admin_img} className="" alt="" width="130px" />
