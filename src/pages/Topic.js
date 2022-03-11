@@ -155,7 +155,7 @@ class Topic extends Component {
         ) : (
           <div className="">
             <button className="btn btn-success" onClick={this.onAdd}>
-              Add Question
+             Tạo câu hỏi
             </button>
           </div>
         )}
@@ -198,7 +198,7 @@ class Topic extends Component {
             <ul className="pagination justify-content-center mb-5 mt-3">
               <li className="page-item">
                 <button className="page-link" onClick={() => this.setPage(1)}>
-                  Head
+                  Đầu 
                 </button>
               </li>
               {this.showPage(this.state.count_topic, this.state.page)}
@@ -207,7 +207,7 @@ class Topic extends Component {
                   className="page-link"
                   onClick={() => this.setPage(this.state.count_topic)}
                 >
-                  Last
+                  Cuối
                 </button>
               </li>
             </ul>
@@ -219,7 +219,7 @@ class Topic extends Component {
                   <input
                     type="text"
                     className="form-control form-control-lg"
-                    placeholder="Search by keyword..."
+                    placeholder="Tìm kiếm theo nội dung"
                     onChange={this.onChangeName}
                     name="name"
                   />
@@ -230,7 +230,7 @@ class Topic extends Component {
                     labelKey="name"
                     multiple
                     options={this.props.list_hashtag}
-                    placeholder="Search by symptom..."
+                    placeholder="Tìm kiếm theo triệu chứng"
                     ref={ref}
                     size="large"
                     onChange={this.onChangeHashtag}
@@ -243,7 +243,7 @@ class Topic extends Component {
                     className="btn btn-success"
                     onClick={this.onSubmitSearch}
                   >
-                    Search
+                    Tìm kiếm
                   </button>
                 </div>
               </form>

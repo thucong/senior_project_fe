@@ -63,16 +63,16 @@ class Calendar extends Component{
                     }/>
                 </div>
                 <div className="col-md-4 pl-5">
-                    <h3 className="h3 border-bottom mb-3 left-text">Booked Appointments</h3>
+                    <h3 className="h3 border-bottom mb-3 left-text">Các cuộc tư vấn cần xác nhận</h3>
                      {list_wait.map((wait, index) => (
                     <div className="row mb-3 consultation_doctor p-3" key={index} onClick={(e) => this.onReply(wait._id)}>          
                         <div className="col col-2">
                             <img className="mx-auto " src={wait.patientId.avatar} height="100" width="100" alt=""/>
                         </div>
                         <div className="col col-8 info-consultation pl-5">
-                            <p>Patient's name: <span className="info-item">{wait.patientId.fullname}</span></p>
-                            <p>Date: <span className="info-item">{wait.date}</span></p>
-                            <p>Time: <span className="info-item">{Moment(wait.start).format(' hh:mm a')} - {Moment(wait.end).format(' hh:mm a')}</span></p>
+                            <p>Tên bệnh nhân: <span className="info-item">{wait.patientId.fullname}</span></p>
+                            <p>Ngày: <span className="info-item">{wait.date}</span></p>
+                            <p>Thời gian: <span className="info-item">{Moment(wait.start).format(' hh:mm a')} - {Moment(wait.end).format(' hh:mm a')}</span></p>
                         </div>
                     </div>
                      ))}
@@ -90,7 +90,7 @@ class Calendar extends Component{
                 select={this.handleSelect}
                 events={
                     list_consultation.length > 0 ? list_consultation.map((consultation, index) => (
-                        {'title': `Appointment with ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
+                        {'title': `Cuộc tư vấn với ${consultation.patientId.fullname}`, 'start': consultation.start, 'end': consultation.end}
                     )) : ""
                 }/>
             </div>

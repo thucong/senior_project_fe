@@ -127,13 +127,13 @@ class TopicList extends Component {
          <ul className="pagination justify-content-center mb-5 mt-3">
                     <li className="page-item">
                         <button className="page-link" onClick={() => this.setPage(1)}>
-                            Head
+                           Đầu
                         </button>
                     </li>
                     {this.showPage(this.state.count_topic, this.state.page)}
                     <li className="page-item">
                         <button className="page-link" onClick={() => this.setPage(this.state.count_topic)}>
-                            Last
+                            Cuối
                         </button>
                     </li>
                 </ul> 

@@ -12,7 +12,7 @@ border-radius: 4px;
 cursor: pointer
 `
 // const types = ['Number of infected', 'Number of cured','Number of dead']
-const types = ['Number of infected', 'Number of dead']
+const types = ['Số ca nhiễm', 'Số ca tử vong']
 const ButtonToggle = styled(Button)`
     
     ${({active}) => active && `background-color: #4b4eb3; color: white`}
@@ -34,17 +34,17 @@ class BarChart extends Component{
         this.setState({dead: false});
         this.setState({active: types[0]})
     }
-    onCured = () => {
-        this.setState({cured: true})
-        this.setState({dead: false})
-        this.setState({infected: false})
-        this.setState({active: types[1]})
-    }
+    // onCured = () => {
+    //     this.setState({cured: true})
+    //     this.setState({dead: false})
+    //     this.setState({infected: false})
+    //     this.setState({active: types[1]})
+    // }
     onDead = () => {
         this.setState({dead: true})
         this.setState({cured: false});
         this.setState({infected: false})
-        this.setState({active: types[2]})
+        this.setState({active: types[1]})
     }
     render(){
         const active = this.state.active;

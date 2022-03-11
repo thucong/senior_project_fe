@@ -49,7 +49,7 @@ class HeaderUser extends Component {
           <ul className="navbar-nav mx-auto justify-content-center mb-md-0">
             <li>
               <NavLink activeClassName="active" exact className="nav-link px-3" to="/">
-                Home
+                Trang chủ
               </NavLink>
             </li>
             <li className="nav-item dropdown ml-lg-3 mr-lg-2">
@@ -57,26 +57,26 @@ class HeaderUser extends Component {
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false">
-                Q&A
+                Hỏi đáp
                 
               </NavLink>
               <div className="dropdown-menu dropdown-menu-right drop">
                 <Link className="dropdown-item" to="/q&a/my">
-                  My Question
+                  Câu hỏi của bạn
                 </Link>
                 <Link className="dropdown-item" to="/q&a">
-                  All Question
+                  Tất cả các câu hỏi
                 </Link>
               </div>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/appointment" className="nav-link px-3" >
-                Appointment
+                Cuộc tư vấn
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
-                Hospital
+                Bệnh viện
               </NavLink>
             </li>
           </ul>
@@ -100,10 +100,10 @@ class HeaderUser extends Component {
               </div>
               <div className="dropdown-menu dropdown-menu-right drop">
                 <Link className="dropdown-item" to="/profile">
-                  Profile
+                  Trang cá nhân
                 </Link>
                 <Link className="dropdown-item" to="" onClick={this.Logout}>
-                  Logout
+                  Đăng xuất
                 </Link>
               </div>
             </li>

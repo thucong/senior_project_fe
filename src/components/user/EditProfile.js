@@ -112,10 +112,10 @@ class EditProfile extends Component {
           onChange={this.onChangeAvatar}
         ></ImageUploader>
 
-        <h5 className="h5 mt-5 mb-4">Information</h5>
+        <h5 className="h5 mt-5 mb-4">Thông tin</h5>
         <div className="mt-2">
           <div className="form-group">
-            Fullname (*):
+            Họ và tên (*):
             <input
               type="text"
               className="form-control mt-3"
@@ -127,13 +127,13 @@ class EditProfile extends Component {
           </div>
           {this.state.name_blank === true ? (
             <p className="text-danger mt-1 mb-3">
-              (*) Fullname cannot be left blank!
+              (*) Họ và tên không được để trống!
             </p>
           ) : (
             ""
           )}
           <div className="form-group">
-            Gender:
+            Giới tính:
             <div className="form-check mt-3">
               <input
                 className="form-check-input"
@@ -145,7 +145,7 @@ class EditProfile extends Component {
                 checked={this.state.gender === false}
               />
               <label className="form-check-label" htmlFor="gender1">
-                Male
+                Nam
               </label>
             </div>
             <div className="form-check mt-3">
@@ -159,12 +159,12 @@ class EditProfile extends Component {
                 checked={this.state.gender === true}
               />
               <label className="form-check-label" htmlFor="gender2">
-                Female
+                Nữ
               </label>
             </div>
           </div>
           <div className="form-group">
-            Birthday:
+            Ngày sinh:
             <div>
               <input
                 type="date"
@@ -175,7 +175,7 @@ class EditProfile extends Component {
             </div>
           </div>
           <div className="form-group">
-            Phone:
+            Số điện thoại:
             <div>
               <input
                 type="text"
@@ -197,7 +197,7 @@ class EditProfile extends Component {
             </div>
           </div>
           <div className="form-group">
-            Address:
+            Địa chỉ:
             <div>
               <input
                 type="text"
@@ -208,7 +208,7 @@ class EditProfile extends Component {
             </div>
           </div>
           <div className="form-group">
-            Province or City:
+            Tỉnh/Thành phố:
             <select
               className="form-control mt-3"
               onChange={this.onChangePlace}
@@ -219,7 +219,7 @@ class EditProfile extends Component {
             </select>
           </div>
           {this.state.success ? (
-            <div className="text-success">Save successfully</div>
+            <div className="text-success">Lưu thông tin thành công</div>
           ) : (
             ""
           )}
@@ -228,7 +228,7 @@ class EditProfile extends Component {
             className="btn btn-success center mt-4"
             onClick={this.onSubmitProfile}
           >
-            Save
+            Lưu
           </button>
         </div>
       </div>

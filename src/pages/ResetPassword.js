@@ -65,11 +65,11 @@ class ResetPassword extends Component {
           if (err.response) {
             if (err.response.status === 400) {
               this.setState({
-                notifmess: "(*) Incorrect token or it is expired!",
+                notifmess: "(*) Khóa xác thực không đúng hoặc hết hạn!",
               });
             } else if (err.response.status === 401) {
               this.setState({
-                notifmess: "(*) User with this token does not exist!",
+                notifmess: "(*) Người dùng với khóa xác thực này không tồn tại!",
               });
             }
           }
@@ -88,12 +88,12 @@ class ResetPassword extends Component {
     document.body.style.backgroundColor = "#eceff1 ";
     return (
       <div className="col-lg-4 col-md-6 content jumbotron center mt-5">
-        <h2 className="h2">Create a new password</h2>
+        <h2 className="h2">Tạo mật khẩu mới</h2>
         <form>
           <div className="form-group mt-3 mr-3 w-100 ">
             <input
               type="password"
-              placeholder="New password"
+              placeholder="Mật khẩu mới"
               className="form-control w-100"
               value={this.state.password}
               name="password"
@@ -102,14 +102,14 @@ class ResetPassword extends Component {
             />
           </div>
           {this.state.notif.password === true ? (
-            <p className="text-danger mt-1">(*) Password can not be blank!</p>
+            <p className="text-danger mt-1">(*) Mật khẩu không được để trống!</p>
           ) : (
             ""
           )}
           <div className="form-group mt-3 mr-3 w-100 ">
             <input
               type="password"
-              placeholder="Confirm new password"
+              placeholder="Xác nhận lại mật khẩu"
               className="form-control w-100"
               value={this.state.repassword}
               name="repassword"
@@ -118,7 +118,7 @@ class ResetPassword extends Component {
             />
           </div>
           {this.state.notif.repassword === true ? (
-            <p className="text-danger mt-1">(*) Password does not match!</p>
+            <p className="text-danger mt-1">(*) Mật khẩu không trùng khớp!</p>
           ) : (
             ""
           )}
@@ -140,7 +140,7 @@ class ResetPassword extends Component {
                 disabled
                 className="btn btn-success btn-email"
               >
-                Save
+                Lưu
               </button>
             </div>
           ) : (
@@ -150,7 +150,7 @@ class ResetPassword extends Component {
                 className="btn btn-success btn-email"
                 onClick={this.onSubmit}
               >
-                Save
+                Lưu
               </button>
             </div>
           )}

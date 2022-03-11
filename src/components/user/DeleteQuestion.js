@@ -25,17 +25,17 @@ class DeleteQuestion extends Component{
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title h4">Delete Question</h5>
+                    <h5 className="modal-title h4">Xóa câu hỏi</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close"  onClick={this.onClose}>
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div className="modal-body">
-                    <p>Do you want to delete this question?</p>
+                    <p>Bạn có muốn xóa câu hỏi này không?</p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal"  onClick={this.onClose}>No</button>
-                    <button type="button" className="btn btn-danger" onClick={this.delete}>Yes</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal"  onClick={this.onClose}>Không</button>
+                    <button type="button" className="btn btn-danger" onClick={this.delete}>Có</button>
                 </div>
                 </div>
             </div>

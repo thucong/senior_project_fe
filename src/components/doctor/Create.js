@@ -11,9 +11,10 @@ class Create extends Component {
     constructor(props){
         super(props);
         this.state = {
-            time: [],
+            schedule: [],
             list_schedule:'',
-            name:''
+            name:'',
+            notif: false
         }
     }
     componentDidMount(){
@@ -36,12 +37,16 @@ class Create extends Component {
     }
     onSubmit = (e) => {
       e.preventDefault();
-      let schedule = this.props.choice_date + " " +this.state.time;
+      let schedule = [this.props.choice_date + " " + this.state.time];
       let date = this.props.choice_date;
       let doctorId = cookies.get("id_user");
       axios.post(API_URL + "schedule", {date,schedule,doctorId}).then(res => {
         if(res.status === 200){
           this.props.history.push("/profile")
+        }
+      }).catch(err => {
+        if(err.response.status === 400){
+          this.setState({notif: true})
         }
       })
     }
@@ -57,35 +62,39 @@ class Create extends Component {
         return(
             <div className="col-5 p-4 mb-5 profile mt-3 center">
                  <form className="mt-2" onSubmit={this.onSubmit}>
-                     <h1 className="h1 mb-3">Create Schedule</h1>
+                     <h1 className="h1 mb-3">Tạo lịch khám</h1>
                     <div className="form-group">
-                       Doctor's name:
+                       Tên bác sĩ:
                         <input type="text" className="form-control mt-3" value={this.state.name} readOnly></input>
                     </div>
                     <div className="form-group">
-                        Date
+                        Ngày
                         <input type="text" className="form-control mt-3" value={this.props.choice_date} readOnly></input>
                     </div>
                     <div className="form-group">
-                        Choose time
+                        Chọn thời gian
                         <Typeahead
                       id="public-methods-example"
                       name="time"
                       className="mt-2"
                       labelKey="name"
-                      multiple
                       options={this.props.list_time}
-                      placeholder="Please choose time"
+                      placeholder="Chọn thời gian"
                       ref={ref}
                       onChange={this.onChangeTime}
                       selected={this.state.time}
                   />
                     </div>
+                    {this.state.notif === true ? (
+                        <p className="text-danger mt-1">(*) Thời gian này đã tồn tại. Vui lòng chọn thời gian hết!</p>
+                      ) : (
+                        ""
+                      )}
                     <div className="create-schedule">
-                    <button type="submit" className="btn btn-secondary  mt-4" onClick={this.onCancel}>Cancel</button>&emsp;
-                    <button type="submit" className="btn btn-success  mt-4" onClick={this.onSubmit}>Save</button>
+                    <button type="submit" className="btn btn-secondary  mt-4" onClick={this.onCancel}>Hủy</button>&emsp;
+                    <button type="submit" className="btn btn-success  mt-4" onClick={this.onSubmit}>Lưu</button>
                     </div>
-                     
+                    
                    
                    
                 </form>

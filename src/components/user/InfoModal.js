@@ -18,14 +18,14 @@ class InfoModal extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">NOTIFICATION</h5>
+              <h5 className="modal-title h4">Thông báo</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body ">
               
-              <p className="mb-2">The doctor hasn't updated the calendar yet. Please choose another date!</p>
+              <p className="mb-2">Bác sĩ vẫn chưa cập nhật lịch. Vui lòng chọn thời gian khác!</p>
              
             </div>
            

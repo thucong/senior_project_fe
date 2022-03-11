@@ -14,7 +14,7 @@ class InfectedChart extends Component {
         labels: "",
         datasets: [],
       },
-      text: "Covid data chart of Viet Nam",
+      text: "Biểu đồ dữ liệu covid-19 của Việt Nam",
     };
   }
   chart = () => {
@@ -36,7 +36,7 @@ class InfectedChart extends Component {
               labels: date,
               datasets: [
                 {
-                  label: "Number of infected",
+                  label: "Số ca nhiễm",
                   data: infected,
                   backgroundColor: ["#4b4eb3"],
                   borderWidth: 1,
@@ -45,7 +45,7 @@ class InfectedChart extends Component {
             },
           });
           this.setState({
-            text: "Covid data chart of Viet Nam",
+            text: "Biểu đồ dữ liệu covid-19 của Việt Nam",
           });
         })
         .catch((err) => {
@@ -67,7 +67,7 @@ class InfectedChart extends Component {
               labels: date,
               datasets: [
                 {
-                  label: "Number of infected",
+                  label: "Số ca nhiễm",
                   data: infected,
                   backgroundColor: ["#4b4eb3"],
                   borderWidth: 1,
@@ -75,7 +75,7 @@ class InfectedChart extends Component {
               ],
             },
           });
-          this.setState({ text: `Covid data chart of ${place[place.length -1]}` });
+          this.setState({ text: `Biểu đồ dữ liệu covid-19 của ${place[place.length -1]}` });
         });
     }
   };

@@ -25,7 +25,7 @@ class InfoConsultation extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Information about Appointment</h5>
+              <h5 className="modal-title h4">Thông tin của cuộc tư vấn</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -37,26 +37,26 @@ class InfoConsultation extends Component {
                         <img className="rounded-circle " src={this.props.info_patient.avatar} height="100" width="100" alt="" />
                     </div>
                     <div className="col col-8 info-consultation pl-2">
-                        <p>Patient's name: <span className="info-item">{this.props.info_patient.fullname}</span></p>
-                        <p>Phone: <span className="info-item">{this.props.info_patient.phone}</span></p>
-                        <p>Birthday: <span className="info-item">{Moment(this.props.info_patient.birthday).format('YYYY-MM-DD')}</span></p>
-                        <p>Gender: <span className="info-item">{this.props.info_patient.gender === false ? 'Male' : 'Female'}</span></p>
+                        <p>Tên bệnh nhân: <span className="info-item">{this.props.info_patient.fullname}</span></p>
+                        <p>Số điện thoại: <span className="info-item">{this.props.info_patient.phone}</span></p>
+                        <p>Ngày sinh: <span className="info-item">{Moment(this.props.info_patient.birthday).format('YYYY-MM-DD')}</span></p>
+                        <p>Giới tính: <span className="info-item">{this.props.info_patient.gender === false ? 'Nam' : 'Nữ'}</span></p>
                     </div>
                     </div>
               </div>
               <hr />
               <div className="form-group">
-               <p>Date: <span className="info-item">{this.props.info_consultation.date}</span></p>
+               <p>Ngày: <span className="info-item">{this.props.info_consultation.date}</span></p>
               </div>
               <div className="form-group">
-               <p>Time: <span className="info-item">{Moment(this.props.info_consultation.start).format(' hh:mm a')} - {Moment(this.props.info_consultation.end).format(' hh:mm a')}</span></p>
+               <p>Thời gian: <span className="info-item">{Moment(this.props.info_consultation.start).format(' hh:mm a')} - {Moment(this.props.info_consultation.end).format(' hh:mm a')}</span></p>
               </div>
               <div className="form-group">
-               <p>Reason for appointment: <span className="info-item">{this.props.info_consultation.content}</span></p>
+               <p>Lý do của cuộc tư vấn: <span className="info-item">{this.props.info_consultation.content}</span></p>
               </div>
               {this.props.info_consultation.file !== "" ? (
                 <div className="mb-2">
-                  <p className="mb-2">There are prior examinations:</p>
+                  <p className="mb-2">Kết quả kiểm tra trước:</p>
                   <img
                     src={this.props.info_consultation.file}
                     style={{ width: "300px" }}
@@ -68,12 +68,12 @@ class InfoConsultation extends Component {
               )}
               {this.props.info_consultation.note !== "" ? (
                 <div className="form-group">
-                <p>Note: <span className="info-item">{this.props.info_consultation.note}</span></p>
+                <p>Ghi chú: <span className="info-item">{this.props.info_consultation.note}</span></p>
                </div>
               ) : " "}
               
                 <div className="form-group">
-                    <p>Link: <button className="btn btn-success" onClick={(e) => this.startCall(this.props.info_consultation.linkCall)}>Start call</button></p>
+                    <p>Link: <button className="btn btn-success" onClick={(e) => this.startCall(this.props.info_consultation.linkCall)}>Bắt đầu cuộc gọi</button></p>
                 </div>
             </div>
             <div className="modal-footer">
@@ -82,7 +82,7 @@ class InfoConsultation extends Component {
                 className="btn btn-danger"
                 onClick={this.onClose}
               >
-               Close
+               Đóng
               </button>
             </div>
           </div>

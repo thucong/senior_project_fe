@@ -97,8 +97,8 @@ class TopicItem extends Component {
         </div>
         {topic.createdBy._id === cookies.get('id_user') ? (
            <div className="pt-3 pl-1">
-           <span className="text" onClick ={this.props.update}>Edit</span>&ensp;
-           <span className="text" onClick={this.props.delete}>Delete</span>
+           <span className="text" onClick ={this.props.update}>Sửa</span>&ensp;
+           <span className="text" onClick={this.props.delete}>Xóa</span>
            
          </div>
          
@@ -118,7 +118,7 @@ class TopicItem extends Component {
         </div>
         <div className="mt-3 pl-4 pb-3">
           <a className="" onClick={this.onReply}>
-            {comments.length} reply
+            {comments.length} trả lời
           </a>
           {this.state.reply ? (
             <div className="mt-3 border-top ">
@@ -142,7 +142,7 @@ class TopicItem extends Component {
                       name="content"
                       onChange={this.onChange}
                     />
-                    <button className="btn btn-success mt-1" onClick={this.onSubmit}>Send</button>
+                    <button className="btn btn-success mt-1" onClick={this.onSubmit}>Gửi</button>
                   </div>
                 </div>
               ) : (

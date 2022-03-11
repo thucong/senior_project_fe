@@ -74,10 +74,10 @@ class EditProfileDoctor extends Component {
           onChange={this.onChangeAvatar}
         ></ImageUploader>
 
-        <h5 className="h5 mt-5 mb-4">Information</h5>
+        <h5 className="h5 mt-5 mb-4">Thông tin</h5>
         <div className="mt-2">
           <div className="form-group">
-            Fullname (*):
+           Họ và tên (*):
             <input
               type="text"
               className="form-control mt-3"
@@ -89,13 +89,13 @@ class EditProfileDoctor extends Component {
           </div>
           {this.state.name_blank === true ? (
             <p className="text-danger mt-1 mb-3">
-              (*) Fullname cannot be left blank!
+              (*) Họ và tên không được để trống!
             </p>
           ) : (
             ""
           )}
           <div className="form-group">
-            Phone:
+            Số điện thoại:
             <div>
               <input
                 type="text"
@@ -117,7 +117,7 @@ class EditProfileDoctor extends Component {
             </div>
           </div>
           {this.state.success ? (
-            <div className="text-success">Save successfully</div>
+            <div className="text-success">Lưu thông tin thành công</div>
           ) : (
             ""
           )}
@@ -126,7 +126,7 @@ class EditProfileDoctor extends Component {
             className="btn btn-success center mt-4"
             onClick={this.onSubmitProfile}
           >
-            Save
+            Lưu
           </button>
         </div>
       </div>

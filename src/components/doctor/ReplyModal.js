@@ -69,14 +69,14 @@ class ReplyModal extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Confirmation</h5>
+              <h5 className="modal-title h4">Xác nhận cuộc tư vấn</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body ">
               <div className="form-group">
-                <label className="label-time">Start time:</label> &ensp;
+                <label className="label-time">Thời gian bắt đầu:</label> &ensp;
                 <input
                   type="text"
                   value={Moment(this.state.start).format("YYYY-MM-DD hh:mm a")}
@@ -85,14 +85,14 @@ class ReplyModal extends Component {
                 />
               </div>
               <div className="form-group">
-                <label className="label-time">End time:</label> &ensp;
+                <label className="label-time">Thời gian kết thúc:</label> &ensp;
                 <input type="text" value={this.state.end} disabled name="end" />
               </div>
               <p className="text-danger mb-2">
-                Duration is 60 minutes.
+               Thời gian là 60 phút.
               </p>
               <div className="form-group">
-                <label>Reason for appointment:</label>
+                <label>Lý do của cuộc tư vấn:</label>
                 <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -104,7 +104,7 @@ class ReplyModal extends Component {
               </div>
               {this.state.file !== "" ? (
                 <div className="mb-2">
-                  <p className="mb-2">There are prior examinations:</p>
+                  <p className="mb-2">Kết quả kiểm tra trước:</p>
                   <img
                     src={this.state.file}
                     style={{ width: "300px" }}
@@ -116,16 +116,16 @@ class ReplyModal extends Component {
               )}
 
               <div className="mb-2">
-                <label className="reply">Confirm: </label>&ensp;
+                <label className="reply">Xác nhận: </label>&ensp;
                 <select onChange={this.onChangeReply} value={this.state.reply} name="reply">
-                    <option >Choose option</option>
-                  <option value="confirmed">Accept</option>
-                  <option value="reject">Reject</option>
+                    <option >Lựa chọn</option>
+                  <option value="confirmed">Đồng ý</option>
+                  <option value="reject">Từ chối</option>
                 </select>
               </div>
               {this.state.reply === 'reject' ? (
                   <div className="form-group">
-                      <label>Rejection: </label>&ensp;
+                      <label>Lý do từ chối: </label>&ensp;
                       <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -139,11 +139,11 @@ class ReplyModal extends Component {
               {this.state.reply === "confirmed" ? (
                 <div>
                   <div className="form-group">
-                      <label>Meeting Link: </label>&ensp;
+                      <label>Link cuộc gọi: </label>&ensp;
                       <input type='text' value={this.state.link_call} name="link_call" onChange={this.onChangeCall} className="form-control mt-2"/>
                   </div>
                   <div className="form-group">
-                      <label>Note: </label>&ensp;
+                      <label>Ghi chú: </label>&ensp;
                       <input type='text' value={this.state.note} name="note" onChange={this.onChangeNote} className="form-control mt-2"/>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ class ReplyModal extends Component {
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -166,7 +166,7 @@ class ReplyModal extends Component {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-               Submit
+               Lưu
               </button>
             </div>
           </div>

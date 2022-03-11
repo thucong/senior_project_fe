@@ -36,7 +36,7 @@ class ListConsultation extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Appointments</h5>
+              <h5 className="modal-title h4">Các cuộc tư vấn</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -48,14 +48,14 @@ class ListConsultation extends Component {
                         <img className="mx-auto " src={schedule.patientId.avatar} height="100" width="100" alt=""/>
                     </div>
                     <div className="col col-8 info-consultation pl-5">
-                        <p>Patient's name: <span className="info-item">{schedule.patientId.fullname}</span></p>
-                        <p>Date: <span className="info-item">{schedule.date}</span></p>
-                        <p>Time: <span className="info-item">{Moment(schedule.start).format(' hh:mm a')} - {Moment(schedule.end).format(' hh:mm a')}</span></p>
+                        <p>Tên bệnh nhân: <span className="info-item">{schedule.patientId.fullname}</span></p>
+                        <p>Ngày: <span className="info-item">{schedule.date}</span></p>
+                        <p>Thời gian: <span className="info-item">{Moment(schedule.start).format(' hh:mm a')} - {Moment(schedule.end).format(' hh:mm a')}</span></p>
                     </div>
                     </div>
                 ))
                    
-                ) : <h3 className="h3 text-center text-muted">No appointment!</h3>}
+                ) : <h3 className="h3 text-center text-muted">Không có cuộc tư vấn nào!</h3>}
             
             </div>
             <div className="modal-footer">
@@ -64,7 +64,7 @@ class ListConsultation extends Component {
                 className="btn btn-danger"
                 onClick={this.onClose}
               >
-               Close
+               Đóng
               </button>
             </div>
           </div>

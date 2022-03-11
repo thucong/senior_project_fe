@@ -115,14 +115,14 @@ class NewsContent extends Component{
                       className="btn btn-warning"
                       onClick={(e) =>this.onChoiceEdit(e, item._id)}
                     >
-                     Edit
+                     Sửa
                     </button>&ensp;
                     <button
                       type="button"
                       className="btn btn-danger"
                       onClick={(e) =>this.onChoiceDelete(e, item._id)}
                     >
-                      Delete
+                      Xóa
                     </button>
                
                   
@@ -179,7 +179,7 @@ class NewsContent extends Component{
             className="btn btn-success text-truncate"
             onClick={this.logOut}
           >
-            Logout
+            Đăng xuất
           </button>
         </div>
         <form className="row p-5 " onSubmit={this.searchNews}>
@@ -187,7 +187,7 @@ class NewsContent extends Component{
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Name"
+              placeholder="Chủ đề"
               onChange={this.onChangeName}
             />
           </div>
@@ -197,21 +197,21 @@ class NewsContent extends Component{
               className="btn btn-success btn-lg btn-block word-wrap text-truncate"
               onClick={this.searchNews}
             >
-              Search
+              Tìm kiếm
             </button>
           </div>
         </form>
         <div className="pl-5 pb-3">
-          <button className="btn btn-success" onClick={this.onAdd}>Add</button>
+          <button className="btn btn-success" onClick={this.onAdd}>Thêm</button>
         </div>
         <div className="pl-5 pr-5 row m-0">
           <table className="table jumbotron content">
             <thead className="">
               <tr className="">
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Published by</th>
-                <th scope="col">Category</th>
+                <th scope="col">Chủ đề</th>
+                <th scope="col">Người viết</th>
+                <th scope="col">Thể loại</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -232,7 +232,7 @@ class NewsContent extends Component{
           <ul className="pagination page mb-5 justify-content-center">
             <li className="page-item">
               <button className="page-link" onClick={() => this.setPage(1)}>
-                Head
+                Đầu
               </button>
             </li>
             {this.showPage(this.state.count_page, this.state.page)}
@@ -241,7 +241,7 @@ class NewsContent extends Component{
                 className="page-link"
                 onClick={() => this.setPage(this.state.count_page)}
               >
-               Last
+               Cuối
               </button>
             </li>
           </ul>

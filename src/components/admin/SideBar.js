@@ -15,16 +15,16 @@ class SideBar extends Component {
                             <img src={admin_img} className="" alt="" width="130px" />
                         </li>
                         <li className="list-group-item text-center border-0" >
-                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/">Home</NavLink>
+                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/">Trang chủ</NavLink>
                         </li>
                         <li className="list-group-item text-center border-0">
-                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/news">Manage News</NavLink>
+                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/news">Quản lý tin tức</NavLink>
                         </li>
                         <li className="list-group-item text-center border-0">
-                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/doctor">Manage Doctor</NavLink>
+                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/doctor">Quản lý bác sĩ</NavLink>
                         </li>
                         <li className="list-group-item text-center border-0">
-                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/hospital">Manage Hospital</NavLink>
+                            <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/hospital">Quản lý bệnh viện</NavLink>
                         </li>
                         {/* <li className="list-group-item text-center border-0">
                             <NavLink className="nav-link h4 text-muted" activeClassName="bg-light rounded" exact to="/admin/quan-ly-bao-xau">Quản lý báo xấu</NavLink>

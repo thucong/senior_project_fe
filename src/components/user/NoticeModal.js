@@ -17,13 +17,13 @@ class NoticeModal extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">NOTICE</h5>
+              <h5 className="modal-title h4">Chú ý</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body ">
-              <p className="mb-2">The calendar has expired to book an appointment. Please choose another date!</p>
+              <p className="mb-2">Lịch đã hết hạn để đặt lịch hẹn. Vui lòng chọn một ngày khác!</p>
             </div>
             <div className="modal-footer">
               <button

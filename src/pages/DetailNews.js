@@ -47,7 +47,7 @@ class DetailNews extends Component {
                 {this.state.news.subject}
               </h5>
               <h5 className="text mt-2">
-                Post at:{" "}
+               Ngày viết:{" "}
                 {Moment(this.state.news.createdAt).format("YYYY-MM-DD")}
               </h5>
               <div className="clearfix mt-3">
@@ -62,14 +62,14 @@ class DetailNews extends Component {
               </div>
               <h5 className="text-truncate mt-3">
                 {" "}
-                Published by {this.state.news.writer}
+               Người viết: {this.state.news.writer}
               </h5>
             </div>
           </div>
           <div className="col col-md-3 mt-5 related ml-4">
             <div className="card-body">
               <p className="card-title text-center hospital-title">
-                Related news
+                Tin tức liên quan
               </p>
               <div className=" overflow-auto">
                 <table className="table list-hospital list-news">

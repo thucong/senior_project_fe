@@ -85,14 +85,14 @@ class AddDoctor extends Component{
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content" >
             <div className="modal-header">
-              <h5 className="modal-title h4">Add Doctor</h5>
+              <h5 className="modal-title h4">Thêm bác sĩ</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body send-mail">
               <div className="form-group">
-                <label>Name</label>
+                <label>Họ và tên</label>
                 <textarea
                   className="form-control mt-2"
                   rows="2"
@@ -104,7 +104,7 @@ class AddDoctor extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Phone</label>
+                <label>Số điện thoại</label>
                 <textarea
                   className="form-control mt-2"
                   rows="1"
@@ -128,16 +128,16 @@ class AddDoctor extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Department</label>
+                <label>Khoa</label>
                 <select className="form-control mt-2" onChange={this.onChangeDepartment} value={this.state.department}>
-                  <option value="Dermatology">Dermatology</option>
-                  <option value="Nerve">Nerve</option>
-                  <option value="Digest">Digest</option>
-                  <option value="Musculoskeletal">Musculoskeletal</option>
+                   <option value="Da liễu">Da liễu</option>
+                  <option value="Thần kinh">Thần kinh</option>
+                  <option value="Tiêu hóa">Tiêu hóa</option>
+                  <option value="Cơ xương khớp">Cơ xương khớp</option>
                 </select>
               </div>
               <div className="form-group">
-                <label>Workplace</label>
+                <label>Nơi làm việc</label>
                 <textarea
                   className="form-control mt-2"
                   rows="1"
@@ -149,7 +149,7 @@ class AddDoctor extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Qualification</label>
+                <label>Trình độ</label>
                 <textarea
                   className="form-control mt-2"
                   rows="1"
@@ -161,7 +161,7 @@ class AddDoctor extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label htmlFor="exampleFormControlInput1" className="mb-2">Experience</label>
+                <label htmlFor="exampleFormControlInput1" className="mb-2">Kinh nghiệm</label>
                 <CKEditor
                     editor={ ClassicEditor }
                     data="<p></p>"
@@ -190,7 +190,7 @@ class AddDoctor extends Component{
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -198,7 +198,7 @@ class AddDoctor extends Component{
                 data-dismiss="modal"
                 onClick={this.postData}
               >
-               Submit
+               Thêm
               </button>
             </div>
           </div>

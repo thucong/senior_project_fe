@@ -13,7 +13,7 @@ class ErrorValidate extends Component {
           ></img>{" "}
           <br />
           <h1 className="ct mb-3 mt-4">
-            Unable to confirm email. Please try again!
+          Không thể xác nhận email. Vui lòng thử lại!
           </h1>
         </div>
       </div>

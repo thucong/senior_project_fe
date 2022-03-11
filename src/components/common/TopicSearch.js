@@ -42,7 +42,7 @@ class TopicSearch extends Component{
                 ? topics.map((topic, index) => (
                     <TopicItem key={index} topic={topic} update={(e) => this.onUpdate(topic._id)} delete={(e) => this.onDelete(topic._id)}/>
                   ))
-                : <p className="text-danger h3 mt-3">Sorry, we couldn't find any results for your search!</p>}
+                : <p className="text-danger h3 mt-3">Không có kết quả tìm kiếm phù hợp!</p>}
               <EditQuestion info_topic={this.state.info_topic}/>
               <DeleteQuestion choice_delete={this.state.choice_delete} />
            </div>

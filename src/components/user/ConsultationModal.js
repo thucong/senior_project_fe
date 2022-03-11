@@ -81,7 +81,7 @@ onSubmit = (e) => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Book an Appointment</h5>
+              <h5 className="modal-title h4">Đặt cuộc tư vấn</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -89,9 +89,9 @@ onSubmit = (e) => {
             {this.props.list_schedule.length > 0 ? (
             <div className="modal-body ">
                  <div className="form-group">
-                 <label className="label-time">Start time:</label> &ensp;
+                 <label className="label-time">Thời gian bắt đầu:</label> &ensp;
                  <select onChange={this.onChangeTime} value={this.state.start} name="start">
-                   <option value="">Choose time</option> 
+                   <option value="">Chọn thời gian</option> 
                        {this.props.list_schedule.map((time, index) => (
                       <option value={time} key={index}>{Moment(time).format('YYYY-MM-DD hh:mm a')}</option>
                      ))}
@@ -99,12 +99,12 @@ onSubmit = (e) => {
                </div>
                {this.state.start ? (
                  <div className="form-group">
-                 <label className="label-time">End time:</label> &ensp;
+                 <label className="label-time">Thời gian kết thúc:</label> &ensp;
                  <input type="text" value={this.state.end} disabled name="end"/>
                </div>
               ) : ""}
               <div className="form-group">
-               <label>Reason for appointment:</label>
+               <label>Lý do của cuộc tư vấn:</label>
                <textarea
                  className="form-control mt-2"
                  rows="5"
@@ -114,17 +114,17 @@ onSubmit = (e) => {
                  onChange={this.onChangeContent}
                ></textarea>
              </div>
-             <p className="mb-2">There are prior examinations:</p>
+             <p className="mb-2">Kết quả kiểm tra trước:</p>
              <div>
-               <label>Upload images:</label>&ensp;
+               <label>Hình ảnh:</label>&ensp;
                <input type="file" name="file" onChange={this.uploadImage}></input> <br />
                <img src={this.state.file} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
              </div>
-             <p className="text-danger">The above times are available. Duration is 60 minutes.</p>
+             <p className="text-danger">Các khoảng thời gian trên đều có sẵn. Thời lượng 60 phút.</p>
              </div>
-              ) : <p className="p-4">The calendar has expired to book a appointment. Please choose another date!</p>}
-            {this.state.notif_time === true ? <p className="text-danger ">(*) Please choose the time!</p> : ""}
-            {this.state.notif_content === true ? <p className="text-danger ">(*) Please write your reason!</p> : ""}
+              ) : <p className="p-4">Lịch đã hết hạn để đặt cuộc tư. Vui lòng chọn một ngày khác!</p>}
+            {this.state.notif_time === true ? <p className="text-danger ">(*) Vui lòng chọn thời gian!</p> : ""}
+            {this.state.notif_content === true ? <p className="text-danger ">(*) Vui lòng viết lý do!</p> : ""}
             {this.props.list_schedule.length > 0 ? (
               <div className="modal-footer">
               <button
@@ -132,7 +132,7 @@ onSubmit = (e) => {
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -140,7 +140,7 @@ onSubmit = (e) => {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-                Submit
+                Lưu
               </button>
             </div>
             ) : (

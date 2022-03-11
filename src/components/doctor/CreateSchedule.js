@@ -34,8 +34,15 @@ class CreateSchedule extends Component{
         
     }
     componentDidMount() {
+        let schedule = [];
         axios.get(API_URL + "schedule/doctor/" + cookies.get('id_user'),  {  headers: { Authorization: `Bearer ${cookies.get("token")}` }}).then((res) => {
-            this.setState({list_schedule: res.data});
+            //this.setState({list_schedule: res.data});
+           res.data.map((list, index) => {
+               console.log(list.schedule)
+               schedule.push(...list.schedule)
+           })
+           console.log(schedule)
+           this.setState({list_schedule: schedule})
         })
     }
     render(){
@@ -44,7 +51,7 @@ class CreateSchedule extends Component{
         return(
             <div>
                  {this.state.noti === true ? (
-            <p className="text-danger h4 mt-1 mb-2">The calendar is overdue!</p>
+            <p className="text-danger h4 mt-1 mb-2">Lịch đã quá hạn!</p>
           ) : (
             ""
           )}
@@ -55,7 +62,7 @@ class CreateSchedule extends Component{
                 select={this.handleSelect}
                 events={
                    list_schedule.length > 0 ? list_schedule.map((schedule, index) => (
-                       { start : `${schedule.schedule}`}
+                        { start : `${schedule}`}
                    )) : ""
                 }/>
             </div>
