@@ -31,7 +31,7 @@ class ForgotPassword extends Component {
       .catch((err) => {
         this.setState({ loading: false });
         if (err.response.status === 401) {
-          this.setState({ notifmess: "(*) User with this email does not exists!" });
+          this.setState({ notifmess: "(*) Email này không tồn tại!" });
         } 
       });
   };
@@ -39,7 +39,7 @@ class ForgotPassword extends Component {
     document.body.style.backgroundColor = "#eceff1 ";
     return (
       <div className="col-lg-4 col-md-6 content jumbotron center mt-5">
-        <h2 className="h2">Please enter your email address!</h2>
+        <h2 className="h2">Vui lòng nhập địa chỉ email!</h2>
         <form>
           <div className="form-group mt-3 mr-3 w-100 ">
             <input
@@ -63,7 +63,7 @@ class ForgotPassword extends Component {
                 disabled
                 className="btn btn-success btn-email"
               >
-                Next
+                Tiếp theo
               </button>
               <img
                 className="center"
@@ -79,7 +79,7 @@ class ForgotPassword extends Component {
                 className="btn btn-success btn-email"
                 onClick={this.onSubmit}
               >
-                Next
+                Tiếp theo
               </button>
             </div>
           )}

@@ -175,17 +175,17 @@ class DetailDoctor extends Component {
               {information.qualification}&nbsp;{information.fullname}
             </h3>
             <p className="department mb-2">
-              Phone: <span className="info-item">{information.phone}</span>
+              Số điện thoại: <span className="info-item">{information.phone}</span>
             </p>
             <p className="department mb-2">
               Email: <span className="info-item">{information.email}</span>
             </p>
             <p className="department mb-2">
-              Department:{" "}
+              Khoa:{" "}
               <span className="info-item">{information.department}</span>
             </p>
             <p className="department">
-              Workplace:{" "}
+              Nơi làm việc:{" "}
               <span className="info-item">{information.workplace}</span>
             </p>
           </div>
@@ -233,7 +233,7 @@ class DetailDoctor extends Component {
                 <li>- Cure atopic dermatitis</li>
               </ul> */}
               <hr />
-              <h2>Patient Feedback</h2>
+              <h2>Phản hồi của bệnh nhân</h2>
               <div className=" p-2 mt-2">
                 {this.state.patient.length > 0 ? (
                   <div className="feedback">
@@ -250,7 +250,7 @@ class DetailDoctor extends Component {
                       <div className="ml-2 mt-3 send_feed">
                         <input
                           type="text"
-                          placeholder="Write your feedback"
+                          placeholder="Viết phản hồi"
                           value={this.state.content}
                           className="bg text-reply p-2"
                           name="content"
@@ -260,7 +260,7 @@ class DetailDoctor extends Component {
                           className="btn btn-success mt-1 ml-3"
                           onClick={this.onSubmit}
                         >
-                          Send
+                          Gửi
                         </button>
                       </div>
                     </div>
@@ -293,7 +293,7 @@ class DetailDoctor extends Component {
           </div>
           <div className="col col-md-4">
             <div className="schedule p-3">
-              <p className="title-schedule p-2 mb-3">SCHEDULE </p>
+              <p className="title-schedule p-2 mb-3">Lịch trình</p>
               <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
@@ -306,7 +306,7 @@ class DetailDoctor extends Component {
                 Working time from Monday to Friday: 08:00 am - 11:00 am and
                 02:00 pm - 05:00 pm{" "}
               </p> */}
-              <p className="mt-3 h5">Choose date and book an appointment</p>
+              <p className="mt-3 h5">Chọn ngày và đặt cuộc tư vấn</p>
             </div>
             <ConsultationModal
               date={this.state.date}

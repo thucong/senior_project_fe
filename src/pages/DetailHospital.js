@@ -34,13 +34,13 @@ class DetailHospital extends Component{
                         {info_hospital.name}
                         </h3>
                         <p className="department mb-2">
-                        Phone: <span className="info-item">{info_hospital.phone}</span>
+                        Số điện thoại: <span className="info-item">{info_hospital.phone}</span>
                         </p>
                         <p className="department mb-2">
                         Email: <span className="info-item">{info_hospital.email}</span>
                         </p>
                         <p className="department mb-2">
-                        Address: <span className="info-item">{info_hospital.address}, {info_hospital.provinceOrCity}</span>
+                        Địa chỉ: <span className="info-item">{info_hospital.address}, {info_hospital.provinceOrCity}</span>
                         </p>
                     </div>
                 </div>

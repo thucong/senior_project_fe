@@ -44,7 +44,7 @@ class Content extends Component {
             className="btn btn-success text-truncate"
             onClick={this.logOut}
           >
-            Logout
+           Đăng xuất
           </button>
         </div>
         {this.state.loading ? (
@@ -59,7 +59,7 @@ class Content extends Component {
             <div className="col-4 p-2">
               <div className="card border-secondary px-0">
                 <div className="card-header bg-white border-0 bold">
-                  Number of news
+                  Số lượng tin tức
                 </div>
                 <div className="card-body text-secondary">
                   <h2 className="h2 card-title text-center">
@@ -71,7 +71,7 @@ class Content extends Component {
             <div className="col-4 p-2">
               <div className="card border-secondary px-0">
                 <div className="card-header bg-white border-0 bold">
-                  Number of doctors
+                  Số lượng bác sĩ
                 </div>
                 <div className="card-body text-secondary">
                   <h2 className="h2 card-title text-center">
@@ -83,7 +83,7 @@ class Content extends Component {
             <div className="col-4 p-2">
               <div className="card border-secondary px-0">
                 <div className="card-header bg-white border-0 bold">
-                  Number of hospitals
+                 Số lượng bệnh viện
                 </div>
                 <div className="card-body text-secondary">
                   <h2 className="h2 card-title text-center">

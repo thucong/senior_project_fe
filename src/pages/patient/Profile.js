@@ -18,10 +18,10 @@ class Profile extends Component{
                 <div className="col col-10 mx-auto mt-5 row">
                     <div className="col-3 list-group mt-3">
                         <button type="button" onClick={() => this.onClickListGroup(0)} className={this.state.page === 0 ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"}>
-                            Edit Profile
+                            Chỉnh sửa thông tin
                         </button>
                         <button type="button" onClick={() => this.onClickListGroup(1)} className={this.state.page === 1 ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"}>
-                            Change Password
+                            Đổi mật khẩu
                         </button>
                     </div>
                     <div className="col-9 p-4 mb-5 profile mt-3">

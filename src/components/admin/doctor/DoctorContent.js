@@ -113,14 +113,14 @@ class DoctorContent extends Component{
                       className="btn btn-warning"
                       onClick={(e) =>this.onChoiceEdit(e, item._id)}
                     >
-                     Edit
+                     Sửa
                     </button>&ensp;
                     <button
                       type="button"
                       className="btn btn-danger "
                       onClick={(e) =>this.onChoiceDelete(e, item._id)}
                     >
-                      Delete
+                      Xóa
                     </button>
                
                   
@@ -173,21 +173,21 @@ class DoctorContent extends Component{
             className="btn btn-success text-truncate"
             onClick={this.logOut}
           >
-            Logout
+            Đăng xuất
           </button>
         </div>
         <div className="pl-5 pb-3 mt-3">
-          <button className="btn btn-success" onClick={this.onAdd}>Add</button>
+          <button className="btn btn-success" onClick={this.onAdd}>Thêm</button>
         </div>
         <div className="pl-5 pr-5 row m-0">
           <table className="table jumbotron content">
             <thead className="">
               <tr className="">
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Họ và tên</th>
+                <th scope="col">Số điện thoại</th>
                 <th scope="col">Email</th>
-                <th scope="col">Workplace</th>
+                <th scope="col">Nơi làm việc</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -208,7 +208,7 @@ class DoctorContent extends Component{
           <ul className="pagination page mb-5 justify-content-center">
             <li className="page-item">
               <button className="page-link" onClick={() => this.setPage(1)}>
-                Head
+                Đầu
               </button>
             </li>
             {this.showPage(this.state.count_page, this.state.page)}
@@ -217,7 +217,7 @@ class DoctorContent extends Component{
                 className="page-link"
                 onClick={() => this.setPage(this.state.count_page)}
               >
-               Last
+               Cuối
               </button>
             </li>
           </ul>

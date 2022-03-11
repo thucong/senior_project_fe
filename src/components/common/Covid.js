@@ -30,10 +30,10 @@ class Covid extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Province/City</th>
-              <th scope="col">Total</th>
-              <th scope="col">The last 24 hours</th>
-              <th scope="col">Dead</th>
+              <th scope="col">Tỉnh/Thành phố</th>
+              <th scope="col">Tổng số ca</th>
+              <th scope="col">24 giờ qua</th>
+              <th scope="col">Tử vong</th>
             </tr>
           </thead>
           <tbody>

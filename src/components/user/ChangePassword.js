@@ -85,22 +85,22 @@ class ChangePassword extends Component{
             <div >
                 <form className="mt-2" onSubmit={this.onSubmitPassword}>
                     <div className="form-group">
-                        Old password (*)
-                        <input type="password" className="form-control mt-3" placeholder="Old password" onChange={this.onChangeOldPassword} onBlur={this.onBlurOldPassword}></input>
+                        Mật khẩu cũ (*)
+                        <input type="password" className="form-control mt-3" placeholder="Mật khẩu cũ" onChange={this.onChangeOldPassword} onBlur={this.onBlurOldPassword}></input>
                     </div>
-                    {this.state.old_password_notif?<div className="text-danger mb-3">Old password cannot be blank!</div>:""}
+                    {this.state.old_password_notif?<div className="text-danger mb-3">Mật khẩu cũ không được để trống!</div>:""}
                     <div className="form-group">
-                        New password (*)
-                        <input type="password" className="form-control mt-3" placeholder="New password" onChange={this.onChangeNewPassword} onBlur={this.onBlurNewPassword}></input>
+                    Mật khẩu mới (*)
+                        <input type="password" className="form-control mt-3" placeholder="Mật khẩu mới" onChange={this.onChangeNewPassword} onBlur={this.onBlurNewPassword}></input>
                     </div>
-                    {this.state.new_password_notif?<div className="text-danger mb-3">New password cannot be blank!</div>:""}
+                    {this.state.new_password_notif?<div className="text-danger mb-3">Mật khẩu mới không được để trống!</div>:""}
                     <div className="form-group">
-                          Confirm new password (*)
-                        <input type="password" className="form-control mt-3" placeholder="Confirm new password" onChange={this.onChangeReNewPassword} onBlur={this.onBlurReNewPassword}></input>
+                          Xác nhận lại mật khẩu mới (*)
+                        <input type="password" className="form-control mt-3" placeholder="Xác nhận lại mật khẩu mới" onChange={this.onChangeReNewPassword} onBlur={this.onBlurReNewPassword}></input>
                     </div>
-                    {this.state.re_new_password_notif?<div className="text-danger mb-3">Password does not match!</div>:""}
-                    {this.state.incorrect?<div className="text-danger mb-3">Old password is incorrect!</div>:""}
-                    <button type="submit" className="btn btn-success center mt-4" onClick={this.onSubmitPassword}>Save</button>
+                    {this.state.re_new_password_notif?<div className="text-danger mb-3">Mật khẩu không trùng khớp!</div>:""}
+                    {this.state.incorrect?<div className="text-danger mb-3">Mật khẩu cũ không đúng!</div>:""}
+                    <button type="submit" className="btn btn-success center mt-4" onClick={this.onSubmitPassword}>Lưu</button>
                 </form>
             </div>
         )

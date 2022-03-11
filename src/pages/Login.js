@@ -35,12 +35,12 @@ class Login extends Component {
   };
   onBlurEmail = () => {
     if (this.state.user.email.length === 0)
-      this.setState({ notif: "(*) Email cannot be blank!" });
+      this.setState({ notif: "(*) Email không được để trống!" });
     else this.setState({ notif: "" });
   };
   onBlurPassword = () => {
     if (this.state.user.password.length === 0)
-      this.setState({ notif: "(*) Password cannot be blank!" });
+      this.setState({ notif: "(*) Mật khẩu không được để trống!" });
     else this.setState({ notif: "" });
   };
   onCheckSaveAccount = (e) => {
@@ -75,7 +75,7 @@ class Login extends Component {
       .catch((err) => {
         this.setState({ loading: false });
         if (err.response.status === 401) {
-          this.setState({ notif: "(*) Incorrect email or password!" });
+          this.setState({ notif: "(*) Sai email hoặc mật khẩu!" });
         }
       });
   };
@@ -115,7 +115,7 @@ class Login extends Component {
                   </div>
                   <div className="info">
                     <input
-                      placeholder="Password"
+                      placeholder="Mật khẩu"
                       name="password"
                       className="pass"
                       type="password"
@@ -135,7 +135,7 @@ class Login extends Component {
                       onChange={this.onCheckSaveAccount}
                     />
                     <label className="form-check-label text-muted mt-1">
-                      Remember login
+                      Nhớ đăng nhập
                     </label>
                   </div>
                   {this.state.notif.length > 0 ? (
@@ -145,7 +145,7 @@ class Login extends Component {
                   )}
                   <div className="forget">
                     <h6>
-                      <a className="text-muted" href="/forgot-password">Forgot password?</a>
+                      <a className="text-muted" href="/forgot-password">Quên mật khẩu?</a>
                     </h6>
 
                     {this.state.loading ? (
@@ -155,7 +155,7 @@ class Login extends Component {
                           className="btn btn-success center"
                           disabled
                         >
-                          Login
+                          Đăng nhập
                         </button>
                         <img
                           className="center"
@@ -171,15 +171,15 @@ class Login extends Component {
                           className="btn btn-success center"
                           onClick={this.onSubmit}
                         >
-                          Login
+                          Đăng nhập
                         </button>
                       </div>
                     )}
 
                     <div className="register center-text">
                       <h5 className="text-muted">
-                        Do not have an account?{" "}
-                        <a className="text-muted" href="/register">Register</a>
+                        Bạn chưa có tài khoản?{" "}
+                        <a className="text-muted" href="/register">Đăng ký</a>
                       </h5>
                     </div>
                   </div>

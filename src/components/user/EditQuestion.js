@@ -89,19 +89,19 @@ class EditQuestion extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Edit Question</h5>
+              <h5 className="modal-title h4">Chỉnh sửa câu hỏi</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body send-mail">
               <div className="form-group">
-                <label>Question</label>
+                <label>Câu hỏi</label>
                 <textarea
                   className="form-control mt-2"
                   rows="5"
                   cols="63"
-                  placeholder="Please ask your question..."
+                  placeholder="Viết câu hỏi của bạn"
                   id="content"
                   name="content"
                   value={this.state.content}
@@ -109,7 +109,7 @@ class EditQuestion extends Component {
                 ></textarea>
               </div>
               <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Symptom</label>
+                <label htmlFor="exampleFormControlInput1">Triệu chứng</label>
                 <Typeahead
                   id="public-methods-example"
                   name="hashtag1"
@@ -117,7 +117,7 @@ class EditQuestion extends Component {
                   labelKey="name"
                   multiple
                   options={this.props.list_hashtag}
-                  placeholder="Please enter symptom"
+                  placeholder="Chọn triệu chứng"
                   ref={ref}
                   onChange={this.onChangeHashtag}
                   //onBlur={this.onBlurHashtag}
@@ -125,7 +125,7 @@ class EditQuestion extends Component {
                 />
               </div>
               <div>
-                <label>Upload image </label> &ensp;
+                <label>Hình ảnh</label> &ensp;
                 <input
                   className="upload-image-input"
                   type="file"
@@ -148,7 +148,7 @@ class EditQuestion extends Component {
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -156,7 +156,7 @@ class EditQuestion extends Component {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-                Submit
+                Lưu
               </button>
             </div>
           </div>

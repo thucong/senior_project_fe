@@ -13,7 +13,7 @@ class DeadChart extends Component{
                 "labels": "",
                 "datasets": []
             },
-            text: "Covid data chart of Viet Nam",
+            text: "Biểu đồ dữ liệu covid-19 của Việt Nam",
         }
     }
     chart = () => {
@@ -30,7 +30,7 @@ class DeadChart extends Component{
                     labels : date,
                     datasets: [
                         {
-                            label: "Number of dead",
+                            label: "Số ca tử vong",
                             data: dead,
                             backgroundColor: [
                                 '#4b4eb3'
@@ -58,7 +58,7 @@ class DeadChart extends Component{
                     labels: date,
                     datasets: [
                       {
-                        label: "Number of cured",
+                        label: "Số ca tử vong",
                         data: dead,
                         backgroundColor: ["#4b4eb3"],
                         borderWidth: 1,
@@ -66,7 +66,7 @@ class DeadChart extends Component{
                     ],
                   },
                 });
-                this.setState({ text: `Covid data chart of ${res.data[0].id_place.name}` });
+                this.setState({ text: `Biểu đồ dữ liệu covid-19 của ${res.data[0].id_place.name}` });
               });
           }
         

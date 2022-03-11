@@ -51,7 +51,7 @@ class ListHospital extends Component {
           <div className="card border-0">
             <div className="card-body">
               <p className="card-title text-center hospital-title">
-                Hospital
+                Bệnh viện
               </p>
               <div className="table-hospital overflow-auto">
               <table className="table list-hospital ">

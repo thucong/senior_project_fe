@@ -129,7 +129,7 @@ class Register extends Component {
   onHandleBlur = (e) => {
     const repassword = e.target.value;
     if (!repassword) {
-      this.setState({ notif: "(*) Password can not be blank!" });
+      this.setState({ notif: "(*) Mật khẩu không được để trống!" });
     }
   };
   validateEmail = () => {
@@ -185,7 +185,7 @@ class Register extends Component {
           this.setState({ loading: false });
           if (err.response.status === 400) {
             this.setState({
-              notifmess: "(*) User with this email already exists!",
+              notifmess: "(*) Người dùng địa chỉ email này đã tồn tại!",
             });
           }
         });
@@ -237,11 +237,11 @@ class Register extends Component {
     document.body.style.backgroundColor = "#eceff1";
     return (
       <div className="col-lg-4 col-md-6 content jumbotron center mt-3">
-        <h1 className="center h1">Register an account</h1>
+        <h1 className="center h1">Đăng ký tài khoản</h1>
         <form>
           <div className="info mb-2">
             <label>
-              Fullname <span className="span">*</span>
+              Họ và tên <span className="span">*</span>
             </label>
             <input
               type="text"
@@ -253,7 +253,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.name === true ? (
-            <p className="text-danger mt-1">(*) Fullname can not be blank!</p>
+            <p className="text-danger mt-1">(*) Họ và tên không được để trống!</p>
           ) : (
             ""
           )}
@@ -271,17 +271,17 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.email === true ? (
-            <p className="text-danger mt-1">(*) Email can not be blank!</p>
+            <p className="text-danger mt-1">(*) Email không được để trống!</p>
           ) : (
             ""
           )}
           {this.state.notif.validate === true ? (
-            <p className="text-danger mt-1">(*) Email invalidate!</p>
+            <p className="text-danger mt-1">(*) Không đúng định dạng email!</p>
           ) : (
             ""
           )}
           <div className="info mb-2">
-            <label>Gender </label> &#12644;
+            <label>Giới tính </label> &#12644;
             <input
               type="radio"
               name="gender"
@@ -289,7 +289,7 @@ class Register extends Component {
               onChange={this.onHandleChange}
               checked={this.state.gender === false}
             />
-            &nbsp;Male &#12644;
+            &nbsp;Nam &#12644;
             <input
               type="radio"
               name="gender"
@@ -297,10 +297,10 @@ class Register extends Component {
               onChange={this.onHandleChange}
               checked={this.state.gender === true}
             />
-            &nbsp;Female
+            &nbsp;Nữ
           </div>
           <div className="info mb-2">
-            <label>Date of birth </label>
+            <label>Ngày sinh</label>
             <div>
               <input
                 type="date"
@@ -311,7 +311,7 @@ class Register extends Component {
             </div>
           </div>
           <div className="info mb-2">
-            <label>Address <span className="span">*</span></label>
+            <label>Địa chỉ <span className="span">*</span></label>
             <input
               type="text"
               name="address"
@@ -322,19 +322,19 @@ class Register extends Component {
             />
             </div>
             {this.state.notif.address === true ? (
-            <p className="text-danger mt-1">(*) Address can not be blank!</p>
+            <p className="text-danger mt-1">(*) Địa chỉ không được để trống!</p>
           ) : (
             ""
           )}
             <div className="info mb-2">
-              <label>Province/City <span className="span">*</span></label>
+              <label>Tỉnh/Thành phố <span className="span">*</span></label>
              <select className="form-control mt-2" onChange={this.onChangeCity} onBlur={this.onBlurCity}>
-                <option>--Select Province/City--</option>
+                <option>--Lựa chọn Tỉnh/Thành phố--</option>
                 {this.showListPlace(this.props.list_place)}
               </select>
             </div>
             {this.state.notif.provinceOrCity === true ? (
-            <p className="text-danger mt-1">(*) Province or City can not be blank!</p>
+            <p className="text-danger mt-1">(*) Tỉnh/Thành phố không được để trống!</p>
           ) : (
             ""
           )}
@@ -346,7 +346,7 @@ class Register extends Component {
          
           <div className="info mb-2">
             <label>
-              Password <span className="span">*</span>
+              Mật khẩu <span className="span">*</span>
             </label>
             <input
               type="password"
@@ -358,13 +358,13 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.password === true ? (
-            <p className="text-danger mt-1">(*) Password can not be blank!</p>
+            <p className="text-danger mt-1">(*) Mật khẩu không được để trống!</p>
           ) : (
             ""
           )}
           <div className="info mb-2">
             <label>
-              Confirm password <span className="span">*</span>
+              Xác nhận lại mật khẩu <span className="span">*</span>
             </label>
             <input
               type="password"
@@ -376,7 +376,7 @@ class Register extends Component {
             />
           </div>
           {this.state.notif.repassword === true ? (
-            <p className="text-danger mt-1">(*) Password does not match!</p>
+            <p className="text-danger mt-1">(*) Mật khẩu không trùng khớp!</p>
           ) : (
             ""
           )}
@@ -392,7 +392,7 @@ class Register extends Component {
                 className="btn btn-success center mt30"
                 disabled
               >
-                Register
+                Đăng ký
               </button>
               <img
                 className="center"
@@ -408,7 +408,7 @@ class Register extends Component {
                 className="btn btn-success center mt30"
                 onClick={this.onSubmit}
               >
-                Register
+                Đăng ký
               </button>
             </div>
           )}

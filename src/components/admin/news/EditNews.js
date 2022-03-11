@@ -96,14 +96,14 @@ class EditNews extends Component {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Edit News</h5>
+              <h5 className="modal-title h4">Chỉnh sửa tin tức</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body send-mail">
               <div className="form-group">
-                <label>Subject</label>
+                <label>Chủ đề</label>
                 <textarea
                   className="form-control mt-2"
                   rows="3"
@@ -115,7 +115,7 @@ class EditNews extends Component {
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Published by</label>
+                <label>Người viết</label>
                 <textarea
                   className="form-control mt-2"
                   rows="2"
@@ -128,7 +128,7 @@ class EditNews extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1" className="mb-2">
-                  Content
+                  Nội dung
                 </label>
                 <CKEditor
                   editor={ClassicEditor}
@@ -141,7 +141,7 @@ class EditNews extends Component {
                 />
               </div>
               <div>
-                <label>Image </label> &ensp;
+                <label>Hình ảnh </label> &ensp;
                 <input
                   type="file"
                   name="image"
@@ -156,17 +156,17 @@ class EditNews extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>Category </label>
+                <label>Thể loại</label>
                 <select
                   className="form-control mt-2"
                   onChange={this.onChangeCategory}
                   value={this.state.category}
                 >
-                  <option value="Covid">Covid</option>
-                  <option value="Health">Health</option>
+                 <option value="Covid">Covid</option>
+                  <option value="Sức khỏe">Sức khỏe</option>
                   <option value="Vaccine">Vaccine</option>
-                  <option value="Nutrition">Nutrition</option>
-                  <option value="Diseases">Diseases</option>
+                  <option value="Dinh dưỡng">Dinh dưỡng</option>
+                  <option value="Bệnh">Bệnh</option>
                 </select>
               </div>
             </div>
@@ -176,7 +176,7 @@ class EditNews extends Component {
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -184,7 +184,7 @@ class EditNews extends Component {
                 data-dismiss="modal"
                 onClick={this.postData}
               >
-                Submit
+                Lưu
               </button>
             </div>
           </div>

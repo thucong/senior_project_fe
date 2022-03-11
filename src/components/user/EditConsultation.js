@@ -100,7 +100,7 @@ onSubmit = (e) => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Edit Appointment</h5>
+              <h5 className="modal-title h4">Chỉnh sửa cuộc tư vấn</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -114,19 +114,19 @@ onSubmit = (e) => {
                    <option value={time} key={index}>{Moment(time).format('YYYY-MM-DD hh:mm a')}</option>
                  ))): ""}
                   </select> */}
-                <label className="label-time">Start time:</label> &ensp;
+                <label className="label-time">Thời gian bắt đầu:</label> &ensp;
                 <input type="text" value={Moment(this.state.start).format('YYYY-MM-DD hh:mm a')} disabled name="start"/>
               </div>
               {this.state.start ? (
                  <div className="form-group">
-                 <label className="label-time">End time:</label> &ensp;
+                 <label className="label-time">Thời gian kết thúc:</label> &ensp;
                
                  <input type="text" value={this.state.end} disabled name="end"/>
                </div>
               ) : ""}
              
               <div className="form-group">
-                <label>Reason for appointment:</label>
+                <label>Lý do của cuộc tư vấn:</label>
                 <textarea
                   className="form-control mt-2"
                   rows="5"
@@ -136,9 +136,9 @@ onSubmit = (e) => {
                   value={this.state.content}
                 ></textarea>
               </div>
-              <p className="mb-2">There are prior examinations:</p>
+              <p className="mb-2">Kết quả của kiểm tra trước:</p>
               <div>
-                <label>Upload image:</label>&ensp;
+                <label>Hình ảnh:</label>&ensp;
                 <input type="file" name="file" onChange={this.uploadImage} ></input> <br />
                 <img src={this.state.file} style={{ width: "200px" }} className="mt-2" alt="" />
               </div>
@@ -150,7 +150,7 @@ onSubmit = (e) => {
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -158,7 +158,7 @@ onSubmit = (e) => {
                 data-dismiss="modal"
                 onClick={this.onSubmit}
               >
-                Submit
+                Lưu
               </button>
             </div>
           </div>

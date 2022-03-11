@@ -54,7 +54,7 @@ class MyQuestion extends Component {
          
                <div className="">
               <button className="btn btn-success" onClick={this.onAdd}>
-                Add Question
+               Đặt câu hỏi
               </button>
             </div>
           
@@ -69,7 +69,7 @@ class MyQuestion extends Component {
                 <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Search by keyword..."
+              placeholder="Tìm kiếm theo nội dung"
               onChange={this.onChangeName}
               name="name"
             />
@@ -80,7 +80,7 @@ class MyQuestion extends Component {
                             labelKey="name"
                             multiple
                             options={this.props.list_hashtag}
-                            placeholder="Search by symptom..."
+                            placeholder="Tìm kiếm theo triệu chứng"
                             ref={ref}
                             size="large"
                             onChange={this.onChangeHashtag}
@@ -90,7 +90,7 @@ class MyQuestion extends Component {
                         
                 </div>
                 <div className=" mt-3 ">
-                        <button type="submit" className="btn btn-success" onClick={this.onSubmitSearch}>Search</button>
+                        <button type="submit" className="btn btn-success" onClick={this.onSubmitSearch}>Tìm kiếm</button>
                     </div>
               </form>
             </div>

@@ -104,7 +104,7 @@ class NewsList extends Component{
                 <ul className="pagination justify-content-center mb-5 mt-3">
               <li className="page-item">
                 <button className="page-link" onClick={() => this.setPage(1)}>
-                  Head
+                  Đầu
                 </button>
               </li>
               {this.showPage(this.state.count, this.state.page)}
@@ -113,7 +113,7 @@ class NewsList extends Component{
                   className="page-link"
                   onClick={() => this.setPage(this.state.count)}
                 >
-                  Last
+                  Cuối
                 </button>
               </li>
             </ul>

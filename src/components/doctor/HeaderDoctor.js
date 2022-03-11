@@ -54,17 +54,17 @@ Logout = () => {
           <ul className="navbar-nav mx-auto justify-content-center mb-md-0">
             <li>
               <NavLink activeClassName="active" className="nav-link px-3" exact to="/">
-                Home
+                Trang chủ
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3">
-                Q&A
+                Hỏi đáp
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/appointment" className="nav-link px-3">
-                Appointment
+               Cuộc tư vấn
               </NavLink>
             </li>
           </ul>
@@ -88,10 +88,10 @@ Logout = () => {
               </div>
               <div className="dropdown-menu dropdown-menu-right drop">
                 <Link className="dropdown-item" to="/profile">
-                  Profile
+                 Trang cá nhân
                 </Link>
                 <Link className="dropdown-item" to="" onClick={this.Logout}>
-                  Logout
+                 Đăng xuất
                 </Link>
                
               </div>

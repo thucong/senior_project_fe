@@ -99,7 +99,7 @@ class MedicalCenter extends Component {
         }else if(hospitals.length === 0){
           result = (
             <div className="center">
-              <p className="text-danger mb-3 h4"> Sorry, we couldn't find any results for your search! </p>
+              <p className="text-danger mb-3 h4"> Không tìm thấy kết quả tìm kiếm phù hợp! </p>
             </div>
           )
           }
@@ -151,12 +151,12 @@ class MedicalCenter extends Component {
                             onChange={this.onChangePlace}
                             value={this.state.place}
                             >
-                            <option value="">Choose Place</option>
+                            <option value="">Chọn địa điểm</option>
                             {this.showListPlace(this.props.list_place)}
                             </select>
                         </div>
                         <div className="col-lg-2 col-md-1 mt-1 mt-md-0">
-                            <button type="submit" className="btn btn-success btn-lg btn-block word-wrap text-truncate" onSubmit={this.onSubmitSearch}>Search</button>
+                            <button type="submit" className="btn btn-success btn-lg btn-block word-wrap text-truncate" onSubmit={this.onSubmitSearch}>Tìm kiếm</button>
                         </div>
                     </form>
                 </div>
@@ -176,13 +176,13 @@ class MedicalCenter extends Component {
          <ul className="pagination justify-content-center mb-5 mt-3">
                     <li className="page-item">
                         <button className="page-link" onClick={() => this.setPage(1)}>
-                            Head
+                            Đầu 
                         </button>
                     </li>
                     {this.showPage(this.state.count_hospital, this.state.page)}
                     <li className="page-item">
                         <button className="page-link" onClick={() => this.setPage(this.state.count_hospital)}>
-                            Last
+                            Cuối
                         </button>
                     </li>
                 </ul>

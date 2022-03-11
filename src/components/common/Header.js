@@ -27,17 +27,17 @@ class Header extends Component {
           <ul className="navbar-nav mx-auto justify-content-center mb-md-0">
             <li>
               <NavLink activeClassName="active" exact className="nav-link px-3"  to="/">
-               Home
+               Trang chủ
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/q&a" className="nav-link px-3">
-                Q&A
+                Hỏi đáp
               </NavLink>
             </li>
             <li>
               <NavLink activeClassName="active" exact to="/hospital" className="nav-link px-3">
-                Hospital
+                Bệnh viện
               </NavLink>
             </li>
           </ul>
@@ -46,10 +46,10 @@ class Header extends Component {
               className="btn btn-outline-success text-success mr-1 text-truncate"
               to="/login"
             >
-              Login
+              Đăng nhập
             </Link>
             <Link className="btn btn-success text-truncate mt-1 mt-md-0" to="/register">
-              Register
+              Đăng ký
             </Link>
           </div>
         </div>

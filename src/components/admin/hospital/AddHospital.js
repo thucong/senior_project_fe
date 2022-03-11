@@ -110,14 +110,14 @@ class AddHospital extends Component{
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content" >
             <div className="modal-header">
-              <h5 className="modal-title h4">Add Hospital</h5>
+              <h5 className="modal-title h4">Thêm bệnh viện</h5>
               <button type="button" className="close" onClick={this.onClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body send-mail">
               <div className="form-group">
-                <label>Name</label>
+                <label>Tên</label>
                 <textarea
                   className="form-control mt-2"
                   rows="2"
@@ -129,7 +129,7 @@ class AddHospital extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Phone</label>
+                <label>Số điện thoại</label>
                 <textarea
                   className="form-control mt-2"
                   rows="1"
@@ -153,7 +153,7 @@ class AddHospital extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>Address</label>
+                <label>Địa chỉ</label>
                 <textarea
                   className="form-control mt-2"
                   rows="2"
@@ -165,14 +165,14 @@ class AddHospital extends Component{
                 ></textarea>
               </div>
               <div className="form-group">
-                <label>ProvinceOrCity</label>
+                <label>Tỉnh/Thành phố</label>
                 <select className="form-control mt-2" onChange={this.onChangeCity} value={this.state.city}>
-                  <option value="">Choose Place</option>
+                  <option value="">Chọn địa điểm</option>
                     {this.showListPlace(this.props.list_place)}
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="exampleFormControlInput1" className="mb-2">Description</label>
+                <label htmlFor="exampleFormControlInput1" className="mb-2">Mô tả</label>
                 <CKEditor
                     editor={ ClassicEditor }
                     data="<p></p>"
@@ -195,7 +195,7 @@ class AddHospital extends Component{
                 />
               </div>
               <div>
-                <label>Image </label> &ensp;
+                <label>Hình ảnh</label> &ensp;
                 <input type="file" name="file" onChange={this.uploadImage}></input> <br />
                 <img src={this.state.file} style={{ width: "200px" }} className="mb-2 mt-2" alt="" />
               </div>
@@ -206,7 +206,7 @@ class AddHospital extends Component{
                 className="btn btn-secondary"
                 onClick={this.onClose}
               >
-                Cancel
+                Hủy
               </button>
               <button
                 type="button"
@@ -214,7 +214,7 @@ class AddHospital extends Component{
                 data-dismiss="modal"
                 onClick={this.postData}
               >
-               Submit
+               Thêm
               </button>
             </div>
           </div>

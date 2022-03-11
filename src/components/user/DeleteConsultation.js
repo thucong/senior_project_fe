@@ -26,7 +26,7 @@ class DeleteConsultation extends Component {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title h4">Delete Appointment</h5>
+              <h5 className="modal-title h4">Xóa cuộc tư vấn</h5>
               <button
                 type="button"
                 className="close"
@@ -38,7 +38,7 @@ class DeleteConsultation extends Component {
               </button>
             </div>
             <div className="modal-body">
-              <p>Do you want to delete this appointment?</p>
+              <p>Bạn có muốn xóa cuộc tư vấn này không?</p>
             </div>
             <div className="modal-footer">
               <button
@@ -47,14 +47,14 @@ class DeleteConsultation extends Component {
                 data-dismiss="modal"
                 onClick={this.onClose}
               >
-                No
+                Không
               </button>
               <button
                 type="button"
                 className="btn btn-danger"
                 onClick={this.delete}
               >
-                Yes
+                Có
               </button>
             </div>
           </div>

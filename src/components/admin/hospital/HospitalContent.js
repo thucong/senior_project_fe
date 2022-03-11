@@ -117,14 +117,14 @@ class HospitalContent extends Component{
                       className="btn btn-warning"
                       onClick={(e) =>this.onChoiceEdit(e, item._id)}
                     >
-                     Edit
+                     Sửa
                     </button>&ensp;
                     <button
                       type="button"
                       className="btn btn-danger mt-1"
                       onClick={(e) =>this.onChoiceDelete(e, item._id)}
                     >
-                      Delete
+                      Xóa
                     </button>
                
                   
@@ -181,7 +181,7 @@ class HospitalContent extends Component{
             className="btn btn-success text-truncate"
             onClick={this.logOut}
           >
-            Logout
+            Đăng xuất
           </button>
         </div>
         <form className="row p-5 " onSubmit={this.searchHospital}>
@@ -189,7 +189,7 @@ class HospitalContent extends Component{
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Name"
+              placeholder="Tên"
               onChange={this.onChangeName}
             />
           </div>
@@ -199,22 +199,22 @@ class HospitalContent extends Component{
               className="btn btn-success btn-lg btn-block word-wrap text-truncate"
               onClick={this.searchHospital}
             >
-              Search
+              Tìm kiếm
             </button>
           </div>
         </form>
         <div className="pl-5 pb-3">
-          <button className="btn btn-success" onClick={this.onAdd}>Add</button>
+          <button className="btn btn-success" onClick={this.onAdd}>Thêm</button>
         </div>
         <div className="pl-5 pr-5 row m-0">
           <table className="table jumbotron content">
             <thead className="">
               <tr className="">
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Số điện thoại</th>
                 <th scope="col">Email</th>
-                <th scope="col">Address</th>
+                <th scope="col">Địa chỉ</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -235,7 +235,7 @@ class HospitalContent extends Component{
           <ul className="pagination page mb-5 justify-content-center">
             <li className="page-item">
               <button className="page-link" onClick={() => this.setPage(1)}>
-                Head
+                Đầu
               </button>
             </li>
             {this.showPage(this.state.count_page, this.state.page)}
@@ -244,7 +244,7 @@ class HospitalContent extends Component{
                 className="page-link"
                 onClick={() => this.setPage(this.state.count_page)}
               >
-               Last
+               Cuối
               </button>
             </li>
           </ul>

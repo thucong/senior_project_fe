@@ -31,7 +31,7 @@ componentWillUnmount() {
     return (
       <div>
           <div className="col col-md-10 center mt-5" >
-            <p className="subject mb-2">Epidemic situation of the whole country</p>
+            <p className="subject mb-2">Tình hình dịch bệnh của cả nước</p>
             <div className="row">
                 <div className="col col-md-6">
                   <Covid />
