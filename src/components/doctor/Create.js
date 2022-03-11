@@ -78,7 +78,6 @@ class Create extends Component {
                       name="time"
                       className="mt-2"
                       labelKey="name"
-                      multiple
                       options={this.props.list_time}
                       placeholder="Chọn thời gian"
                       ref={ref}

@@ -30,7 +30,7 @@ class ImageUploader extends Component{
                     <img src={this.props.imageUrl} alt="" width="170px" height="170px"/>
                     <input type="file" hidden onChange={this.onSelectImage} />
                     {!this.state.loading ? <div className="overlay d-flex align-items-center">
-                        <div className="text-white text-center mx-auto">Đổi mật khẩu</div>
+                        <div className="text-white text-center mx-auto">Đổi ảnh</div>
                     </div> : ""}
                     {this.state.loading ? <div className="overlay-loading d-flex align-items-center">
                         <img className="center" src={loading_gif} alt="" width="50px"></img>
