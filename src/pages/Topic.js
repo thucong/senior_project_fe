@@ -178,10 +178,10 @@ class Topic extends Component {
                   delete={(e) => this.onDelete(topic._id)}
                 />
               ))
-            ) : (""
-              // <p className="text-danger h3 mt-3">
-              //   Sorry, we couldn't find any results for your search!
-              // </p>
+            ) : (
+              <p className="text-danger h3 mt-3">
+                Sorry, we couldn't find any results for your search!
+              </p>
             )}
             <EditQuestion info_topic={this.state.info_topic} />
             <DeleteQuestion choice_delete={this.state.choice_delete} />
