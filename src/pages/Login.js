@@ -64,7 +64,9 @@ class Login extends Component {
               ? new Date(Date.now() + 604800000)
               : 0,
           });
-          this.cookies.set("token", res.data.data.token, { expires: 0 });
+          this.cookies.set("token", res.data.data.token, { expires: this.state.checkSaveAccount
+            ? new Date(Date.now() + 604800000)
+            : 0, });
           this.setState({ notif: "" });
           return;
         }
