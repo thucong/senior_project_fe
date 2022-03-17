@@ -52,12 +52,12 @@ class DetailHospital extends Component{
                         </div> */}
                         <div className="editor info-doctor p-3 lh-24" dangerouslySetInnerHTML={{__html:info_hospital.description}}/>
                     </div>
-                    <div className="col col-md-4">
+                    {/* <div className="col col-md-4">
                          <div className="schedule p-3">
                              <p className="title-schedule p-2 mb-3">GOOGLE MAP</p>
               
                          </div>
-                     </div>
+                     </div> */}
                 </div>
             </div>
         )

@@ -119,7 +119,7 @@ class EditProfile extends Component {
             <input
               type="text"
               className="form-control mt-3"
-              placeholder="Full name"
+              placeholder="Họ và tên"
               value={this.state.name}
               onChange={this.onChangeName}
               onBlur={this.onBlurName}
