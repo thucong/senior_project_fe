@@ -97,10 +97,10 @@ class MedicalCenter extends Component {
             )
           })
         }else if(hospitals.length === 0){
-          result = (
-            <div className="center">
-              <p className="text-danger mb-3 h4"> Không tìm thấy kết quả tìm kiếm phù hợp! </p>
-            </div>
+          result = ( ""
+            // <div className="center">
+            //   <p className="text-danger mb-3 h4"> Không tìm thấy kết quả tìm kiếm phù hợp! </p>
+            // </div>
           )
           }
         return result
