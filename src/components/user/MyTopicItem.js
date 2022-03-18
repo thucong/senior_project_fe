@@ -128,7 +128,7 @@ class MyTopicItem extends Component{
                       <div className="ml-2 mt-3  ">
                         <input
                           type="text"
-                          placeholder="Write your reply"
+                          placeholder="Câu trả lời của bạn"
                           value={this.state.content}
                           className="bg text-reply p-2"
                           name="content"

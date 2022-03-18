@@ -122,7 +122,7 @@ onSubmit = (e) => {
              </div>
              <p className="text-danger">Các khoảng thời gian trên đều có sẵn. Thời lượng 60 phút.</p>
              </div>
-              ) : <p className="p-4">Lịch đã hết hạn để đặt cuộc tư. Vui lòng chọn một ngày khác!</p>}
+              ) : <p className="p-4">Lịch đã hết hạn để đặt cuộc tư vấn. Vui lòng chọn một ngày khác!</p>}
             {this.state.notif_time === true ? <p className="text-danger ">(*) Vui lòng chọn thời gian!</p> : ""}
             {this.state.notif_content === true ? <p className="text-danger ">(*) Vui lòng viết lý do!</p> : ""}
             {this.props.list_schedule.length > 0 ? (
