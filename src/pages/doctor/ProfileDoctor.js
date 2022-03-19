@@ -20,7 +20,7 @@ class ProfileDoctor extends Component{
                 <div className="col col-10 mx-auto mt-5 row">
                     <div className="col-3 list-group mt-3">
                         <button type="button" onClick={() => this.onClickListGroup(0)} className={this.state.page === 0 ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"}>
-                            Tạo lịch khám
+                            Tạo lịch
                         </button>
                         <button type="button" onClick={() => this.onClickListGroup(1)} className={this.state.page === 1 ? "list-group-item list-group-item-action active" : "list-group-item list-group-item-action"}>
                         Chỉnh sửa thông tin
